@@ -3,81 +3,304 @@
     "title": "Next.js",
     "description": "왜 Next.js인가?",
     "date": "2023-04-13",
-    "category": "frontend",
+    "category": "Next.js",
     "path": "next.js",
     "recent": true
-  }
-  ,
+  },
   {
-    "title": "2021년 리뷰",
-    "description": "2021년 한해 동안 배운 기술들, 생각들 정리",
-    "date": "2021-12-31",
-    "category": "my story",
-    "path": "review-2021",
+    "title": "TypeScript",
+    "description": "TypeScript에 대해 알아보자!",
+    "date": "2023-04-08",
+    "category": "TypeScript",
+    "path": "typescript",
+    "recent": true
+  },
+  {
+    "title": "Iterable & Generator",
+    "description": "Iterable 하면서 iterator...?",
+    "date": "2023-04-01",
+    "category": "JavaScript",
+    "path": "iterable-generator",
+    "recent": true
+  },  
+  {
+    "title": "Event",
+    "description": "Event는 어떻게 동작할까?",
+    "date": "2023-03-25",
+    "category": "JavaScript",
+    "path": "event",
+    "recent": true
+  },
+  {
+    "title": "React Hook (1)",
+    "description": "useState, React.memo, useRef",
+    "date": "2023-03-18",
+    "category": "React",
+    "path": "reacthook(2)",
+    "recent": true
+  },
+  {
+    "title": "React Hook (2)",
+    "description": "LifeCycle, useEffect, useMemo, useCallback, useContext, useReducer",
+    "date": "2023-03-18",
+    "category": "React",
+    "path": "reacthook(1)",
+    "recent": true
+  },
+  {
+    "title": "MVC 패턴",
+    "description": "MVC 패턴이 뭔데?",
+    "date": "2023-03-10",
+    "category": "CS",
+    "path": "mvc",
     "recent": false
   },
   {
-    "title": "자바스크립트 기초 문법",
-    "description": "기본 문법부터 사용하는 실전까지 최종정리",
-    "date": "2022-05-08",
-    "category": "javascript",
-    "path": "javascript-basic",
+    "title": "This",
+    "description": "This 제대로 파헤치기",
+    "date": "2023-03-09",
+    "category": "JavaScript",
+    "path": "this",
     "recent": false
   },
   {
-    "title": "자바스크립트 10가지 프로팁!",
-    "description": "프로처럼 자바스크립트 사용할 수 있는 10가지 팁",
-    "date": "2022-06-15",
-    "category": "javascript",
-    "path": "javascript-10-tips",
-    "recent": true
-  },
-  {
-    "title": "Node 기초 정리",
-    "description": "기본 적인 Node 사용법에 대해 전부 정리!",
-    "date": "2022-08-21",
-    "category": "backend",
-    "path": "node-basic",
+    "title": "Prototype",
+    "description": "자바스크립트를 알려면 prototype을..",
+    "date": "2023-03-08",
+    "category": "JavaScript",
+    "path": "prototype",
     "recent": false
   },
   {
-    "title": "2022년 리뷰",
-    "description": "2022년 한해 동안 배운 기술들, 생각들 정리",
-    "date": "2022-12-31",
-    "category": "my story",
-    "path": "review-2022",
+    "title": "캡슐화",
+    "description": "캡슐화하면 어떤데??",
+    "date": "2023-03-07",
+    "category": "JavaScript",
+    "path": "encapsulation",
     "recent": false
   },
   {
-    "title": "Node 프로 팁!",
-    "description": "노드를 프로처럼 사용하기 위한 모든 팁들을 정리!",
-    "date": "2023-04-10",
-    "category": "backend",
-    "path": "node-pro-tips",
-    "recent": true
+    "title": "클로저",
+    "description": "클로저 제대로 알아보기",
+    "date": "2023-03-05",
+    "category": "JavaScript",
+    "path": "closure",
+    "recent": false
   },
   {
-    "title": "리액트 Best Practice!",
-    "description": "리액트를 정확하게 사용하는 방법들을 정리",
-    "date": "2023-04-15",
-    "category": "frontend",
-    "path": "best-react-practices",
-    "recent": true
+    "title": "실행 컨텍스트",
+    "description": "자바스크립트는 어떻게 실행되는가",
+    "date": "2023-03-03",
+    "category": "JavaScript",
+    "path": "context",
+    "recent": false
   },
   {
-    "title": "리액트 18버전!",
-    "description": "리액트 18에 추가된 사항들 정리",
-    "date": "2023-05-02",
-    "category": "frontend",
-    "path": "react18-walkthrough",
-    "recent": true
+    "title": "CSR vs SSR",
+    "description": "CSR? SSR? 뭐가 더 좋을까",
+    "date": "2023-03-02",
+    "category": "CS",
+    "path": "csr-ssr",
+    "recent": false
   },
   {
-    "title": "2023년 리뷰",
-    "description": "2023년 한해 동안 배운 기술들, 생각들 정리",
-    "date": "2023-12-31",
-    "category": "my story",
-    "path": "review-2023",
-    "recent": true
+    "title": "객체 지향 프로그래밍",
+    "description": "객체지향 프로그래밍이란 뭘까?",
+    "date": "2023-02-27",
+    "category": "CS",
+    "path": "oop",
+    "recent": false
+  },
+  {
+    "title": "TDD",
+    "description": "TDD란 뭔데 핫한거지?",
+    "date": "2023-02-26",
+    "category": "CS",
+    "path": "tdd",
+    "recent": false
+  },
+  {
+    "title": "원시값과 객체",
+    "description": "자바스크립트의 타입은?",
+    "date": "2023-02-20",
+    "category": "JavaScript",
+    "path": "types",
+    "recent": false
+  },
+  {
+    "title": "Let, Var, Const",
+    "description": "Let, Const의 등장과 호이스팅",
+    "date": "2023-02-17",
+    "category": "JavaScript",
+    "path": "variable",
+    "recent": false
+  },
+  {
+    "title": "Callback, Promise, Async/Await",
+    "description": "콜백지옥으로부터 탈출하기",
+    "date": "2023-02-10",
+    "category": "JavaScript",
+    "path": "callback-promise-async",
+    "recent": false
+  },
+  {
+    "title": "타입변환과 단축평가",
+    "description": "자바스크립트가 미친 이유",
+    "date": "2023-02-03",
+    "category": "JavaScript",
+    "path": "dynamic-type",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 19",
+    "description": "나만의 무기 최종 발표",
+    "date": "2023-01-28",
+    "category": "SW Jungle",
+    "path": "jungle19",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 18",
+    "description": "나만의 무기 4주차",
+    "date": "2023-01-21",
+    "category": "SW Jungle",
+    "path": "jungle18",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 17",
+    "description": "나만의 무기 3주차",
+    "date": "2023-01-14",
+    "category": "SW Jungle",
+    "path": "jungle17",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 16",
+    "description": "나만의 무기 2주차",
+    "date": "2023-01-07",
+    "category": "SW Jungle",
+    "path": "jungle16",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 15",
+    "description": "2022 회고",
+    "date": "2023-01-01",
+    "category": "SW Jungle",
+    "path": "jungle15",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 14",
+    "description": "나만의 무기 시작",
+    "date": "2022-12-22",
+    "category": "SW Jungle",
+    "path": "jungle14",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 13",
+    "description": "PintOS FileSystem",
+    "date": "2022-12-15",
+    "category": "SW Jungle",
+    "path": "jungle13",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 12",
+    "description": "PintOS Virtual Memory(2)",
+    "date": "2022-12-08",
+    "category": "SW Jungle",
+    "path": "jungle12",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 11",
+    "description": "PintOS Virtual Memory(1)",
+    "date": "2022-12-01",
+    "category": "SW Jungle",
+    "path": "jungle11",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 10",
+    "description": "PintOS User Program",
+    "date": "2022-11-24",
+    "category": "SW Jungle",
+    "path": "jungle10",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 09",
+    "description": "PintOS Thread",
+    "date": "2022-11-17",
+    "category": "SW Jungle",
+    "path": "jungle09",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 08",
+    "description": "Proxy Lab",
+    "date": "2022-11-10",
+    "category": "SW Jungle",
+    "path": "jungle08",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 07",
+    "description": "Malloc Lab",
+    "date": "2022-11-03",
+    "category": "SW Jungle",
+    "path": "jungle07",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 06",
+    "description": "Red-Black Tree",
+    "date": "2022-10-30",
+    "category": "SW Jungle",
+    "path": "jungle06",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 05",
+    "description": "Dymamic Programming, Greedy Algorithm",
+    "date": "2022-10-23",
+    "category": "SW Jungle",
+    "path": "jungle05",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 04",
+    "description": "Graph, DFS, BFS",
+    "date": "2022-10-15",
+    "category": "SW Jungle",
+    "path": "jungle04",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 03",
+    "description": "Divide and Conquer, Stack, Queue",
+    "date": "2022-10-08",
+    "category": "SW Jungle",
+    "path": "jungle03",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 02",
+    "description": "처음 마주한 알고리즘",
+    "date": "2022-09-29",
+    "category": "SW Jungle",
+    "path": "jungle02",
+    "recent": false
+  },
+  {
+    "title": "정글에서 살아남기 Week 01",
+    "description": "정글에 들어온 이유",
+    "date": "2022-09-24",
+    "category": "SW Jungle",
+    "path": "jungle01",
+    "recent": false
   }
 ]

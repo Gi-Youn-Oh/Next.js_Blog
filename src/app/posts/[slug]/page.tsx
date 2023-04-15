@@ -13,7 +13,7 @@ export default async function PostPage({ params: { slug } }: Props) {
 
     const posts = await getPostData(slug);
     return <>
-        <h1>{posts.title}</h1>
+        {/* <h1>{posts.title}</h1> */}
         <MarkdownViewer content = {posts.content} />
     </>
 }
