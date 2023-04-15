@@ -5,8 +5,6 @@
 - React 18+
 - Next.js v12 & v13
 - TailWind
-- SWR (managing state)
-- Sanity 
 - Vercel (publishing)
 
 ## Purpose
