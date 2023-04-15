@@ -5,7 +5,7 @@
     "date": "2021-12-31",
     "category": "my story",
     "path": "review-2021",
-    "featured": false
+    "recent": false
   },
   {
     "title": "자바스크립트 기초 문법",
@@ -13,7 +13,7 @@
     "date": "2022-05-08",
     "category": "javascript",
     "path": "javascript-basic",
-    "featured": false
+    "recent": false
   },
   {
     "title": "자바스크립트 10가지 프로팁!",
@@ -21,7 +21,7 @@
     "date": "2022-06-15",
     "category": "javascript",
     "path": "javascript-10-tips",
-    "featured": true
+    "recent": true
   },
   {
     "title": "Node 기초 정리",
@@ -29,7 +29,7 @@
     "date": "2022-08-21",
     "category": "backend",
     "path": "node-basic",
-    "featured": false
+    "recent": false
   },
   {
     "title": "2022년 리뷰",
@@ -37,7 +37,7 @@
     "date": "2022-12-31",
     "category": "my story",
     "path": "review-2022",
-    "featured": false
+    "recent": false
   },
   {
     "title": "Node 프로 팁!",
@@ -45,7 +45,7 @@
     "date": "2023-04-10",
     "category": "backend",
     "path": "node-pro-tips",
-    "featured": true
+    "recent": true
   },
   {
     "title": "리액트 Best Practice!",
@@ -53,7 +53,7 @@
     "date": "2023-04-15",
     "category": "frontend",
     "path": "best-react-practices",
-    "featured": true
+    "recent": true
   },
   {
     "title": "리액트 18버전!",
@@ -61,7 +61,7 @@
     "date": "2023-05-02",
     "category": "frontend",
     "path": "react18-walkthrough",
-    "featured": true
+    "recent": true
   },
   {
     "title": "2023년 리뷰",
@@ -69,6 +69,6 @@
     "date": "2023-12-31",
     "category": "my story",
     "path": "review-2023",
-    "featured": true
+    "recent": true
   }
 ]
