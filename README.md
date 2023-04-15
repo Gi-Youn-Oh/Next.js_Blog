@@ -1,6 +1,6 @@
 # Personal Blog Project 
 
-## Tech Stack
+## Skills
 - TypeScript
 - React 18+
 - Next.js v12 & v13
