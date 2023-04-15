@@ -15,6 +15,11 @@ export async function getRecentPosts(): Promise<Post[]> {
         .then(posts => posts.filter(post => post.recent))
 }
 
+export async function getNotRecentPosts(): Promise<Post[]> {
+    return getAllPosts()
+        .then(posts => posts.filter(post => !post.recent))
+}
+
 export async function getAllPosts(): Promise<Post[]> {
     const filePath = path.join(process.cwd(), 'data', 'posts.json');
     return readFile(filePath, 'utf-8')
