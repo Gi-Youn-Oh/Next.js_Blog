@@ -1,5 +1,14 @@
 [
   {
+    "title": "Next.js",
+    "description": "왜 Next.js인가?",
+    "date": "2023-04-13",
+    "category": "frontend",
+    "path": "next.js",
+    "recent": true
+  }
+  ,
+  {
     "title": "2021년 리뷰",
     "description": "2021년 한해 동안 배운 기술들, 생각들 정리",
     "date": "2021-12-31",
