@@ -1,33 +1,34 @@
-<h2> 10주차 개발일지 </h2>
-<hr>
-<h3>1. Argument Passing</h3>
-<h3>2. User Memory</h3>
-<h3>3. System calls</h3>
-<h3>4. Process Termination Messages</h3>
-<h3>5. Denying Writes to Exexutables</h3>
-<h3>6. Extend File Descriptor(extra)</h3>
-<hr>
-<h3>Pintos project 1-2 회고</h3>
+## 10주차 개발일지
+
+1. Argument Passing
+2. User Memory
+3. System calls
+4. Process Termination Messages
+5. Denying Writes to Exexutables
+6. Extend File Descriptor(extra)
+
+### Pintos project 1-2 회고
+
 project 2 의 구현이 어느정도 완성이 되어가고 있다.
 Pintos를 진행하면서 많은 지식과 학습이 필요하다보니 이해하기 어렵고 난이도도 높은 프로젝트 이지만 이전의 과제들보다 훨씬 재밌고 성장하고 있는 느낌이 많이 들어서 즐겁게 하고 있다.
 Project1 에서는 Kernel에서의 동작과 방식에 대한 과제였던 반면 이번 Project 2 에는 user가 어떻게 OS와 소통하고 접근하는지에 대한 프로젝트를 진행하고 있다.
 사실 파고 들어가면 갈수록 끝이 없어서 힘이 빠지기도 하지만 파면 팔수록 프로그램 원리에 대해서 궁금했던 점들이 풀려나가서 어느 과제보다 몰입해서 하고 있는 것 같다.
 혼자서 했으면 이 짧은 시간안에 해결하지 못했을 과제들을 함께 고민하고, 의논하고, 구현하는 시간이 행복하게 느껴졌고 팀원들 덕분에 해결해나가고 있다고 생각한다.
-<br><br>
+
 Pintos 프로젝트를 진행하면서 컴퓨터 시스템의 원리와 개념들을 아는 것은 너무나도 중요하지만 한편으로 팀 프로젝트를 직접적으로 경험해봄으로서 팀 프로젝트란 이런것이다 라는 것을 몸소 체험할 수 있어서 좋은 것 같다.
-서로의 잘못된 지식이나 오류들을 찾아주면서 발전하고 프로젝트를 완성했을 때의 짜릿함은 평생 잊지못할것 같다. 
+서로의 잘못된 지식이나 오류들을 찾아주면서 발전하고 프로젝트를 완성했을 때의 짜릿함은 평생 잊지못할것 같다.
 이전까지는 머리로만 코드를 구현하고 직접 코드를 구현하는게 어려웠는데 팀원들이 옆에서 함께 봐주면서 코드를 작성하니 자신감도 붙고 코드 구현에 대한 두려움이 많이 사라졌다.
 좋은 팀원들을 만나 스스럼없이 피드백을 주고 편하게 의견을 제시하고 함께 몰입하는 과정을 프로젝트가 끝날때까지 지치지 않고 다함께 이어나갔으면 좋겠다.
-<br><br>
+
 이번 과제에서 가장 어려웠던 부분에 대한 설명 후 글을 마치려한다.
 User가 system call(user/syscall.c) 을 호출 하면 해당 파일에 대한 정보와 syscall number를
 register에 저장하고 syscall 을 호출한다.
 sycall 은 syscall_entry.S(어셈블리어)를 호출해 커널에서의 작업이 시작된다.
-kernel stack에 interrupt_frame 형식으로 쌓은 인자들을 syscall_handler에게 전달해 작업이 시작된다. 
+kernel stack에 interrupt_frame 형식으로 쌓은 인자들을 syscall_handler에게 전달해 작업이 시작된다.
 여기서 제일 헷갈렸던 부분은 user/syscall.c 는 유저가 시스템콜을 하는 시스콜 userprog/syscall.c 는 kernel에서 작동하는 시스템콜에 대한 함수와 코드들이다.
 남은 시간동안 잘 마무리해서 project2도 완성할 것이다.
 그럼 내일도 즐기자!
-<hr>
+
 ```jsx
 Project 1 에서는 커널에 있는 thread와 커널에서 일어나는 일들, interrupt handler와 scheduling 에 관한 코드를 구현해보고 학습했다.
 Project 2 에서는 User program을 실행시키기 위한 작업들을 해나간다.

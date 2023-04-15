@@ -1,27 +1,20 @@
-<h2> 13주차 개발일지 </h2>
-<hr>
-<h3>File System</h3>
+## 13주차 개발일지
+
+### File System
+
 PintOS의 마지막 과제 File System을 마주했다.
-정글에 입소한게 엊그제 같은데 벌써 pintOS의 마지막 주차가 되었고, 다음주부터는 나만의 무기과제가 시작된다.
-첫 정글에 입소했을때 처럼 기대 반, 걱정 반이다.
-분명히 많이 성장했고, 지식도 많이 쌓였지만 모든 과제를 완벽하게 이해하고 구현한 것이 아니기 때문에 (애초에 모든 과제를 완벽하게 하라고 주시진 않았겠지만 ..) 더욱 많이 알고싶고 공부하고 싶은 마음이다.
+정글에 입소한게 엊그제 같은데 벌써 pintOS의 마지막 주차가 되었고, 다음주부터는 나만의 무기과제가 시작된다. 첫 정글에 입소했을때 처럼 기대 반, 걱정 반이다. 분명히 많이 성장했고, 지식도 많이 쌓였지만 모든 과제를 완벽하게 이해하고 구현한 것이 아니기 때문에 (애초에 모든 과제를 완벽하게 하라고 주시진 않았겠지만 ..) 더욱 많이 알고싶고 공부하고 싶은 마음이다.
 부족한 부분 하나없이 취업시장에 나가고 싶은 욕심이지만, 시간은 기다려주지 않기에 하루하루 최선을 다하는 것이 최선이라 생각하고 나아간다.
-<hr>
-File system에서는 이전과제에서도 그러하였듯, Project 1,2,3 기반 코드 위에서 작동한다.
-file system의 모든 과제를 구현하지는 못해서, 구현한 과제 위주로 대략적 요약을 하면 다음과 같다.
-project3 까지는 파일은 여러 디스크 섹터에 연속적인 단일 청크로 저장되었었다.
+
+File system에서는 이전과제에서도 그러하였듯, Project 1,2,3 기반 코드 위에서 작동한다. file system의 모든 과제를 구현하지는 못해서, 구현한 과제 위주로 대략적 요약을 하면 다음과 같다. project3 까지는 파일은 여러 디스크 섹터에 연속적인 단일 청크로 저장되었었다.
 즉 Continous Allocation 으로 구현된 파일시스템이다.
-이 파일 시스템의 장점은 순차적, 직접 접근이 가능하기에 효율적인 파일 접근이 가능하지만,
-새로운 파일을 위한 공간 확보가 어렵고, 외부단편화가 심하며 [(ex)7개의 sector를 필요로하는 file 크기에 대해 연속된 빈 공간이 5개의 sector만 있을경우], file이 커져야 할 수 있기 때문에 초기 공간 크기 결정이 어렵다.
-이러한 단점을 극복하기위해 FAT(File Allocation Table)을 구현하는 것이 첫 번째 과제였다.
-첫 번째로 Discontinous Allocation방식 중 하나인 Linked Allocation은
-파일이 저장된 블록들을 linked_list로(비연속 할당)연결하는 방식인데, 단순하고 외부단편화를 최소화 할 수 있어 효율적이다.
-하지만 직접 접근에는 비효율적이며, 포인터 저장을 위한 공간 할당이 필요하며, 신뢰성 문제 또한 발생할 수 있다.
+이 파일 시스템의 장점은 순차적, 직접 접근이 가능하기에 효율적인 파일 접근이 가능하지만, 새로운 파일을 위한 공간 확보가 어렵고, 외부 단편화가 심하며 [(ex)7개의 sector를 필요로 하는 file 크기에 대해 연속된 빈 공간이 5개의 sector만 있을 경우], file이 커져야 할 수 있기 때문에 초기 공간 크기 결정이 어렵다.
+이러한 단점을 극복하기 위해 FAT(File Allocation Table)을 구현하는 것이 첫 번째 과제였다.
+첫 번째로 Discontinous Allocation방식 중 하나인 Linked Allocation은 파일이 저장된 블록들을 linked_list로(비 연속 할당)연결하는 방식인데, 단순하고 외부 단편화를 최소화 할 수 있어 효율적이다. 하지만 직접 접근에는 비효율적이며, 포인터 저장을 위한 공간 할당이 필요하며, 신뢰성 문제 또한 발생할 수 있다.
 두번째는 Discontinous Allocation의 다른 방법으로 indexed allocation 방법이 있는데 파일이 저장된 블록의 정보(pointer)를 index block에 모아두는 방식이다.
-직접 접근에는 효율적이나 file 1개 당 index block을 유지해야하기 때문에 공간을 많이 잡아먹게된다.
-이러한 파일 시스템에 대한 여러 장,단점으로 인해 처음 FAT 을 배열, 리스트, 비트맵중 어떤 것으로 구현하는 것이 효율적인지에 대한 고민이 많았다.
-<hr>
-FAT만 사용하게되면 FAT의 index 0에는 기초 정보가 들어가 있고 1에는 Root_dir_cluster (value = EOChain)이 있기에 0으로 파일의 미할당 여부를 표시하지 못하고, 파일의 끝부분을 나타내려면 -1을 사용해야하기 때문에 unsigned 를 사용하지 못하고 signed를 사용해야 한다고 생각해 처음에는 비트맵을 하나더 만들어 FAT의 value 값이 있는지 없는지를 나타내려 했다. 
+직접 접근에는 효율적이나 file 1개 당 index block을 유지해야하기 때문에 공간을 많이 잡아먹게된다. 이러한 파일 시스템에 대한 여러 장,단점으로 인해 처음 FAT 을 배열, 리스트, 비트맵 중 어떤 것으로 구현하는 것이 효율적인지에 대한 고민이 많았다.
+
+FAT만 사용하게되면 FAT의 index 0에는 기초 정보가 들어가 있고 1에는 Root_dir_cluster (value = EOChain)이 있기에 0으로 파일의 미할당 여부를 표시하지 못하고, 파일의 끝부분을 나타내려면 -1을 사용해야하기 때문에 unsigned 를 사용하지 못하고 signed를 사용해야 한다고 생각해 처음에는 비트맵을 하나 더 만들어 FAT의 value 값이 있는지 없는지를 나타내려 했다.
 아래와 같은 그림이다.
 
 ![file8](https://user-images.githubusercontent.com/109953972/208286032-632fb0b9-3e6d-4f6a-910a-762fea7fc7e6.jpg)
@@ -33,8 +26,7 @@ FAT만 사용하게되면 FAT의 index 0에는 기초 정보가 들어가 있고
 
 ![file9](https://user-images.githubusercontent.com/109953972/208286116-97bac535-f224-4c0b-a587-83d10e568d11.jpg)
 
-<hr>
-PintOS의 디스크 구조
+**PintOS의 디스크 구조**
 
 1. Boot block 
 
@@ -50,7 +42,7 @@ FAT의 index 0에는 기초 정보가 들어가 있고 1에는 Root_dir_cluster 
 
 3. DATA section
 
-<hr>
+
 마지막으로 이번 project 진행중 가장 애를 먹었던 debug에 대해 정리하고 글을 마무리 하려한다.
 
 ```jsx
@@ -72,10 +64,7 @@ FAIL tests/filesys/base/syn-remove
 
 ![2](https://user-images.githubusercontent.com/109953972/208286204-3ab5d58b-3af4-4a16-a512-21173d40a31b.png)
 
-<aside>
 💡 도대체 왜 113 → 114 → 115 → 116 → 117 → 114 → 0 → 0 . ………??
-
-</aside>
 
 ```jsx
 if(next_clst == EOChain){
@@ -89,10 +78,7 @@ EOChain이 없어서?
 
 ![4](https://user-images.githubusercontent.com/109953972/208286216-6a159eab-584d-4c9a-894b-510283f64990.png)
 
-<aside>
 💡 EOChain 값 있음 .. 그럼 왜 무한 루프를 돌까?
-
-</aside>
 
 ![5](https://user-images.githubusercontent.com/109953972/208286228-5e080ee3-bf95-4246-b7b3-0bcf44f54ce9.png)
 
@@ -107,10 +93,7 @@ while 문 제거하고 check
 
 ![8](https://user-images.githubusercontent.com/109953972/208286263-7adb4907-c0bf-4954-aab7-f11e00fcb404.png)
 
-<aside>
 💡 도대체 왜 114로 돌아가서 무한루프를 돌까? fat_remove_chain 을 호출한 함수를 보자!
-
-</aside>
 
 ```jsx
 inode_close (struct inode *inode);
@@ -128,10 +111,8 @@ inode sector 와 inode data.start 가 이어져있나?
 inode_create 함수로 가자!
 ```
 
-<aside>
 💡 inode_create 수정!
 
-</aside>
 
 ![11](https://user-images.githubusercontent.com/109953972/208286289-2833524d-75e9-40e5-a730-f3822397e9c0.png)
 
