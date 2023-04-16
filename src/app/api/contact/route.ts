@@ -1,3 +1,4 @@
+import { sendEmail } from '@/app/service/email';
 import * as yup from 'yup';
 
 const bodySchema = yup.object().shape({
@@ -7,9 +8,17 @@ const bodySchema = yup.object().shape({
 })
 
 export async function POST(request: Request) {
-    if(bodySchema.isValidSync(request.body)){
-        return new Response('유효하지 않은 포맷', {status: 400});
+    const body = await  request.json();
+    if (!bodySchema.isValidSync(body)) {
+        return new Response(JSON.stringify({ message: '메일 전송에 실패'}), { status: 400 });
     }
-    const {from, subject, message} = request.body;
-    // 노드메일러를 이용해서 메시지 전송하면 된다.
+
+    return sendEmail(body)
+        .then(() => {
+            return new Response(JSON.stringify({ message: '메일을 성공적으로 전송' }), { status: 200 })
+        })
+        .catch(error => {
+            console.error(error);
+            return new Response(JSON.stringify({ message: '메일 전송에 실패'}), {status: 500})
+        })
 }

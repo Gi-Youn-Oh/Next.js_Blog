@@ -11,7 +11,7 @@ export async function sendContactEmail(email: EmailData) {
     })
     const data = await response.json();
     if(!response.ok) {
-        throw new Error(data.message || 'Server requset fail');
+        throw new Error(data.message || 'Server request fail');
     }
     return data;
 }
