@@ -1,4 +1,4 @@
-import { Post } from "@/app/api/posts";
+import { Post } from "@/app/service/posts";
 import Image from "next/image";
 import Link from "next/link";
 

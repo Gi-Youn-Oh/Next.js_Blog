@@ -1,4 +1,4 @@
-import { PostData } from "@/app/api/posts";
+import { PostData } from "@/app/service/posts";
 import MarkdownViewer from "@/components/MarkdownViewer";
 import { AiTwotoneCalendar } from 'react-icons/ai';
 

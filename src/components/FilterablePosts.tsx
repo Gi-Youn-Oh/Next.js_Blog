@@ -1,6 +1,6 @@
 'use client'
 
-import { Post } from "@/app/api/posts";
+import { Post } from "@/app/service/posts";
 import { useState } from "react";
 import PostsGrid from "./PostsGrid";
 import Categories from "./Categories";
