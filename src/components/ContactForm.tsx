@@ -1,6 +1,8 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { BannerData } from './Banner';
+import Banner from './Banner';
 
 type Form = {
     from: string;
@@ -10,6 +12,7 @@ type Form = {
 
 export default function ContactForm() {
     const [form, setForm] = useState<Form>({ from: '', subject: '', message: '' });
+    const [banner, setBanner] = useState<BannerData | null>(null);
 
     const onChange= (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = e.target;
@@ -19,9 +22,14 @@ export default function ContactForm() {
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // console.log(form);
+        setBanner({message: '메일 전송이 완료되었습니다!', state: 'success'});
+        setTimeout(() => {
+            setBanner(null);
+        }, 3000)
     }
     return (
         <>
+        {banner && <Banner banner={banner} />}
             <form onSubmit={onSubmit}>
                 <label htmlFor='from'>
                     Your email
