@@ -23,9 +23,9 @@ export default function ContactForm() {
         e.preventDefault();
         // console.log(form);
         setBanner({message: '메일 전송이 완료되었습니다!', state: 'success'});
-        // setTimeout(() => {
-        //     setBanner(null);
-        // }, 3000)
+        setTimeout(() => {
+            setBanner(null);
+        }, 3000)
     }
     return (
         <section className="w-full max-w-md">
