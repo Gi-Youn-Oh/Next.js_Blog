@@ -1,5 +1,5 @@
 import FilterablePosts from "@/components/FilterablePosts";
-import { getAllPosts } from "../api/posts";
+import { getAllPosts } from "../service/posts";
 
 export default async function PostsPage() {
     const posts= await getAllPosts();
