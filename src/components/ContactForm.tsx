@@ -23,28 +23,28 @@ export default function ContactForm() {
         e.preventDefault();
         // console.log(form);
         setBanner({message: '메일 전송이 완료되었습니다!', state: 'success'});
-        setTimeout(() => {
-            setBanner(null);
-        }, 3000)
+        // setTimeout(() => {
+        //     setBanner(null);
+        // }, 3000)
     }
     return (
-        <>
+        <section className="w-full max-w-md">
         {banner && <Banner banner={banner} />}
-            <form onSubmit={onSubmit}>
-                <label htmlFor='from'>
+            <form onSubmit={onSubmit} className="w-full flex flex-col gap-2 my-4 p-4 bg-slate-800 rounded-xl text-white">
+                <label htmlFor='from' className="font-semibold">
                     Your email
                 </label>
-                <input type="email" id="from" name="from" required autoFocus value={form.from} onChange={onChange} />
-                <label htmlFor='subject'>
+                <input className="text-black" type="email" id="from" name="from" required autoFocus value={form.from} onChange={onChange} />
+                <label htmlFor='subject' className="font-semibold">
                     Subject
                 </label>
-                <input type="text" id="subject" name="subject" required value={form.subject} onChange={onChange} />
-                <label htmlFor='message'>
+                <input className="text-black" type="text" id="subject" name="subject" required value={form.subject} onChange={onChange} />
+                <label htmlFor='message' className="font-semibold">
                     Message
                 </label>
-                <textarea rows={10} id="message" name="message" required value={form.message} onChange={onChange} />
-                <button type="submit">Send</button>
+                <textarea className="text-black" rows={10} id="message" name="message" required value={form.message} onChange={onChange} />
+                <button type="submit" className="font-semibold bg-yellow-300 text-black hover:bg-yellow-400">Send</button>
             </form>
-        </>
+        </section>
     );
 }

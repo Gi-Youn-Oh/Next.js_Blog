@@ -6,7 +6,7 @@ export type BannerData = {
 export default function Banner({banner: {message, state}}: {banner: BannerData}) {
     const isSuccsess = state === 'success';
     const icon = isSuccsess ? '✅' : '❌';
-    return <p className={`p-2 ${isSuccsess? 'bg-green-300' : "bg-red-300"}`}>
+    return <p className={`p-2 rounded-xl w-full text-center ${isSuccsess? 'bg-green-300' : "bg-red-300"}`}>
         {`${icon} ${message}`}
     </p>
 }
