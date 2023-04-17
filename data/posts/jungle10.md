@@ -92,10 +92,7 @@ stack에 쌓인 argumnets바로 아래엔 fake return address를 넣어주고, i
 
 ---
 
-<aside>
 💡 User memory
-
-</aside>
 
 ```jsx
 Process(또는 thread)가 진행되는 동안 실행되는 instruction 중 일부는 특별한 권한이 있어야만 실행할 수 있도록 되어있다. 이를 Privileged Instruction 이라고 한다. 이러한 instruction은 kernel(ring0)만 실행될 수 있고 user(ring3)는 실행할 수 없다. 이는 하드웨어가 가장 높은 권한을 가지고 있으며 하드웨어가 kernel만 해당 instruction을 실행할 수 있도록 정해두었기 때문에 그렇다. 하드웨어는 code를 실행할 때 해당 segment에서 권한을 표시하는 특정 bit를 확인하고 cpu의 mode bit를 설정한다. 그리고 이 mode bit에 따라서 instruction을 수행할지 말지 결정한다.
@@ -107,10 +104,7 @@ X86 Architecture에서 system call은 일반적인 exception과 동일한 방식
 User가 System call을 호출하여 인자를 넘겨주면 kernel에서는 해당 인자가 유효한지 확인해야한다. 특히 들어온 인자가 virtual address라면 해당 주소가 유효한 주소인지 (kernel 영역을 접근하고 있지는 않은지, NULL을 넘겨준 것은 아닌지, User에게 할당된 영역이 맞는지) 반드시 확인한 후 해당되는 함수를 진행해야 한다.
 ```
 
-<aside>
 💡 System Calls
-
-</aside>
 
 ```jsx
 운영체제는 부팅할 때 system call이 호출되면 어떠한 instruction들을 수행한 뒤 handler 함수를 진행하도록 하드웨어를 설정한다. 이후 user program이 실행되고 user program에서 system call을 호출하면 하드웨어는 설정된 instruction들을 수행하고 system call handler를 실행한다.
@@ -122,10 +116,7 @@ System call handler에서는 인자로 들어온 if의 rax값을 확인(syscall�
 
 ---
 
-<aside>
 💡 Fork system call
-
-</aside>
 
 ```jsx
 Fork system call은 fork를 호출한 process와 동일한 자식 process를 생성하는 함수이다. 특이한 점은 return을 두 번 한다는 점이다. 부모에게는 자식의 pid(tid)를 return하지만 자식에게는 0을 return 한다. 이로써 부모와 자식에 따라 다른 code를 실행하도록 분기할 수 있다. 그렇다면 kernel은 fork를 어떻게 처리해야하며, 어떻게 해야 두 번의 return을 진행할 수 있을까?
@@ -180,10 +171,8 @@ File system은 이러한 값을 변경할 수 있도록 파일의 수정을 막�
 ![1](https://user-images.githubusercontent.com/109953972/215666688-56f1c96e-bd4e-44a9-a6e1-b5a58bfdfccf.png)
 
 
-<aside>
-💡 In user/syscall.c
 
-</aside>
+💡 In user/syscall.c
 
 ![2](https://user-images.githubusercontent.com/109953972/215666766-9998f0dc-967d-4150-9d6e-22c083210acf.jpg)
 
@@ -209,10 +198,7 @@ File system은 이러한 값을 변경할 수 있도록 파일의 수정을 막�
 	 여기부터 userporg/syscall.c
 ```
 
-<aside>
 💡 In userporg/syscall.c
-
-</aside>
 
 ![5](https://user-images.githubusercontent.com/109953972/215666856-1e44aa05-feb5-4b32-8e01-7722d1887133.jpg)
 

@@ -6,10 +6,7 @@
 - 자바스크립트 엔진에 의해 암묵적으로 생성된다.
 - This바인딩은 함수 호출 방식에 의해 동적으로 결정된다.
 
-<aside>
 💡 바인딩 ⇒ {식별자 : 값} 연결하는 과정, ex) 변수 선언 ⇒ {변수 : 주소값}, this ⇒ {this : 가리킬 객체}
-
-</aside>
 
 ## Deference in JS
 
@@ -18,10 +15,7 @@
 
 ## This Binding Rules
 
-<aside>
 💡 우선 순위 new > 명시적 > 암시적 > 기본
-
-</aside>
 
 ```jsx
 // this는 어디서든 참조 가능
