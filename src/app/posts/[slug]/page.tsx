@@ -1,4 +1,4 @@
-import { getPostData } from "@/app/service/posts";
+import { getPostData, getRecentPosts } from "@/app/service/posts";
 import AdjacentPostCard from "@/components/AdjacentPostCard";
 import PostContent from "@/components/PostContent";
 import { Metadata } from "next";
@@ -32,4 +32,11 @@ export default async function PostPage({ params: { slug } }: Props) {
             {next && <AdjacentPostCard post={next} type='next' />}
         </section>
     </article>
+}
+
+export async function generateStaticParams() {
+    const posts = await getRecentPosts();
+    return posts.map(post => ({
+        slug:post.path,
+    }))
 }

@@ -1,5 +1,6 @@
 import { readFile } from "fs/promises";
 import path from "path";
+import { cache } from 'react';
 
 export type Post = {
     title: string;
@@ -20,13 +21,14 @@ export async function getNotRecentPosts(): Promise<Post[]> {
         .then(posts => posts.filter(post => !post.recent))
 }
 
-export async function getAllPosts(): Promise<Post[]> {
+export const getAllPosts = cache(async () => {
+    // console.log('getallposts');
     const filePath = path.join(process.cwd(), 'data', 'posts.json'); // metadata
     return readFile(filePath, 'utf-8')
         // .then(data => JSON.parse(data))
         .then<Post[]>(JSON.parse) //  생략, json parse type 설정 즉 posts의 타입
         .then(posts => posts.sort((a, b) => (a.date > b.date ? -1 : 1))) // 날짜 정렬
-}
+});
 
 export type PostData = Post & { content: string; next: Post | null; prev: Post | null };
 
