@@ -1,8 +1,13 @@
 import Hero from "@/components/Hero";
-import Link from "next/link";
 import { MdEmojiPeople } from "react-icons/md";
 import { SiAboutdotme } from "react-icons/si";
 import { FcDocument } from "react-icons/fc";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'About Me',
+    description: 'Giyoun 커리어 소개',
+};
 
 const TITLE_CLASS = "text-2xl font-bold text-gray-800 my-4"
 const CONTENT_CLASS = "text-xl font-bold text-gray-700 m-1";
