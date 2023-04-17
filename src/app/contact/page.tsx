@@ -1,6 +1,13 @@
 import ContactForm from '@/components/ContactForm'
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { ImInstagram } from 'react-icons/im'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Contact Me',
+    description: 'GitHub, Mail',
+};
+
 const LINKS = [
     { icon: <AiFillGithub />, url: "https://github.com/Gi-Youn-Oh", description: "링크 클릭" },
     { icon: <ImInstagram />, url: "https://www.instagram.com/gy.0623/" },
