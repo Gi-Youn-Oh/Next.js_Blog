@@ -46,10 +46,7 @@ useEffect ( () => { // componentDidmount,componentDidUpdate 역할 (1대1 대응
 - useMemo : 복잡한 함수 값 기억 / useRef 일반 값 기억
 - 
 
-<aside>
 💡  랜더링이 발생했을 때, 이전 랜더링과 현재 랜더링 간에 `x`와 `y` 값이 동일한 경우, 다시 함수를 호출을 하여 `z` 값을 구하는 대신, 기존에 메모리의 어딘가에 저장해두었던 `z` 값을 그대로 사용
-
-</aside>
 
 ```jsx
  function MyComponent({ x, y }) {

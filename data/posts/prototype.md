@@ -8,10 +8,7 @@
 - 프로토 타입과 생성자 함수는 단독으로 존재할 수 없다. (항상 pair)
 - 프로토타입은 생성자 함수가 생성되는 시점에 더불어 생성된다.
 
-<aside>
 💡 클래스와 생성자 함수 모두 프로토타입 기반의 인스터를 생성하지만 정확히 동일하게 동작하지는 않으며, 클래스 보다 엄격하며 더 많은 기능을 제공한다.
-
-</aside>
 
 ```jsx
 class Person {
@@ -65,10 +62,7 @@ class Crew extends Person {
 }
 ```
 
-<aside>
 💡 자바스크립트에서 복사는 원시 값과 객체의 참조값 뿐이다
-
-</aside>
 
 ## 프로토타입 객체
 
@@ -84,10 +78,7 @@ class Crew extends Person {
 - 프로토 타입 취득 ⇒ getPrototyupeOf();
 - 프로토 타입 교체 ⇒ setPrototypeOf();
 
-<aside>
 💡 자바스크립트 모든 객체는 [[Prototype]]이라는 내부 슬롯을 가지지만, prototype 프로퍼티는 함수 객체 만이 소유한다.
-
-</aside>
 
 ## ES6 화살표 함수, 메서드 (축약표현으로 정의된)
 

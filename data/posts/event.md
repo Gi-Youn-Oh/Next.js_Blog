@@ -42,10 +42,7 @@ currentTarget = 이벤트 핸들러가 바인딩 된 요소
 
 ![image](https://user-images.githubusercontent.com/109953972/231974457-fb0c1e4b-e2d2-47fe-b0da-24db8b46f8bf.png)
 
-<aside>
 💡 event 객체는 e or event 로 다른 단어 xx
-
-</aside>
 
 ## 이벤트 전파
 
