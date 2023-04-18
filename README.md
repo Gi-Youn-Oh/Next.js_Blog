@@ -1,3 +1,4 @@
+블로그 링크: https://giyoun-blog.vercel.app/
 # Personal Blog Project 
 
 ## Skills
