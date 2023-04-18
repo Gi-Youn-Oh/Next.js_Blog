@@ -1,5 +1,13 @@
 [
   {
+    "title": "React (v18) = Concurrency?",
+    "description": "왜 Next.js인가?",
+    "date": "2023-04-19",
+    "category": "React",
+    "path": "react-version18",
+    "recent": true
+  },
+  {
     "title": "Next.js",
     "description": "왜 Next.js인가?",
     "date": "2023-04-13",
