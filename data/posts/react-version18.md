@@ -86,7 +86,7 @@ type Fiber = {
 
 ### After **: Fiber Reconciler**
 
-- **incremental rendering(**렌더링 테스크에 우선순위를 매겨서 중요한 것을 먼저 처리하고 덜 중요한 것을 나중에 처리), 렌더링 작업을 잘게 쪼개어 여러 프레임에 걸쳐 실행할 수 있고, 특정 작업에 “우선순위”를 매겨 **작업의 작은 조각들을 concurrent하게** “일시 정지”, “재가동” 할 수 있게 해준다.  Fiber 트리에서는 각 노드가 return, sibling, child 포인터 값을 사용하여 단방향 링크드 리스트를 이룬다.
+- **incremental rendering**(렌더링 테스크에 우선순위를 매겨서 중요한 것을 먼저 처리하고 덜 중요한 것을 나중에 처리), 렌더링 작업을 잘게 쪼개어 여러 프레임에 걸쳐 실행할 수 있고, 특정 작업에 “우선순위”를 매겨 **작업의 작은 조각들을 concurrent하게** “일시 정지”, “재가동” 할 수 있게 해준다.  Fiber 트리에서는 각 노드가 return, sibling, child 포인터 값을 사용하여 단방향 링크드 리스트를 이룬다.
 - 각 노드의 return, sibling, child 포인터를 사용해서 child가 있으면 child, child가 없으면 sibling, sibling이 없으면 return… 의 순으로 다음 fiber로 이동
 - 각 fiber는 다음으로 처리해야 할 fiber를 가리키고 있기 때문에, 이 긴 일련의 작업이 중간에 멈춰도, 지금 작업 중인 fiber만 알고 있다면 돌아와서 같은 위치에서 작업을 이어가는 것이 가능하게 되는 것이다.
 - 각 fiber는 이 과정에서 각자의 ‘변경 사항에 대한 정보 (effect)'를 들고 있고, 이를 DOM에 바로바로 반영하지 않고, 모아뒀다가 모든 fiber 탐색이 끝난 후, 마지막 commit 단계에서 한 번에 반영하기 때문에, reconciliation 작업이 commit 단계 전에 중단되어도 실제 렌더 된 화면에는 영향을 미치지 않는다.
@@ -112,7 +112,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-~~ReactDOM.render(<App />, document.getElementById('root'));~~
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
@@ -140,7 +139,7 @@ root.render(<App />);
 ## 3) hydrateRoot()
 
 - 서버에서 렌더링 된 HTML 을 가져와 hydrate 해줄 때 사용
-- 서버 렌더링 앱은 `createRoot`대신`[hydrateRoot](https://react.dev/reference/react-dom/client/hydrateRoot)` 사용
+- 서버 렌더링 앱은 `createRoot`대신`hydrateRoot` 사용
 
 ```jsx
 import './styles.css';
