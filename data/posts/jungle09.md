@@ -62,6 +62,7 @@ Base
 - Multiple donation -> 한스레드가 두개 이상의 lock 보유시 (이전 상태의 우선순위를 기억해야함)
 - Nested donation
 - Donation list [donate_elem]
+
   4-1)lock_acquire
   -> sema_down
   <br>
