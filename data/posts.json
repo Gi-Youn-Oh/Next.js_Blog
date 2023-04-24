@@ -1,5 +1,13 @@
 [
   {
+    "title": "Client State = Redux?",
+    "description": "상태관리는 Redux가 최고인가?",
+    "date": "2023-04-24",
+    "category": "React",
+    "path": "redux",
+    "recent": true
+  },
+  {
     "title": "React (v18) = Concurrency?",
     "description": "왜 Next.js인가?",
     "date": "2023-04-19",
