@@ -1,5 +1,13 @@
 [
   {
+    "title": "Session & JWT & O-Auth",
+    "description": "인증과 인가?",
+    "date": "2023-06-15",
+    "category": "CS",
+    "path": "auth",
+    "recent": true
+  },
+  {
     "title": "Client State = Redux?",
     "description": "상태관리는 Redux가 최고인가?",
     "date": "2023-04-24",
@@ -61,7 +69,7 @@
     "date": "2023-03-18",
     "category": "React",
     "path": "reacthook(1)",
-    "recent": true
+    "recent": false
   },
   {
     "title": "MVC 패턴",
