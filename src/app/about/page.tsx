@@ -3,6 +3,7 @@ import { MdEmojiPeople } from "react-icons/md";
 import { SiAboutdotme } from "react-icons/si";
 import { FcDocument } from "react-icons/fc";
 import { Metadata } from "next";
+import Skill from "@/components/Skill";
 
 export const metadata: Metadata = {
     title: 'About Me',
@@ -28,13 +29,16 @@ const SKILLS2 = [
     { icon: "https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" },
     { icon: "https://img.shields.io/badge/ReactQuery-FF4154?style=flat&logo=ReactQuery&logoColor=white" },
     { icon: "https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white" },
+]
+
+const SKILLS3 = [
     { icon: "https://img.shields.io/badge/styledcomponents-DB7093?style=flat&logo=styledcomponents&logoColor=white" },
+    { icon: "https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=TailwindCSS&logoColor=white" },
 ]
 
 const RECENTSTUDY = [
     { icon: "https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" },
     { icon: "https://img.shields.io/badge/Next.js-000000?style=flat&logo=Next.js&logoColor=white" },
-    { icon: "https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=TailwindCSS&logoColor=white" },
 ]
 
 export default function About() {
@@ -57,23 +61,11 @@ export default function About() {
                 </ul>
 
                 <h2 className={TITLE_CLASS}>skills</h2>
-                <ul className="flex justify-center my-2">
-                    {SKILLS.map((skill, index) => (
-                        <img key={index} className="mx-0.5" src={skill.icon} />
-                    ))}
-                </ul>
-                <ul className="flex justify-center my-2">
-                    {SKILLS2.map((skill, index) => (
-                        <img key={index} className="mx-0.5" src={skill.icon} />
-                    ))}
-                </ul>
-
+                <Skill skills={SKILLS} />
+                <Skill skills={SKILLS2} />
+                <Skill skills={SKILLS3} />
                 <h3 className={CONTENT_CLASS}>Recent Study</h3>
-                <ul className="flex justify-center my-2">
-                    {RECENTSTUDY.map((skill, index) => (
-                        <img key={index} className="mx-0.5" src={skill.icon} />
-                    ))}
-                </ul>
+                <Skill skills={RECENTSTUDY} />
             </section>
         </>
     )
