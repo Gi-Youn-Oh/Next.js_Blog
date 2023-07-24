@@ -109,8 +109,8 @@ history.pushState(null, "", "/new-page");
 
 ## Next/Link
 
-1. vs <a>
-- 기존  <a>태그는 페이지를 새로고침하여 로딩 하는 반면 Next.js 의 Link 태그는 client-side-navigation이 가능하다. (history.pushState()와 유사)
+### vs html a tag
+- 기존  a 태그는 페이지를 새로고침하여 로딩 하는 반면 Next.js 의 Link 태그는 client-side-navigation이 가능하다. (history.pushState()와 유사)
 - code-splitting (이 개념은 react18에서 다루었으므로 자세한 내용은 pass)
 - Options
 
@@ -154,9 +154,9 @@ function MyComponent() {
 
 ### vs Link
 
-- <a> 태그를 생성하지 않기 때문에 Link 태그에 비해 SEO가 좋지 않다.
+- a 태그를 생성하지 않기 때문에 Link 태그에 비해 SEO가 좋지 않다.
 - 외부 URL을 사용할 경우 window.location 혹은 a 태그를 사용해야 하는 것이 좋다. (페이지 전체를 다시 로딩해야 하기 때문)
-- **<Link>는 클릭 시 바로 페이지가 전환되지만 router는 로직을 처리 후 원하는 시점에서 전환이 가능** (주로 click event에서 사용)
+- **Link 태그는 클릭 시 바로 페이지가 전환되지만 router는 로직을 처리 후 원하는 시점에서 전환이 가능** (주로 click event에서 사용)
 - 페이지 렌더링 시점에, 이동할 주소가 정해져 있지 않은 경우 사용 (ex. 비동기로 클릭 시점에 이동할 주소가 정해지는 경우 등)
 - useRouter는 클래스 컴포넌트에서는 사용 x ⇒ withRouter 사용
 
@@ -430,7 +430,5 @@ export default async function Profile({ params }) {
 
 # 글을 마치며..
 
-- 기본적인 window.location & history 객체 부터 정리하고 next.js 의 routing방식을 파헤치니 확연한 장점들을 알 수 있었고, 정리가 되었다.
-- 단순 SSR 과 Hydrate 를 통해 rendering최적화 보다 Next에서 제공하는 훌륭한 routing 방식을 활용해서 data-fetching의 최소화, 캐싱을 통해 routing하도록 해야 겠다.
-- 더 세부적인 내용들을 다루기엔 내용이 길어져 가장 답답했던 부분을 해소하는 것으로 이 글은 마치려 한다.
-- React Router Dom 도 함께 작성하려 했지만 version이 업그레이드 되면서 useHistory, useNavigate, Routes, Route, BrowserRouter, createBrowserRouter등 다뤄야 할 것이 많기에 추후에 다른글로 정리해 보겠다.
+- 확실히 기본적인 window.location & history 객체 부터 정리하고 next.js 의 routing방식을 파헤치니 해당 함수들의 특징과 장점들을 빠르게 익힐 수 있었다. (역시 근본이 중요 .. )
+- 단순 SSR 과 Hydrate 를 통해 rendering최적화 보다 Next.js에서 제공하는 data-fetching의 최소화, 캐싱등의 장점을 통해 사용자 경험을 향상시키도록 적용해봐야 겠다.
