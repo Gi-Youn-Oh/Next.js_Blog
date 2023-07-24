@@ -1,5 +1,13 @@
 [
   {
+    "title": "Next / Router",
+    "description": "Link, Push, Replace, Redirect...",
+    "date": "2023-07-24",
+    "category": "Next.js",
+    "path": "next-router",
+    "recent": true
+  },
+  {
     "title": "Session & JWT & O-Auth",
     "description": "인증과 인가?",
     "date": "2023-06-15",
