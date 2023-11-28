@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive",
+    "description": "React Basic Concepts",
+    "date": "2023-11-28",
+    "category": "React",
+    "path": "react-deep-dive-1",
+    "recent": true
+  },
+  {
     "title": "Next / Router",
     "description": "Link, Push, Replace, Redirect...",
     "date": "2023-07-24",
