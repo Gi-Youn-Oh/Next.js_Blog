@@ -1,6 +1,14 @@
 [
   {
-    "title": "React / Deep-dive(2)",
+    "title": "React / Deep-dive (3)",
+    "description": "공식문서 돌아보기 - useState",
+    "date": "2023-11-28",
+    "category": "React",
+    "path": "react-deep-dive-3",
+    "recent": true
+  },
+  {
+    "title": "React / Deep-dive (2)",
     "description": "공식문서 돌아보기",
     "date": "2023-11-28",
     "category": "React",
@@ -37,7 +45,7 @@
     "date": "2023-04-24",
     "category": "React",
     "path": "redux",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React (v18) = Concurrency?",
