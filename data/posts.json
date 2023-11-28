@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive(2)",
+    "description": "공식문서 돌아보기",
+    "date": "2023-11-28",
+    "category": "React",
+    "path": "react-deep-dive-2",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive",
     "description": "React Basic Concepts",
     "date": "2023-11-28",
@@ -37,7 +45,7 @@
     "date": "2023-04-19",
     "category": "React",
     "path": "react-version18",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Next.js",
@@ -45,7 +53,7 @@
     "date": "2023-04-13",
     "category": "Next.js",
     "path": "next.js",
-    "recent": true
+    "recent": false
   },
   {
     "title": "TypeScript",
@@ -53,7 +61,7 @@
     "date": "2023-04-08",
     "category": "TypeScript",
     "path": "typescript",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Iterable & Generator",
@@ -61,7 +69,7 @@
     "date": "2023-04-01",
     "category": "JavaScript",
     "path": "iterable-generator",
-    "recent": true
+    "recent": false
   },  
   {
     "title": "Event",
