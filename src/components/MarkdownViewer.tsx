@@ -7,6 +7,8 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import Image from 'next/image'
 import rehypeRaw from 'rehype-raw'
 
+// import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+
 export default function MarkdownViewer({ content }: { content: string }) {
     return <ReactMarkdown className="prose max-w-none lg:prose-lg" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}
         components={{
@@ -18,6 +20,8 @@ export default function MarkdownViewer({ content }: { content: string }) {
                         style={coldarkDark}
                         language={match[1]}
                         PreTag="div"
+                        // wrapLines={true}
+                        wrapLongLines={true}
                     >
                         {String(children).replace(/\n$/, '')}
                     </SyntaxHighlighter>
