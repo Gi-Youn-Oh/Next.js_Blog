@@ -320,9 +320,9 @@ var App = React.render(Component)
 
 ### State as a Snapshot
 
-[“Rendering”](https://react-ko.dev/learn/render-and-commit#step-2-react-renders-your-components) means that React is calling your component, which is a function. The JSX you return from that function is like a snapshot of the UI in time. Its props, event handlers, and local variables were all calculated **using its state at the time of the render.**
+[“Rendering”](https://react-ko.dev/learn/render-and-commit#step-2-react-renders-your-components) means that **React is calling your component, which is a function. The JSX you return from that function is like a snapshot of the UI in time.** Its props, event handlers, and local variables were all calculated **using its state at the time of the render.**
 
-- 렌더링은 컴포넌트 (함수)를 호출한다는 뜻이다. JSX는 그 시간의 스냅샷과 같다.
+- **렌더링은 컴포넌트 (함수)를 호출한다는 뜻이다. JSX는 그 시간의 스냅샷과 같다.**
     
     ⇒ 이제 우리는 이 말을 정확히 이해 할 수 있다. 렌더링은 컴포넌트(클래스형이든 함수형이든)를 호출하는 것이고 → 컴포넌트 호출은 JSX를 return 해주고 → JSX는 React.createElement() 호출 하고 → React.createElement()는 React Element를 반환해준다. 이 때의 React Element는 호출 당시의 State로 구성되어 있다.
     
