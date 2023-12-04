@@ -27,8 +27,9 @@ const SKILLS = [
 
 const SKILLS2 = [
     { icon: "https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" },
-    { icon: "https://img.shields.io/badge/ReactQuery-FF4154?style=flat&logo=ReactQuery&logoColor=white" },
+    { icon: "https://img.shields.io/badge/Recoil-3578E5?style=flat&logo=Recoil&logoColor=white"},
     { icon: "https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white" },
+    { icon: "https://img.shields.io/badge/ReactQuery-FF4154?style=flat&logo=ReactQuery&logoColor=white" },
 ]
 
 const SKILLS3 = [

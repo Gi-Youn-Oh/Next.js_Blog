@@ -18,7 +18,7 @@
 - “함수와 그 함수과 선언된 렉시컬 환경의 조합이다.”
 - 처음 위 문구를 보고서는 무슨 멍소리인지 이해가  되지 않았다.
 - 나는 아래와 같이 조금 받아들이기 쉽게 정의해봤다.
-- “어떤 함수 A에서 선언한 변수 a를 참조하는 내부함수 B를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수 a를 참조하는 않는 함수”
+- “어떤 함수 A에서 선언한 변수 a를 참조하는 내부함수 B를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수 a를 참조하는 함수”
 - 자세한 설명은 생략하겠다. (리액트를 사용한다는 것은 자바스크립트의 기본기는 탄탄히 갖추었을 것이기 때문에)
 
 ```jsx
@@ -320,14 +320,17 @@ var App = React.render(Component)
 
 ### State as a Snapshot
 
-[“Rendering”](https://react-ko.dev/learn/render-and-commit#step-2-react-renders-your-components) means that React is calling your component, which is a function. The JSX you return from that function is like a snapshot of the UI in time. Its props, event handlers, and local variables were all calculated **using its state at the time of the render.**
+<dfn>
+<a href="https://react-ko.dev/learn/render-and-commit#step-2-react-renders-your-components">“Rendering”</a> means that <b>React is calling your component, which is a function. The JSX you return from that function is like a snapshot of the UI in time.</b> Its props, event handlers, and local variables were all calculated <b>using its state at the time of the render.</b>
+</dfn>
 
-- 렌더링은 컴포넌트 (함수)를 호출한다는 뜻이다. JSX는 그 시간의 스냅샷과 같다.
+- **렌더링은 컴포넌트 (함수)를 호출한다는 뜻이다. JSX는 그 시간의 스냅샷과 같다.**
     
     ⇒ 이제 우리는 이 말을 정확히 이해 할 수 있다. 렌더링은 컴포넌트(클래스형이든 함수형이든)를 호출하는 것이고 → 컴포넌트 호출은 JSX를 return 해주고 → JSX는 React.createElement() 호출 하고 → React.createElement()는 React Element를 반환해준다. 이 때의 React Element는 호출 당시의 State로 구성되어 있다.
     
-
-As a component’s memory, state is not like a regular variable that disappears after your function returns. State actually “lives” in React itself—as if on a shelf!—outside of your function. When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated **using the state values from that render!**
+<dfn>
+As a component’s memory, state is not like a regular variable that disappears after your function returns. State actually “lives” in React itself—as if on a shelf!—outside of your function. When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated <b>using the state values from that render!</b>
+</dfn>
 
 - 컴포넌트의 메모리로서 state는 함수가 반환된 후 사라지는 일반 변수와 다릅니다. state는 실제로 함수 외부에, 마치 선반에 있는 것처럼 React 자체에 “존재”합니다.
 - React가 컴포넌트를 호출하면 특정 렌더링에 대한 state의 스냅샷을 제공합니다. 컴포넌트는 **해당 렌더링의 state 값을 사용해** 계산된 새로운 props 세트와 이벤트 핸들러가 포함된 UI의 스냅샷을 JSX에 반환합니다.
