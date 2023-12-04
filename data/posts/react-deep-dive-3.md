@@ -4,31 +4,30 @@
 
 - 기초적인 내용이지만 복습차원에서 다시 간단하게 확인하고 넘어가자.
 
-In JavaScript, arrays are just another kind of object. [Like with objects](https://react-ko.dev/learn/updating-objects-in-state), **you should treat arrays in React state as read-only.** This means that you shouldn’t reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn’t use methods that mutate the array, such as `push()` and `pop()`.
+<dfn>
+In JavaScript, arrays are just another kind of object. <a href="https://react-ko.dev/learn/updating-objects-in-state">Like with objects</a>, <b>you should treat arrays in React state as read-only.</b> This means that you shouldn’t reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn’t use methods that mutate the array, such as `push()` and `pop()`. </dfn>
 
 - **React state의 배열은 읽기 전용으로 취급해야 합니다.**
     
     ⇒ 왜 그래야 하는지 우리는 알고 있다. react의 state는 snapshot으로 각각 기록되기 때문에 직접 수정해선 안되고 새 객체를 만들어서 각각의 snapshot을 갖도록 해야한다. (React가 확인 할 수 있도록 해야 한다.)
-    
-
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
 
 - React에서 권장하는 메서드들
 
 |  | avoid (mutates the array)비추천 (배열 직접 변이) | prefer (returns a new array)추천 (새 배열 반환) |
 | --- | --- | --- |
-| adding추가 | push, unshift | concat, [...arr] spread syntax (https://react-ko.dev/learn/updating-arrays-in-state#adding-to-an-array) |
-| removing삭제 | pop, shift, splice | filter, slice (https://react-ko.dev/learn/updating-arrays-in-state#removing-from-an-array) |
-| replacing교체 | splice, arr[i] = ... assignment | map (https://react-ko.dev/learn/updating-arrays-in-state#replacing-items-in-an-array) |
-| sorting정렬 | reverse, sort | copy the array first (https://react-ko.dev/learn/updating-arrays-in-state#making-other-changes-to-an-array)배열을 복사한 다음 처리 |
+| adding추가 | push, unshift | concat, [...arr] <a href="https://react-ko.dev/learn/updating-arrays-in-state#adding-to-an-array">spread syntax</a> |
+| removing삭제 | pop, shift, splice | <a href="https://react-ko.dev/learn/updating-arrays-in-state#removing-from-an-array">filter, slice</a> |
+| replacing교체 | splice, arr[i] = ... assignment | <a href="https://react-ko.dev/learn/updating-arrays-in-state#replacing-items-in-an-array">map</a> |
+| sorting정렬 | reverse, sort | <a href="https://react-ko.dev/learn/updating-arrays-in-state#making-other-changes-to-an-array">copy the array first</a> 배열을 복사한 다음 처리 |
 
 ---
 
 ## Managing State
 
 ### **How declarative UI compares to imperative**
-
-In React, you don’t directly manipulate the UI—meaning you don’t enable, disable, show, or hide components directly. Instead, you **declare what you want to show,** and React figures out how to update the UI
+<dfn>
+In React, you don’t directly manipulate the UI—meaning you don’t enable, disable, show, or hide components directly. Instead, you <b>declare what you want to show, and React figures out how to update the UI</b>
+</dfn>
 
 - 명령형 프로그래밍과 달리 표시할 내용을 선언하면 React가 UI를 알아서 업데이트 해준다.
 
@@ -181,7 +180,7 @@ function submitForm(answer) {
 
 ### **Sharing State Between Components**
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it’s one of the most common things you will do writing React code.
+<dfn>Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it’s one of the most common things you will do writing React code.</dfn>
 
 - 두 컴포넌트의 state를 함께 변경하고 싶다면 부모컴포넌트로 state를 끌어 올린다.
     
@@ -220,12 +219,16 @@ ref를 사용한 직접 접근: 사용자 입력 필드에 대한 접근을 직�
 
 ### **Extracting State Logic into a Reducer**
 
-Each of its event handlers calls `setTasks` in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-access place, you can move that state logic into a single function outside your component, **called a “reducer”.**
+<dfn>
+Each of its event handlers calls `setTasks` in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-access place, you can move that state logic into a single function outside your component, <b>called a “reducer”.</b>
+</dfn>
 
 - State가 많아지다 보면 한눈에 파악하기 어려워질 수 있다.
 - 외부에 reducer를 두고 처리하도록 분리한다.
 
+<dfn>
 Managing state with reducers is slightly different from directly setting state. Instead of telling React “what to do” by setting state, you specify “what the user just did” by dispatching “actions” from your event handlers. (The state update logic will live elsewhere!) So instead of “setting `tasks`” via an event handler, you’re dispatching an “added/changed/deleted a task” action. This is more descriptive of the user’s intent.
+</dfn>
 
 - reducer를 사용한 state 관리는 state를 직접 설정하는 것이 아니다.
     

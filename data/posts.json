@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (4)",
+    "description": "공식문서 돌아보기 - useEffect",
+    "date": "2023-12-04",
+    "category": "React",
+    "path": "react-deep-dive-4",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (3)",
     "description": "공식문서 돌아보기 - useState",
     "date": "2023-11-28",
@@ -37,7 +45,7 @@
     "date": "2023-06-15",
     "category": "CS",
     "path": "auth",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Client State = Redux?",
