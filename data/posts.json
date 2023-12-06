@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (7)",
+    "description": "공식문서 돌아보기 - useEffect(4)",
+    "date": "2023-12-04",
+    "category": "React",
+    "path": "react-deep-dive-7",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (6)",
     "description": "공식문서 돌아보기 - useEffect(3)",
     "date": "2023-12-04",
