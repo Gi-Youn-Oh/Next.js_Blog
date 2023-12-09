@@ -112,3 +112,159 @@
         
     - 불필요한 state는 사용하지 않도록 해야 한다.
     - 기타 hook을 활용한 최적화 등은 생략
+
+---
+
+## 프로젝트 수정
+
+공식문서를 돌아보면서 내가 기존에 작성한 코드를 수정해보았다.
+
+### 1. Key 값 활용 useEffect 제거 (prop에 따른 전체 state 초기화)
+
+<aside>
+💡 이 경우 key prop이 변경되면 전체가 새로 렌더링 되면서 전체 state가 초기 값이 된다. 전체 state를 새로 초기화 하는 경우는 아니지만 활용 예시 임으로 참고만 하자.
+
+</aside>
+
+**Before**
+
+- 기존 코드는 부모 컴포넌트의 state인 floor 라는 값을 prop으로 받아 floor가 바뀔 때마다 열려있던 모달창을 닫아주도록 useEffect를 사용해서 작성했다.
+- 이 때의 문제점은 렌더링 이후 바뀐 floor에 따라서 또 다시 렌더링이 이루어 진다는 것이다.
+    
+    ⇒ props변경에 따른 useEffect는 좋지 않다 불필요한 리렌더링을 한번 더해야 한다.
+    
+    ⇒ render → mount → setModalOpen → re-render → mount 
+    
+- 특히 외부 시스템과 연동하는 것이 아니므로, render phase에서 계산하도록 하는 것이 효율적일 것이다.
+
+```jsx
+// In Parent Component
+<UnderMap
+	floor={floor}
+	...
+/>
+
+// UnderMap Component
+useEffect(() => {
+  setModalOpen(false);
+}, [floor]);
+```
+
+**After**
+
+- 따라서 useEffect를 제거하고자 key값을 설정해 React가 변화를 알아서 인지하여 render phase에서 처리하도록 수정했다.
+    
+    ⇒ **동일한 위치의 동일한 컴포넌트는 state를 유지하며, React에서 중요한 것은 JSX 마크업이 아니라 UI 트리에서의 위치라는 것**
+    
+    ⇒ 기존에는UnderMap은 같은 트리에 위치해 있기 때문에 부모에서 다른 prop내려주더라도 기존 state값을 유지한다.
+    
+- 이렇게 수정하여 불필요하게 useEffect를 사용하지 않고 더 효율적으로 처리 할 수 있었다.
+
+```jsx
+// In Parent Component
+<UnderMap
+  key={floor}
+	...
+/>
+
+// UnderMap Component
+
+// useEffect제거
+// useEffect(() => {
+//   setModalOpen(false);
+// }, [floor]);
+```
+
+### 2. prop에 따른 일부 state 변경
+
+**Before**
+
+- 기존 코드는 해당 위젯 컴포넌트의 위치가 변할 때 마다  모든 모달을 닫아주기 위해서 useEffect를 사용했었다.
+- 마찬가지로 렌더링이 한번 더 이루어지므로 비효율적이다.
+
+```jsx
+useEffect(() => {
+  closeAllModals();
+}, [calPosition]);
+```
+
+**After**
+
+- 무한 렌더링을 피하기 위해 이전 값과 비교할 수 있는 state설정 후 렌더링 시에 처리하도록 변경
+- 렌더링 도중 처리
+
+```jsx
+const [prevPosition, setPrevPosition] = useState(calPosition);
+  if (calPosition !== prevPosition) {
+    setPrevPosition(calPosition);
+    closeAllModals();
+  }
+```
+
+### 3. Unnecessary useState
+
+**Before**
+
+- 기존에는 screenStyle이 변할 때 마다 full Screen 확인을 위해 useState로 선언해두고 useEffect로 변하게 확인했다.
+- 여기서 useEffect는 외부 시스템과 동기화 하는 것이 아니며, full Screen에 대한 state도 렌더링 도중 체크 가능하다고 생각했다.
+
+```jsx
+const handleFullScreen = () => {
+    if (screenStyle === 'cctv_viewer full') {
+      setIsFull(true);
+    } else {
+      setIsFull(false);
+    }
+  };
+
+useEffect(() => {
+    hadleFullScreen();
+  }, [screenStyle]);
+```
+
+**After**
+
+- 따라서 불필요한 useState, useEffect를 제거하고 다음과 같이 수정했다.
+
+```jsx
+const isFull = screenStyle === 'cctv_viewer full';
+```
+
+### 4. clean-up
+
+**Before**
+
+- 기존에는 컴포넌트에 다음과 같이 작성하여 렌더링 할때 마다 해당 이벤트를 등록했었다.
+- 이렇게 되면 불필요하게 계속 해당 코드가 실행될 것이다.
+
+```jsx
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      setScreenStyle('layout_right');
+      setReturnState(true);
+    }
+  });
+```
+
+**After**
+
+- 생명주기에 맞춰 mount 될 때 등록하고 unmount될 때 제거 되도록 수정했다.
+
+```jsx
+useEffect (() => {
+    const returnScreen = () => {
+      setScreenStyle('layout_right');
+      setReturnState(true);
+    };
+    document.addEventListener('keydown', returnScreen);
+    return () => {
+      document.removeEventListener('keydown', returnScreen);
+    };
+  }, []);
+```
+
+---
+
+## Summary
+
+지금까지 기본 개념과 원리 간단한 활용 예제를 통해 기본기를 탄탄히 다져왔다. 다음 시간부터는 본격적인 react 내부로 들어가기에 앞서 필요한 개념들을 정리해보겠습니다.
