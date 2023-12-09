@@ -46,7 +46,8 @@ Some components need to <b>synchronize with external systems.</b> For example, y
 **2) Event handlers**
 
 - **Event handlers**(introduced in [Adding Interactivity](https://react-ko.dev/learn/adding-interactivity)) are nested functions inside your components that *do* things rather than just calculate them. An event handler might update an input field, submit an HTTP POST request to buy a product, or navigate the user to another screen. Event handlers contain [“side effects”](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) (they change the program’s state) caused by a specific user action (for example, a button click or typing).
-⇒ **이벤트 핸들러**는 컴포넌트 내부에 있는 중첩된 함수로, 별도의 작업을 수행
+
+  ⇒ **이벤트 핸들러**는 컴포넌트 내부에 있는 중첩된 함수로, 별도의 작업을 수행
     - 입력 필드를 업데이트하거나
     - HTTP POST요청을 제출하여 제품을 구매하거나
     - 사용자를 다른 화면으로 이동할 수 있다.
