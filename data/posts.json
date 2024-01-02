@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (9)",
+    "description": "입수 준비",
+    "date": "2024-01-02",
+    "category": "React",
+    "path": "react-deep-dive-9",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (8)",
     "description": "중간 점검",
     "date": "2023-12-10",
@@ -45,7 +53,7 @@
     "date": "2023-11-28",
     "category": "React",
     "path": "react-deep-dive-3",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (2)",
@@ -53,7 +61,7 @@
     "date": "2023-11-28",
     "category": "React",
     "path": "react-deep-dive-2",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive",
@@ -61,7 +69,7 @@
     "date": "2023-11-28",
     "category": "React",
     "path": "react-deep-dive-1",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Next / Router",
