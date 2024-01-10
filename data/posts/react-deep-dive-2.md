@@ -230,7 +230,6 @@ function useEffect(cb, depArray) {
   let hasChanged = true
   if (oldDeps) {
     // 있다면 차이가 있는지 확인
-    // 실제로 리액트 구현체에서는 이전 글에서 살펴보았던 shallowEqual함수로 비교한다.
     hasChanged = depArray.some((dep, i) => !Object.is(dep, oldDeps[i]))
   }
   // 바뀌었다면 콜백함수 실행
