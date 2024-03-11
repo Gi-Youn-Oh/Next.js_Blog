@@ -174,7 +174,7 @@ export function createRoot(container: Element | DocumentFragment, options?: Root
     
     ⇒ 세번째, 가상돔은 어떻게 동작하는가?
     
-    - 이후 자세히 다루겠지만 double buffering 형태로 current와 workInProgress 두 가상돔을 비교하고 workInProgress가 렌더링이 완료되면 current 트리가 되며, 기존 current 트리는 버리고 이후 렌더링에 newCurrent 트리를 기준으로 alternate(참조 복사)를 통해 새로운 workInProgress트리를 만든다. (fiber의 참조 객체들 때문에 새로 만든다.)
+    - 이후 자세히 다루겠지만 double buffering 형태로 current와 workInProgress 두 가상돔을 비교하고 workInProgress가 렌더링이 완료되면 current 트리가 되며, 기존 current 트리는 기본 객체는 재활용 되고 fiber는 초기화 되어 새로운 workInProgress tree로 사용된다.
     - 또한 가상돔은 React Element들로 구성된 트리 구조이다.
 
 ---
