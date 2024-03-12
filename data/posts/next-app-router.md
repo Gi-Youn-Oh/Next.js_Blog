@@ -567,7 +567,7 @@ RSC가 직렬화된 상태로 streaming되어 전달되는 것 까지는 알겠�
     
     ### 1. 마찬가지로 첫 페이지 로딩 시에는 HTML만 (Can’t interative) 수신하여 초기 페이지를 보여준다.
     
-    - 초기 페이지에 아무것도 보이지 않는 이유는 전부 <Client> <Client/>로 감싸진 컴포넌트이기 때문이다.
+    - 초기 페이지에 아무것도 보이지 않는 이유는 전부 `<Client></Client>` 로 감싸진 컴포넌트이기 때문이다.
         
         ![image](https://github.com/Gi-Youn-Oh/Next.js_Blog/assets/109953972/49b7aee4-e85d-4b56-b9bd-32b3898ab607)
         
@@ -580,8 +580,8 @@ RSC가 직렬화된 상태로 streaming되어 전달되는 것 까지는 알겠�
         ![image](https://github.com/Gi-Youn-Oh/Next.js_Blog/assets/109953972/dae98dcb-7bd4-45a8-9c3d-7d93d033d506)
         
     - **react-hydration-provider**
-        - 정상적이라면 SSR을 위해 초기 렌더링 값들은 <Server> 태그로 감싸고
-        - hydration 이후 Rendering 되는 것들만 <Client> 로 감싸야 했다.
+        - 정상적이라면 SSR을 위해 초기 렌더링 값들은 `<Server>` 태그로 감싸고
+        - hydration 이후 Rendering 되는 것들만 `<Client>` 로 감싸야 했다.
             
             ```jsx
             import { HydrationProvider, Server, Client } from "react-hydration-provider";
