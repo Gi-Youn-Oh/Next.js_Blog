@@ -1,5 +1,29 @@
 [
   {
+    "title": "Next app router with RSC",
+    "description": "react server component?",
+    "date": "2024-03-12",
+    "category": ["React", "Next.js"],
+    "path": "next-app-router",
+    "recent": true
+  },
+  {
+    "title": "Next v12 with Redux",
+    "description": "Next page router with Redux",
+    "date": "2024-03-12",
+    "category": "Next.js",
+    "path": "next-page-router",
+    "recent": true
+  },
+  {
+    "title": "React Children Pattern",
+    "description": "children pattern?",
+    "date": "2024-03-12",
+    "category": "React",
+    "path": "react-children-pattern",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (9)",
     "description": "입수 준비",
     "date": "2024-01-02",
@@ -21,7 +45,7 @@
     "date": "2023-12-06",
     "category": "React",
     "path": "react-deep-dive-7",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (6)",
@@ -29,7 +53,7 @@
     "date": "2023-12-05",
     "category": "React",
     "path": "react-deep-dive-6",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (5)",
@@ -37,7 +61,7 @@
     "date": "2023-12-04",
     "category": "React",
     "path": "react-deep-dive-5",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (4)",
@@ -45,7 +69,7 @@
     "date": "2023-12-04",
     "category": "React",
     "path": "react-deep-dive-4",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (3)",
@@ -126,7 +150,7 @@
     "category": "JavaScript",
     "path": "iterable-generator",
     "recent": false
-  },  
+  },
   {
     "title": "Event",
     "description": "Event는 어떻게 동작할까?",
