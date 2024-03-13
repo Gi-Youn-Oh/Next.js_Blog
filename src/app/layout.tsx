@@ -17,6 +17,9 @@ export const metadata:Metadata = {
   },
   verification: {
     google: 'fS14S54kv28n_dVv2w0VAN16zIS5T62cSDDvYm7Pius',
+    other: {
+      'naver-site-verification': 
+      '6c53674e24675efbf7f26498b4eab73539484b7f',
   },
 }
 
