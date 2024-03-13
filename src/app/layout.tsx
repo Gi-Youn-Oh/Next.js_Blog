@@ -13,7 +13,10 @@ export const metadata = {
   description: '프론트엔드 개발자, 오기윤',
   icons: {
     icon: '/favicon.ico',
-  }
+  },
+  verifications: {
+    google: 'fS14S54kv28n_dVv2w0VAN16zIS5T62cSDDvYm7Pius',
+  },
 }
 
 export default function RootLayout({
