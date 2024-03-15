@@ -1,5 +1,13 @@
 [
   {
+    "title": "Next.js top 10 mistakes",
+    "description": "Before to use Next.js",
+    "date": "2024-03-15",
+    "category": "Next.js",
+    "path": "next-10mistakes",
+    "recent": true
+  },
+  {
     "title": "Next app router with RSC",
     "description": "react server component?",
     "date": "2024-03-12",
