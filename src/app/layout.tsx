@@ -31,6 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={sans.className}>
+      <head>
+      <meta name="google-site-verification" content="fS14S54kv28n_dVv2w0VAN16zIS5T62cSDDvYm7Pius" />
+      </head>
       <body className="flex flex-col w-full max-w-screen-2xl mx-auto">
         <Header />
         <main className='grow'>{children}</main>
