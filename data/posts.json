@@ -8,6 +8,14 @@
     "recent": true
   },
   {
+    "title": "Next.js top 10 mistakes",
+    "description": "Before to use Next.js",
+    "date": "2024-03-15",
+    "category": "Next.js",
+    "path": "next-10mistakes",
+    "recent": true
+  },
+  {
     "title": "Next app router with RSC",
     "description": "react server component?",
     "date": "2024-03-12",
@@ -37,7 +45,7 @@
     "date": "2024-01-02",
     "category": "React",
     "path": "react-deep-dive-9",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (8)",
