@@ -1,5 +1,13 @@
 [
   {
+    "title": "Next.js Cache Mechanism",
+    "description": "How Next.js Use Cache?",
+    "date": "2024-03-17",
+    "category": "Next.js",
+    "path": "next-cache-mechanism",
+    "recent": true
+  },
+  {
     "title": "Next app router with RSC",
     "description": "react server component?",
     "date": "2024-03-12",
@@ -37,7 +45,7 @@
     "date": "2023-12-10",
     "category": "React",
     "path": "react-deep-dive-8",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (7)",
