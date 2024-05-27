@@ -137,7 +137,7 @@
   },
   {
     "title": "React (v18) = Concurrency?",
-    "description": "왜 Next.js인가?",
+    "description": "Fiber Architecture",
     "date": "2023-04-19",
     "category": "React",
     "path": "react-version18",
