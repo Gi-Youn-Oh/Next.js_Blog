@@ -240,5 +240,8 @@ circularList.displayForNIterations(2);
 - 싱글버퍼(single buffer)의 경우 채널이 데이터를 버퍼에 저장하면 프로세서가 처리하는 방식으로 진행된다. 이경우 채널이 데이터를 저장하는 동안에는 데이터에 대한 처리가 이루어질 수 없으며, 프로세서가 데이터를 처리하는 동안에는 다른 데이터가 저장될 수 없게된다.
 - 더블버퍼(double buffer)의 경우에는 데이터에 대한 저장과 처리가 동시에 일어날 수 있다. 입력채널이 첫 번째 버퍼에 데이터를 저장하는 동안 프로세서가 두 번째 버퍼의 데이터를 처리할 수 있는 것이다. 이렇게 두개의 버퍼를 서로 교대로 사용하는 것을 플립플롭버퍼링(flip-flop buffering)이라하고, 여러개의 버퍼를 번갈아 사용하는 것을 순환버퍼링(circular buffering)이라고 한다.
 
-![image](https://github.com/Gi-Youn-Oh/Next.js_Blog/assets/109953972/e53e80b2-bf80-4017-84b1-53587ef0459c)
 ![image](https://github.com/Gi-Youn-Oh/Next.js_Blog/assets/109953972/7dfdcc00-27c0-4260-956e-f1ba7472b7c6)
+
+- React에서는 double-buffering형식으로 두 개의 V-DOM을 두고 reconcile을 통해 실제 DOM에 moungt하며, workInProgress가 current가 되고 기존의 current tree는 객체 자체는 메모리를 낭비하지 않기 위해 재사용하며, 속성들만 초기화하여 재사용한다. 즉, RootNode가 어디 쪽을 참조하고 있느냐에 따라서 mount가 되는 것이다.
+
+![image](https://github.com/Gi-Youn-Oh/Next.js_Blog/assets/109953972/18adf9f7-0eff-4546-9b9d-e79b4306638c)
