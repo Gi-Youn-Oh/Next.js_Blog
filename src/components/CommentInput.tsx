@@ -11,7 +11,6 @@ export default function CommentInput({ slug }: Prop) {
 
     const content = formData.get('content');
     if (!content) {
-      console.log("return")
       return;
     }
     const { data, error, status } = await supabase
