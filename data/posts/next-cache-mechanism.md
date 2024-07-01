@@ -311,24 +311,28 @@ export const dynamic = 'force-dynamic'
 # 7. APIs
 - 전체 API를 정리하면 다음과 같다.
 
-| API | Router Cache | Full Route Cache | Data Cache | React Cache |
-| --- | --- | --- | --- | --- |
-| Link.prefech | Cache |  |  |  |
-| router.prefetch | Cache |  |  |  |
-| router.refresh | Revalidate |  |  |  |
-| fetch |  |  | Cache | Cache |
-| fetch-options.cache |  |  | Cache or Opt out |  |
-| fetch-options.next.revalidate |  | Revalidate | Revalidate |  |
-| fetch-options.next.tags |  | Cache | Cache |  |
-| revalidateTag | Revalidate (Server Action) | Revalidate | Revalidate |  |
-| revalidatePath | Revalidate (Server Action) | Revalidate | Revalidate |  |
-| const revalidate |  | Revalidate or Opt out | Revalidate or Opt out |  |
-| cosnt dynamic |  | Cache or Opt out | Cache or Opt out |  |
-| cookies | Revalidate (Server Action) | Opt out |  |  |
-| headers, searchParams |  | Opt out |  |  |
-| generateStaticParams |  | Cache |  |  |
-| react.cache |  |  |  | Cache |
-| unstable_cache |  |  |  |  |	
+# 7. APIs
+- 전체 API를 정리하면 다음과 같다.
+
+| API                           | Router Cache              | Full Route Cache    | Data Cache                  | React Cache   |
+|:-----------------------------:|:-------------------------:|:-------------------:|:---------------------------:|:-------------:|
+| Link.prefetch                 | Cache                     |                     |                             |               |
+| router.prefetch               | Cache                     |                     |                             |               |
+| router.refresh                | Revalidate                |                     |                             |               |
+| fetch                         |                           |                     | Cache                       | Cache         |
+| fetch-options.cache           |                           |                     | Cache or Opt out            |               |
+| fetch-options.next.revalidate |                           | Revalidate          | Revalidate                   |               |
+| fetch-options.next.tags       |                           | Cache               | Cache                       |               |
+| revalidateTag                 | Revalidate (Server Action)| Revalidate          | Revalidate                   |               |
+| revalidatePath                | Revalidate (Server Action)| Revalidate          | Revalidate                   |               |
+| const revalidate              |                           | Revalidate or Opt out| Revalidate or Opt out       |               |
+| const dynamic                 |                           | Cache or Opt out    | Cache or Opt out            |               |
+| cookies                       | Revalidate (Server Action)| Opt out             |                             |               |
+| headers, searchParams         |                           | Opt out             |                             |               |
+| generateStaticParams          |                           | Cache               |                             |               |
+| react.cache                   |                           |                     |                             | Cache         |
+| unstable_cache                |                           |                     |                             |               |
+
 
 ## 7-1. Example
 

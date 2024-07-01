@@ -39,7 +39,7 @@ export async function updateComment(
       { status: 500 }
     );
   }
-  console.log(data,'??')
+  
   revalidatePath(`/api/posts/${post_path}`);
   return { status: 200, message: "댓글이 수정되었습니다." };
 }

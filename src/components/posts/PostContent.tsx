@@ -4,7 +4,6 @@ import { AiTwotoneCalendar } from 'react-icons/ai';
 
 export default function PostContent({post}: {post: PostData}) {
     const { title, description, date, content } = post;
-
     return (<section className="flex flex-col p-4">
         <div className="flex items-center self-end text-sky-600">
             <AiTwotoneCalendar />
