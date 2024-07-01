@@ -1,5 +1,5 @@
 import { getRecentPosts } from "@/app/service/posts";
-import PostsGrid from "./PostsGrid";
+import PostsGrid from "./posts/PostsGrid";
 
 export default async function RecentPosts() {
     const posts = await getRecentPosts();

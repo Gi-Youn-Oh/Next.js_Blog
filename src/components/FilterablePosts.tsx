@@ -2,7 +2,7 @@
 
 import { Post } from "@/app/service/posts";
 import { useState } from "react";
-import PostsGrid from "./PostsGrid";
+import PostsGrid from "./posts/PostsGrid";
 import Categories from "./Categories";
 
 type Props = {

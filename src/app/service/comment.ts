@@ -1,6 +1,6 @@
 export type Comment = {
   created_at: string;
-  user: string;
+  name: string;
   comment: string;
   post_path: string;
 };

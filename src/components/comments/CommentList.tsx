@@ -1,7 +1,7 @@
 import { supabase } from "@/utils/superbase";
 import CommentCard from "./CommentCard";
 import { Comment } from "@/app/service/comment";
-import { deleteComment } from "@/app/actions";
+import { deleteComment, updateComment } from "@/app/actions";
 
 type Prop = {
   slug: string;
@@ -23,7 +23,7 @@ export default async function CommentList({ slug }: Prop) {
       {comments.length === 0 ? (
         <div className="m-5"></div>
       ) : (
-          <CommentCard comments={comments as Comment[]} deleteComment={deleteComment}/>
+          <CommentCard comments={comments as Comment[]} deleteComment={deleteComment} updateComment={updateComment}/>
       )}
     </div>
   );
