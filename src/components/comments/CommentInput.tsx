@@ -1,11 +1,17 @@
 import { supabase } from "@/utils/superbase";
 import { revalidatePath } from "next/cache";
+import PostComment from "./PostComment";
+import { getServerSession } from "next-auth";
+
 
 type Prop = {
   slug: string;
 };
 
-export default function CommentInput({ slug }: Prop) {
+export default async function CommentInput({ slug }: Prop) {
+  const session = await getServerSession();
+  const userName = session?.user?.name || null;
+
   const addComment = async (formData: FormData) => {
     'use server'
 
@@ -16,7 +22,7 @@ export default function CommentInput({ slug }: Prop) {
     const { data, error, status } = await supabase
       .from('comment')
       .insert([
-        { created_at: new Date(), name: 'testUser', comment: content, post_path: slug },
+        { created_at: new Date(), name: userName, comment: content, post_path: slug },
       ])
       .select();
     if (error) {
@@ -33,7 +39,7 @@ export default function CommentInput({ slug }: Prop) {
     <div className="m-5">
       <form action={addComment}>
         <textarea className="w-full h-24 p-2 border border-gray-300 rounded-lg" placeholder="댓글을 입력해주세요" name="content" />
-        <button className="w-full p-2 bg-gray-500 text-white rounded-lg hover:bg-blue-500">댓글 작성</button>
+        <PostComment />
       </form>
     </div>
   )

@@ -15,7 +15,7 @@ export default function Footer() {
             <a
                 href=""
                 onClick={() => scrollToTop()}
-                className="fixed bottom-5 right-7 shadow-2xl border border-gray-400 bg-white text-gray-600 p-2 rounded-full hover:bg-gray-100"
+                className="fixed bottom-5 right-7 shadow-2xl border border-gray-400 bg-white text-gray-400 p-2 rounded-full hover:bg-gray-100"
             >
                 <RxPinTop size={30} />
             </a>

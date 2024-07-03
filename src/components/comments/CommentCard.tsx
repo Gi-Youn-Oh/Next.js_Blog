@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
 import { Comment, formatDate } from "@/app/service/comment";
+import { useSession } from "next-auth/react";
 
 interface CommentCardProps {
   comments: Comment[];
@@ -20,6 +21,10 @@ export default function CommentCard({
   deleteComment,
   updateComment,
 }: CommentCardProps) {
+  const clientSession = useSession();
+  const userName = clientSession?.data?.user?.name || null;
+  const adminAccount = userName === 'Gi Youn Oh';
+
   const [editingComment, setEditingComment] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
 
@@ -50,6 +55,7 @@ export default function CommentCard({
                   {formatDate(comment.created_at)}
                 </span>
               </div>
+              {(userName === comment.name || adminAccount)  && (
               <div className="flex gap-3">
                 <button
                   onClick={() => handleEditClick(comment)}
@@ -66,6 +72,7 @@ export default function CommentCard({
                   <FiTrash2 />
                 </button>
               </div>
+              )}
             </div>
             {editingComment === comment.created_at ? (
               <div className="flex flex-col gap-3">
