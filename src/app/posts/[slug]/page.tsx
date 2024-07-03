@@ -1,5 +1,5 @@
 import { getPostData, getRecentPosts } from "@/app/service/posts";
-import AdjacentPostCard from "@/components/AdjacentPostCard";
+import AdjacentPostCard from "@/components/posts/AdjacentPostCard";
 import Comments from "@/components/comments/Comments";
 import PostContent from "@/components/posts/PostContent";
 import { Metadata } from "next";
