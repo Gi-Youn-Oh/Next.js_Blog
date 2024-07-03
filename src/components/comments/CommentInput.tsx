@@ -2,6 +2,7 @@ import { supabase } from "@/utils/superbase";
 import { revalidatePath } from "next/cache";
 import PostComment from "./PostComment";
 import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 
 type Prop = {
@@ -9,7 +10,7 @@ type Prop = {
 };
 
 export default async function CommentInput({ slug }: Prop) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   const userName = session?.user?.name || null;
 
   const addComment = async (formData: FormData) => {

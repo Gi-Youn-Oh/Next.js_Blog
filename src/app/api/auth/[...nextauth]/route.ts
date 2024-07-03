@@ -13,8 +13,8 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID || "",
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
     }),
     NaverProvider({
       clientId: process.env.NAVER_CLIENT_ID || "",
@@ -29,7 +29,14 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session, token }) {
       // Send properties to the client, like an access_token and user id from a provider.
-    //   console.log('session', session);
+       const user = session?.user;
+      if(user) {
+        session.user = {
+          ... user,
+          name: user.name ? user.name : user?.email?.split('@')[0],
+        }
+      }
+      console.log('session', session.user);
       return session;
     },
     async jwt({ token, user }) {
