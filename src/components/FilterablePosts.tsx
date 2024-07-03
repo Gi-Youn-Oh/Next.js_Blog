@@ -16,7 +16,9 @@ export default function FilterablePosts({posts, categories}: Props){
     const [selected, setSelected] = useState(ALL_POSTS);
     const filtered = selected === ALL_POSTS ? posts : posts.filter(post => post.category === selected);
     return <section className="flex m-4">
-        <PostsGrid posts={filtered} /> 
+        <div className="flex-grow">
+        <PostsGrid posts={filtered} />
+        </div> 
         <Categories categories={[ALL_POSTS, ...categories]} selected={selected} onClick={(selected) => setSelected(selected)} />
     </section>
 }
