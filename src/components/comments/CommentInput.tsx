@@ -2,8 +2,7 @@ import { supabase } from "@/utils/superbase";
 import { revalidatePath } from "next/cache";
 import PostComment from "./PostComment";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-
+import { authOptions } from "@/utils/auth";
 
 type Prop = {
   slug: string;
