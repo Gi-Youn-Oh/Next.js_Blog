@@ -2,8 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
+html{
+  overflow-y: auto;
+}
 body {
   height: 100vh;
-  overflow-y: auto;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+}
+
+.skeleton-button {
+  height: 40px;
+  margin-bottom: 1em;
+  border-radius: 4px;
 }
