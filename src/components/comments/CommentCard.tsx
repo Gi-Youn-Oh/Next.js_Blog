@@ -5,21 +5,22 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
 import { Comment, formatDate } from "@/app/service/comment";
 import { useSession } from "next-auth/react";
+import { useOptimistic } from 'react';
 
 interface CommentCardProps {
   comments: Comment[];
-  deleteComment: (created_at: string, post_path: string) => void;
   updateComment: (
     created_at: string,
     updatedComment: string,
     post_path: string
   ) => void;
+  deleteComment: (created_at: string, post_path: string) => void;
 }
 
 export default function CommentCard({
   comments,
-  deleteComment,
   updateComment,
+  deleteComment
 }: CommentCardProps) {
   const clientSession = useSession();
   const userName = clientSession?.data?.user?.name || null;
@@ -27,6 +28,11 @@ export default function CommentCard({
 
   const [editingComment, setEditingComment] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
+
+  const [optimisticComments, applyOptimisticUpdate] = useOptimistic<Comment[], { created_at: string }>(
+    comments,
+    (state, { created_at }) => state.filter(c => c.created_at !== created_at)
+  );
 
   const handleEditClick = (comment: Comment) => {
     setEditingComment(comment.created_at);
@@ -38,10 +44,15 @@ export default function CommentCard({
     setEditingComment(null);
   };
 
+  const handleDeleteClick = async (comment: Comment) => {
+    applyOptimisticUpdate({ created_at: comment.created_at });
+    await deleteComment(comment.created_at, comment.post_path);
+  };
+
   return (
     <div className="w-full max-h-[500px] overflow-auto p-5 bg-gray-50 rounded-lg shadow-md mb-10">
       <ul className="space-y-4">
-        {comments.map((comment: Comment) => (
+        {optimisticComments.map((comment: Comment) => (
           <div
             key={comment.created_at}
             className="p-4 bg-white rounded-lg border border-gray-200 shadow-sm"
@@ -55,7 +66,7 @@ export default function CommentCard({
                   {formatDate(comment.created_at)}
                 </span>
               </div>
-              {(userName === comment.name || adminAccount)  && (
+              {(userName === comment.name || adminAccount) && (
               <div className="flex gap-3">
                 <button
                   onClick={() => handleEditClick(comment)}
@@ -64,9 +75,7 @@ export default function CommentCard({
                   <HiOutlinePencilSquare />
                 </button>
                 <button
-                  onClick={() =>
-                    deleteComment(comment.created_at, comment.post_path)
-                  }
+                  onClick={() => handleDeleteClick(comment)}
                   className="hover:transition hover:scale-110"
                 >
                   <FiTrash2 />
