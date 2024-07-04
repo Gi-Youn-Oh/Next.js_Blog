@@ -1,3 +1,4 @@
+import { checkSession } from "@/utils/session";
 import { supabase } from "@/utils/superbase";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
@@ -5,7 +6,12 @@ import { NextResponse } from "next/server";
 export async function deleteComment(created_at: string, post_path: string) {
   "use server";
 
-  const { error, status } = await supabase
+  const sessionResponse = await checkSession();
+  if (sessionResponse) {
+    return sessionResponse;
+  }
+
+  const { error } = await supabase
     .from("comment")
     .delete()
     .match({ created_at });
@@ -27,7 +33,13 @@ export async function updateComment(
   post_path: string
 ) {
   'use server'
-  const { data, error } = await supabase
+
+  const sessionResponse = await checkSession();
+  if (sessionResponse) {
+    return sessionResponse;
+  }
+
+  const { error } = await supabase
     .from("comment")
     .update({comment: updatedComment} )
     .eq("created_at", created_at)
