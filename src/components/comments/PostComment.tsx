@@ -10,7 +10,7 @@ export default function PostComment() {
   return (
     <div>
       {isLoggedIn ? (
-        <button className="w-full p-2 bg-gray-500 text-white rounded-lg hover:bg-blue-500 flex justify-center items-center">
+        <button className="w-full p-2 bg-gray-500 text-white rounded-lg hover:bg-blue-500 flex justify-center items-center" disabled={pending}>
           {pending ? <div className="spinner"></div> : '댓글 작성'}
         </button>
       ) : (
