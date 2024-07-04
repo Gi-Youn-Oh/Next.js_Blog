@@ -1,5 +1,5 @@
 import { getNotRecentPosts } from "@/app/service/posts"
-import PostCard from "./PostCard";
+import PostCard from "./posts/PostCard";
 import MultiCarousel from "./MultiCarousel";
 
 export default async function CarouselPosts() {

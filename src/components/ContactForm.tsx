@@ -43,7 +43,7 @@ export default function ContactForm() {
         return (
             <section className="w-full max-w-md">
                 {banner && <Banner banner={banner} />}
-                <form onSubmit={onSubmit} className="w-full flex flex-col gap-2 my-4 p-4 bg-slate-800 rounded-xl text-white">
+                <form onSubmit={onSubmit} className="w-full flex flex-col gap-2 my-4 p-4 bg-gray-500 rounded-xl text-white">
                     <label htmlFor='from' className="font-semibold">
                         Your email
                     </label>
@@ -56,7 +56,8 @@ export default function ContactForm() {
                         Message
                     </label>
                     <textarea className="text-black" rows={10} id="message" name="message" required value={form.message} onChange={onChange} />
-                    <button type="submit" className="font-semibold bg-yellow-300 text-black hover:bg-yellow-400">Send</button>
+                    <button type="submit" className="font-semibold 
+                    text-white bg-gray-400 hover:bg-blue-500 ">Send</button>
                 </form>
             </section>
         );

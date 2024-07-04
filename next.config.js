@@ -1,11 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
-    domains: ["img.shields.io","user-images.githubusercontent.com","github.com"],
-  },
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: "img.shields.io",
+      },
+      {
+        protocol: 'https',
+        hostname: "user-images.githubusercontent.com",
+      },
+      {
+        protocol: 'https',
+        hostname: "github.com",
+      }
+    ],
+  }
 }
 
 module.exports = nextConfig

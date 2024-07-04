@@ -20,7 +20,7 @@ export default function Contact() {
             <p className="font-semibold">dhrldbs2679@gmail.com</p>
             <ul className="flex gap-6 my-2">
                 {LINKS.map((link, index) => (
-                    <a key={index} href={link.url} target="_blank" rel='noreferrer' className="text-5xl hover:text-yellow-400">
+                    <a key={index} href={link.url} target="_blank" rel='noreferrer' className="text-5xl hover:text-blue-500">
                         {link.icon}
                     </a>
                 ))}

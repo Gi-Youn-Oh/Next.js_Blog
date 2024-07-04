@@ -1,6 +1,7 @@
 import { getPostData, getRecentPosts } from "@/app/service/posts";
-import AdjacentPostCard from "@/components/AdjacentPostCard";
-import PostContent from "@/components/PostContent";
+import AdjacentPostCard from "@/components/posts/AdjacentPostCard";
+import Comments from "@/components/comments/Comments";
+import PostContent from "@/components/posts/PostContent";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -23,10 +24,10 @@ export default async function PostPage({ params: { slug } }: Props) {
     // 2. 데이터를 마크다운 뷰어에 표기
     const post = await getPostData(slug);
     const { title, path, next, prev } = post;
-
     return <article className="rounded-2xl overflow-hidden bg-gray-100 shadow-lg m-4">
         <Image className="w-full h-1/5 max-h-[500px]" src={`/images/posts/${path}.png`} alt={title} width={760} height={420} />
         <PostContent post={post} />
+        <Comments slug={slug} />
         <section className="flex shadow-md">
             {prev && <AdjacentPostCard post={prev} type='prev' />}
             {next && <AdjacentPostCard post={next} type='next' />}
