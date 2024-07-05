@@ -115,7 +115,7 @@ export default function CommentCard({
                 </div>
               </div>
             ) : (
-              <li className="text-gray-700 break-words">{comment.comment}</li>
+              <li className="text-gray-700 break-words whitespace-pre-wrap">{comment.comment}</li>
             )}
           </div>
         ))}
