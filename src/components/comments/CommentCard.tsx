@@ -29,9 +29,17 @@ export default function CommentCard({
   const [editingComment, setEditingComment] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
 
-  const [optimisticComments, applyOptimisticUpdate] = useOptimistic<Comment[], { created_at: string }>(
+  const [optimisticComments, applyOptimisticUpdate] = useOptimistic<Comment[], { created_at: string, updatedComment?: string }>(
     comments,
-    (state, { created_at }) => state.filter(c => c.created_at !== created_at)
+    (state, { created_at, updatedComment }) => {
+      if (updatedComment !== undefined) {
+        return state.map(comment =>
+          comment.created_at === created_at ? { ...comment, comment: updatedComment } : comment
+        );
+      } else {
+        return state.filter(c => c.created_at !== created_at);
+      }
+    }
   );
 
   const handleEditClick = (comment: Comment) => {
@@ -40,6 +48,7 @@ export default function CommentCard({
   };
 
   const handleSaveClick = (comment: Comment) => {
+    applyOptimisticUpdate({ created_at: comment.created_at, updatedComment: editedText });
     updateComment(comment.created_at, editedText, comment.post_path);
     setEditingComment(null);
   };
@@ -67,20 +76,20 @@ export default function CommentCard({
                 </span>
               </div>
               {(userName === comment.name || adminAccount) && (
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleEditClick(comment)}
-                  className="hover:transition hover:scale-110"
-                >
-                  <HiOutlinePencilSquare />
-                </button>
-                <button
-                  onClick={() => handleDeleteClick(comment)}
-                  className="hover:transition hover:scale-110"
-                >
-                  <FiTrash2 />
-                </button>
-              </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => handleEditClick(comment)}
+                    className="hover:transition hover:scale-110"
+                  >
+                    <HiOutlinePencilSquare />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteClick(comment)}
+                    className="hover:transition hover:scale-110"
+                  >
+                    <FiTrash2 />
+                  </button>
+                </div>
               )}
             </div>
             {editingComment === comment.created_at ? (
