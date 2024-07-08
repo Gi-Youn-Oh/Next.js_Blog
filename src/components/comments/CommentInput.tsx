@@ -16,7 +16,7 @@ export default async function CommentInput({ slug }: Prop) {
     'use server'
 
     const content = formData.get('content');
-    if (!content || !userName) {
+    if (!content || !userName ||  (typeof content === 'string' && content.trim().length === 0)) {
       return;
     }
     const { data, error, status } = await supabase
