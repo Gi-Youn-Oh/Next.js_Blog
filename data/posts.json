@@ -1,5 +1,13 @@
 [
   {
+    "title": "Zustand",
+    "description": "Bearbones state management solution",
+    "date": "2024-07-08",
+    "category": "React",
+    "path": "zustand",
+    "recent": true
+  },
+  {
     "title": "Next.js Cache Mechanism",
     "description": "How Next.js Use Cache?",
     "date": "2024-03-17",
