@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (10)",
+    "description": "Fiber, Packages",
+    "date": "2024-07-09",
+    "category": "React",
+    "path": "react-deep-dive-10",
+    "recent": true
+  },
+  {
     "title": "Zustand",
     "description": "Bearbones state management solution",
     "date": "2024-07-08",
