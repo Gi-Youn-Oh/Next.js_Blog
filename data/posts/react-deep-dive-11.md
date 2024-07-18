@@ -3,11 +3,11 @@
 앞으로 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, 현재 사용 중인 18이상의 버전과는 조금 다르지만 (LANE 등) Fiber Architecture를 사용하는 것은 동일하고 React의 rendering 핵심 로직과 내부에서 어떻게 이벤트에 대한 처리와 순서를 관리하는지 확인하는 것에는 충분 하기에 해당 버전으로 진행하도록 하겠습니다.
 
 사실 이전에도 React 내부 코드를 파헤쳐 보려 했지만 useState를 따라가다 보니 해당 훅의 코드를 주입하는 곳을 찾지 못해 중단 했었는데 좋은 분석 글을 찾아 많은 도움을 받았으며 감사의 말씀을 전합니다.
-[해당 블로그](https://www.notion.so/f903bf2b3e4248a29dd5402c89ccd591?pvs=21)를 바탕으로 신입 입장에서 정리를 한번 해보려 합니다.
+[해당 블로그](https://goidle.github.io)를 바탕으로 신입 입장에서 정리를 한번 해보려 합니다.
 
 아래 링크는  React의 렌더링 흐름에 따라 저 나름대로의 그림을 그려보았으며, 이 흐름에 따라 글이 이어 질 것입니다. (무단 복사 및 배포는 하지 말아주세요)
 
-[Gy's React Diagram](https://excalidraw.com/#json=rZr9R3gB49_Dcb6JH0Gl2,ZIf9XypgK6yvxRxjcN73hA)
+<a href="https://excalidraw.com/#json=rZr9R3gB49_Dcb6JH0Gl2,ZIf9XypgK6yvxRxjcN73hA" target="_blank">Gy's React Diagram</a>
 
 ---
 
@@ -64,7 +64,7 @@ Reconciler → Scheduler → host-config(in Scheduler) → Render Phase(in Recon
 
 - dispatchAction함수는 추후 hook 호출과 렌더링 과정에서 세세하게 살펴볼 것이기 때문에 지금은 setState와 같이 V-DOM 재조정의 trigger정도로 생각해주시면 좋을 것 같습니다.
 
-### scheduleUdpateOnFiber()
+### scheduleUpdateOnFiber()
 
 [scheduleUdpateOnFiber-code](https://github.com/facebook/react/blob/v16.12.0/packages/react-reconciler/src/ReactFiberWorkLoop.js#L374)
 
