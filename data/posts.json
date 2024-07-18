@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (11)",
+    "description": "Reconcile trigger dispatchAction",
+    "date": "2024-07-18",
+    "category": "React",
+    "path": "react-deep-dive-11",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (10)",
     "description": "Fiber, Packages",
     "date": "2024-07-09",
