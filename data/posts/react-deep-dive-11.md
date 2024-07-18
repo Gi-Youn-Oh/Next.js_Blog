@@ -64,7 +64,7 @@ Reconciler → Scheduler → host-config(in Scheduler) → Render Phase(in Recon
 
 - dispatchAction함수는 추후 hook 호출과 렌더링 과정에서 세세하게 살펴볼 것이기 때문에 지금은 setState와 같이 V-DOM 재조정의 trigger정도로 생각해주시면 좋을 것 같습니다.
 
-### scheduleUdpateOnFiber()
+### scheduleUpdateOnFiber()
 
 [scheduleUdpateOnFiber-code](https://github.com/facebook/react/blob/v16.12.0/packages/react-reconciler/src/ReactFiberWorkLoop.js#L374)
 
