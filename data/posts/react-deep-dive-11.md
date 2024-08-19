@@ -13,11 +13,15 @@
 
 ## Flow
 
-Reconciler → Scheduler → host-config(in Scheduler) → Render Phase(in Reconciler) → Commit(in Reconciler) 
+**Reconciler** → Scheduler → host-config(in Scheduler) → Render Phase(in Reconciler) → Commit(in Reconciler) 
 
 ![image](https://github.com/user-attachments/assets/e6ffd320-1be8-40b6-a453-cda5f8f6f6d0)
 
 1. <span style='background-color: #FFB6C1'>Reconcile trigger dispatchAction</span>
+
+   <span style='background-color: #FFB6C1'>1) trigger dispatchAction<span style='background-color: #FFB6C1'>
+   
+    <span>2) Reconciler request schedule</span>
 2. Hook의 실행 시점을 제어하는 Scheduler
 3. Scheduler의 양보 시스템
 4. Hook의 실행 준비
