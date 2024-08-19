@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (12)",
+    "description": "Reconciler request schedule",
+    "date": "2024-08-19",
+    "category": "React",
+    "path": "react-deep-dive-12",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (11)",
     "description": "Reconcile trigger dispatchAction",
     "date": "2024-07-18",
@@ -45,7 +53,7 @@
     "date": "2024-03-12",
     "category": "Next.js",
     "path": "next-app-router",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Next v12 with Redux",
@@ -53,7 +61,7 @@
     "date": "2024-03-12",
     "category": "Next.js",
     "path": "next-page-router",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React Children Pattern",
@@ -61,7 +69,7 @@
     "date": "2024-03-12",
     "category": "React",
     "path": "react-children-pattern",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (9)",
