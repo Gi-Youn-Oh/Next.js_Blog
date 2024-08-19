@@ -7,6 +7,7 @@
 <a href="https://excalidraw.com/#json=rZr9R3gB49_Dcb6JH0Gl2,ZIf9XypgK6yvxRxjcN73hA" target="_blank">Gy's React Diagram</a>
 
 ---
+## Flow
 
 **Reconciler** → Scheduler → host-config(in Scheduler) → Render Phase(in Reconciler) → Commit(in Reconciler)
 
@@ -28,7 +29,7 @@
 
 ---
 
-# Reconciler → Scheduler
+## Reconciler → Scheduler
 
 - 이전 글에서는 DispatchAction을 통해 Reconciliation의 trigger가 되어 다음과 같은 흐름을 살펴보았습니다.
     1. dispatchAction이 발생하면 해당 이벤트 발생 시점(expirationTime)을 기록하고 → scheduleWork()
