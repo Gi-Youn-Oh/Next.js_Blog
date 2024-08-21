@@ -57,7 +57,7 @@
 ## Reconcile trigger dispatchAction
 
 - 흐름은 다음과 같습니다.
-    1. dispatchAction이 발생하면 해당 이벤트 발생 시점(expirationTime)을 기록하고 → scheduleWork()
+    1. dispatchAction이 발생하면 해당 이벤트 발생 시점(expirationTime)을 기록하고 → markUpdateTimeFromFiberToRoot()
     2. 해당 update event(Work)를 sync or async로 처리할 지 확인 후 → sheduleUpdateOnFiber() 
     3. scheduler에게 전달하기 전 expirationTime을 통하여 우선순위 정리 → ensureRootIsScheduled()
     4. sync → scheduleSyncCallback() / async → scheduleCallback()
