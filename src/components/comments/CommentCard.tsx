@@ -98,7 +98,7 @@ export default function CommentCard({
                 <textarea
                   value={editedText}
                   onChange={(e) => setEditedText(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-lg w-full"
+                  className="p-2 border border-gray-300 rounded-lg w-full min-h-[180px]"
                 />
                 <div className="flex self-end gap-1">
                   <button
