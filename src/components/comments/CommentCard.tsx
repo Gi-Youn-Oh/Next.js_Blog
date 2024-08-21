@@ -6,6 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { Comment, formatDate } from "@/app/service/comment";
 import { useSession } from "next-auth/react";
 import { useOptimistic } from 'react';
+import ReactLinkify from 'react-linkify';
 
 interface CommentCardProps {
   comments: Comment[];
@@ -59,6 +60,18 @@ export default function CommentCard({
     deleteComment(comment.created_at, comment.post_path);
   };
 
+  const customDecorator = (decoratedHref: string, decoratedText: string, key:number) => (
+      <a
+          href={decoratedHref}
+          key={key}
+          target="_blank"  // Open in a new tab
+          style={{ color: 'gray', fontWeight: 'bold' }}  // Custom styling
+          rel="noopener noreferrer"  // Security best practice when using target="_blank"
+      >
+        {decoratedText}
+      </a>
+  );
+
   return (
     <div className="w-full max-h-[500px] overflow-auto p-5 bg-gray-50 rounded-lg shadow-md mb-10">
       <ul className="space-y-4">
@@ -98,7 +111,7 @@ export default function CommentCard({
                 <textarea
                   value={editedText}
                   onChange={(e) => setEditedText(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-lg w-full"
+                  className="p-2 border border-gray-300 rounded-lg w-full min-h-[180px]"
                 />
                 <div className="flex self-end gap-1">
                   <button
@@ -116,7 +129,11 @@ export default function CommentCard({
                 </div>
               </div>
             ) : (
-              <li className="text-gray-700 break-words whitespace-pre-wrap">{comment.comment}</li>
+              <li className="text-gray-700 break-words whitespace-pre-wrap">
+                <ReactLinkify componentDecorator={customDecorator}>
+                {comment.comment}
+                </ReactLinkify>
+                </li>
             )}
           </div>
         ))}
