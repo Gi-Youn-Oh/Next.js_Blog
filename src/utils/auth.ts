@@ -1,8 +1,8 @@
+import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import NaverProvider from "next-auth/providers/naver";
 import KakaoProvider from "next-auth/providers/kakao";
-import { NextAuthOptions } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -33,6 +33,7 @@ export const authOptions: NextAuthOptions = {
         session.user = {
           ...user,
           name: user.name ? user.name : user?.email?.split("@")[0],
+          id: token.id as string,
         };
       }
       return session;
@@ -58,3 +59,4 @@ export const authOptions: NextAuthOptions = {
     signIn: '/signin',
   }
 };
+

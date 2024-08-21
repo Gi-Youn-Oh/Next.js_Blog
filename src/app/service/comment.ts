@@ -3,6 +3,7 @@ export type Comment = {
   name: string;
   comment: string;
   post_path: string;
+  token_id: string;
 };
 
 // 날짜 변환 함수
