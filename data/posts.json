@@ -1,6 +1,14 @@
 [
   {
     "title": "React / Deep-dive (12)",
+    "description": "Scheduler schedule task",
+    "date": "2024-08-21",
+    "category": "React",
+    "path": "react-deep-dive-13",
+    "recent": true
+  },
+  {
+    "title": "React / Deep-dive (12)",
     "description": "Reconciler request schedule",
     "date": "2024-08-19",
     "category": "React",
@@ -45,7 +53,7 @@
     "date": "2024-03-15",
     "category": "Next.js",
     "path": "next-10mistakes",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Next app router with RSC",
