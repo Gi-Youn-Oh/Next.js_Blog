@@ -24,6 +24,7 @@ export default function CommentCard({
 }: CommentCardProps) {
   const clientSession = useSession();
   const userName = clientSession?.data?.user?.name || null;
+  const userId = clientSession?.data?.user?.id || null;
   const adminAccount = userName === 'Gi Youn Oh';
 
   const [editingComment, setEditingComment] = useState<string | null>(null);
@@ -53,9 +54,9 @@ export default function CommentCard({
     setEditingComment(null);
   };
 
-  const handleDeleteClick = async (comment: Comment) => {
+  const handleDeleteClick = (comment: Comment) => {
     applyOptimisticUpdate({ created_at: comment.created_at });
-    await deleteComment(comment.created_at, comment.post_path);
+    deleteComment(comment.created_at, comment.post_path);
   };
 
   return (
@@ -75,7 +76,7 @@ export default function CommentCard({
                   {formatDate(comment.created_at)}
                 </span>
               </div>
-              {(userName === comment.name || adminAccount) && (
+              {(userName === comment.name || userId === comment.token_id || adminAccount) && (
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleEditClick(comment)}

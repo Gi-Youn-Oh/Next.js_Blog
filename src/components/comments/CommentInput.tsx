@@ -11,6 +11,7 @@ type Prop = {
 export default async function CommentInput({ slug }: Prop) {
   const session = await getServerSession(authOptions);
   const userName = session?.user?.name || null;
+  const userId = session?.user?.id || null;
 
   const addComment = async (formData: FormData) => {
     'use server'
@@ -22,7 +23,7 @@ export default async function CommentInput({ slug }: Prop) {
     const { data, error, status } = await supabase
       .from('comment')
       .insert([
-        { created_at: new Date(), name: userName, comment: content, post_path: slug },
+        { created_at: new Date(), name: userName, comment: content, post_path: slug, token_id: userId},
       ])
       .select();
     if (error) {
