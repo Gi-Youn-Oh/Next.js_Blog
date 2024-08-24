@@ -197,14 +197,14 @@ function unstable_shouldYield() {
 - scheduler_host_config 에서는 host (browser or app) 환경에 따라 (이 글에서는 browser기준) 작업 소비 시점을 스케줄링하며, 메인 스레드에서 작업을 효율적으로 운영하기 위하여 필요 시 콜스택을 양보하여 브라우저가 사용자 입력이나 페인팅 같은 우선순위 작업을 처리할 수 있도록 합니다.
 - 전반적인 흐름은 다음과 같습니다.
     1. requestHostCallback() 함수에서 MesssageChannel()을 사용하여 performWorkUntilDeadline()를 호출
-    2. performWorkUntilDeadline() 함수에서 requestHostCallback()에서 전역으로 잡아두었던scheduledHostCallback = callback(flushWork()) 호출합니다.
-    3. flushWork()에서 workLoop()호출하며 workRoop()의 결과 반환
+    2. performWorkUntilDeadline() 함수에서 requestHostCallback()에서 전역으로 잡아두었던 scheduledHostCallback = callback(flushWork()) 호출합니다.
+    3. flushWork()에서 workLoop()호출하며 workLoop()의 결과 반환
     4. workLoop()에서 browser에게 양보 타이밍을 확인하며 task를 반복하여 소비하고 마감시간의 경과로 task를 다 소비하지 못했다면 hasMoreWork flag를 return
     5. performWorkUntilDeadline()에서hasMoreWork flag를 통해 MesssageChannel()을 사용하여 다시 재귀적으로  performWorkUntilDeadline()를 반복 호출하고 다음 frame에 소비
 
        ⇒  requestHostCallback()은 결국 <span style='background-color: #FFB6C1'>Reconciler에서 task(performWorkOnRoot())를 반복하여 소비하도록 Loop를 실행시키는 역할</span>입니다.
 
-       ⇒ task를 소비할 때 JavaScript의 single thread의 한계점을 극복하기 위하여 Browser에게 양보해야 하고 타이밍을 shouldToYieldHost()로 체크하며 양보합다.
+       ⇒ task를 소비할 때 JavaScript의 single thread의 한계점을 극복하기 위하여 Browser에게 양보해야 하고 타이밍을 shouldToYieldHost()로 체크하며 양보합니다.
 
        ⇒ performWorkUntilDeadline()은  flushWork()를 호출하며 이는 결국 workLoop()의 반환 값입니다.
 
@@ -321,7 +321,7 @@ function unstable_shouldYield() {
 
 [flushWork-code](https://github.com/facebook/react/blob/v16.12.0/packages/scheduler/src/Scheduler.js#L122)
 
-- taskQueue를 소비하기 위해 정리하는 사전 작업함수로 결국 wokrLoop()의 결과 값을 반환합니다.
+- taskQueue를 소비하기 위해 정리하는 사전 작업함수로 결국 workLoop()의 결과 값을 반환합니다.
 
 
 
@@ -420,5 +420,5 @@ function workLoop(hasTimeRemaining, initialTime) {
 - 어려웠던 만큼 리액트가 어떤 기준과 방법으로 browser에게 양보하며 reconcile과정을 진행했는지 마법 같던 궁금증이 많이 해소된 파트입니다.
 - 또한 front에서도 OS에서 작업을 scheduling하는 것처럼 작업 단위를 분리하고 실행한다는 점이 굉장히 흥미로웠습니다.
 - 여러분들도 단순히 글을 읽고 가져가기보다는 자신만의 React-deep-dive를 통해 많은 것을 얻어가셨으면 좋겠습니다.
-- 여기까지 Scheduler 파트는 끝입니다. 다음 글에서는 본격적으로 React가 Reconcile을 위하여 Double-Buffering 형식의 V-dom을 생성하고 Render하는 과정을 살펴보겠습니다.
-- 다음 글에서는 드디어 Reconciler 파트로 진입합니다!
+- 여기까지 Scheduler 파트는 끝입니다. 
+- 다음 글에서는 본격적으로 React가 Reconcile을 위하여 Double-Buffering 형식의 V-dom을 생성하고 Render하는 과정을 살펴보겠습니다. 드디어 Reconciler 파트로 진입합니다!😎 
