@@ -4,7 +4,7 @@
 
 아래 링크는  React의 렌더링 흐름에 따라 저 나름대로의 그림을 그려보았으며, 이 흐름에 따라 글이 이어 질 것입니다. (무단 복사 및 배포는 하지 말아주세요)
 
-<a href="https://excalidraw.com/#json=rZr9R3gB49_Dcb6JH0Gl2,ZIf9XypgK6yvxRxjcN73hA" target="_blank">Gy's React Diagram</a>
+<a href="https://excalidraw.com/#json=fky4cO3h5RXKBcJgaVw_l,yczelRbNqAqHxBwE5Hf3kQ" target="_blank">Gy's React Diagram</a>
 
 ---
 ## Flow
