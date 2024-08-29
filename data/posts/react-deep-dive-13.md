@@ -9,24 +9,39 @@
 ---
 ## Flow
 
-Reconciler → **Scheduler** → host-config(in Scheduler) → Render Phase(in Reconciler) → Commit(in Reconciler)
+Reconciler → **Scheduler** → Scheduler Host-config → Reconciler Render Phase → Reconciler Commit Phase
 
 ![image](https://github.com/user-attachments/assets/e6ffd320-1be8-40b6-a453-cda5f8f6f6d0)
 
-1. Reconcile
+**1. Reconciler**
 
-    1) trigger dispatchAction
+- Dispatch a trigger to update.
 
-    2) Reconciler Request Scheduling Work
+- The reconciler requests the scheduler to schedule a task.
 
-2. <span style='background-color: #FFB6C1'>Hook의 실행 시점을 제어하는 Scheduler</span>
-3. Scheduler의 양보 시스템
-4. Hook의 실행 준비
-5. Render Phase 진입
-6. Reconciliation
-7. Commit Phase 진입
-8. useEffect, useLayoutEffect
-9. Browser paint
+**2. Scheduler**
+
+- <span style='background-color: #FFB6C1'>Schedule the work.</span>
+
+**3. Scheduler Host Config**
+
+- Yield control to the host.
+
+**4. Reconciler Render Phase**
+
+- Prepare for reconciliation.
+
+- Enter the render phase.
+
+- Perform rendering with hooks.
+
+- Reconcile the `workInProgress` tree.
+
+**5. Reconciler Commit Phase**
+
+- Execute `useEffect` and `useLayoutEffect`.
+
+**6. Browser Paint**
 
 ---
 
