@@ -17,27 +17,41 @@
 <a href="https://excalidraw.com/#json=fky4cO3h5RXKBcJgaVw_l,yczelRbNqAqHxBwE5Hf3kQ" target="_blank">Gy's React Diagram</a>
 
 ---
-
 ## Flow
 
-Reconciler → Scheduler → **host-config(in Scheduler)** → Render Phase(in Reconciler) → Commit(in Reconciler)
+Reconciler → Scheduler → **Scheduler Host-config** → Reconciler Render Phase → Reconciler Commit Phase
 
 ![image](https://github.com/user-attachments/assets/e6ffd320-1be8-40b6-a453-cda5f8f6f6d0)
 
-1. Reconcile
+**1. Reconciler**
 
-    1) trigger dispatchAction
+- Dispatch a trigger to update.
 
-    2) Reconciler Request Scheduling Work
+- The reconciler requests the scheduler to schedule a task.
 
-2. Hook의 실행 시점을 제어하는 Scheduler
-3. <span style='background-color: #FFB6C1'>Scheduler의 양보 시스템</span>
-4. Hook의 실행 준비
-5. Render Phase 진입
-6. Reconciliation
-7. Commit Phase 진입
-8. useEffect, useLayoutEffect
-9. Browser paint
+**2. Scheduler**
+
+- Schedule the work.
+
+**3. Scheduler Host Config**
+
+- <span style='background-color: #FFB6C1'>Yield control to the host.</span>
+
+**4. Reconciler Render Phase**
+
+- Prepare for reconciliation.
+
+- Enter the render phase.
+
+- Perform rendering with hooks.
+
+- Reconcile the `workInProgress` tree.
+
+**5. Reconciler Commit Phase**
+
+- Execute `useEffect` and `useLayoutEffect`.
+
+**6. Browser Paint**
 
 ---
 
@@ -192,7 +206,7 @@ function unstable_shouldYield() {
 
 [Scheduler_host_config-code](https://github.com/facebook/react/blob/v16.12.0/packages/scheduler/src/forks/SchedulerHostConfig.default.js)
 
-![image](https://github.com/user-attachments/assets/e851953b-29f4-4f1b-8cc8-7bff535904a5)
+<img src="https://github.com/user-attachments/assets/e851953b-29f4-4f1b-8cc8-7bff535904a5" alt="exception" />
 
 - scheduler_host_config 에서는 host (browser or app) 환경에 따라 (이 글에서는 browser기준) 작업 소비 시점을 스케줄링하며, 메인 스레드에서 작업을 효율적으로 운영하기 위하여 필요 시 콜스택을 양보하여 브라우저가 사용자 입력이나 페인팅 같은 우선순위 작업을 처리할 수 있도록 합니다.
 - 전반적인 흐름은 다음과 같습니다.
@@ -220,7 +234,7 @@ function unstable_shouldYield() {
 
         - render phase에서의 일시정지, 재가동
 
-    ![image](https://github.com/user-attachments/assets/8f6de09b-6750-4eb9-abac-3925d70976d4)
+  <img src="https://github.com/user-attachments/assets/8f6de09b-6750-4eb9-abac-3925d70976d4" alt="exception" />
 
 ---
 
