@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import { signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
