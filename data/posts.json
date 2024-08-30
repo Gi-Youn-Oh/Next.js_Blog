@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (15)",
+    "description": "Prepare for reconciliation",
+    "date": "2024-08-30",
+    "category": "React",
+    "path": "react-deep-dive-15",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (14)",
     "description": "Scheduler yield to Host",
     "date": "2024-08-25",
