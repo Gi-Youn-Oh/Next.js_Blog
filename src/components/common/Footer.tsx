@@ -14,6 +14,8 @@ export default function Footer() {
     return (
         <div>
             <button
+                type="button"
+                aria-label={"Scroll to top"}
                 onClick={scrollToTop}
                 className="fixed bottom-5 right-7 shadow-2xl border border-gray-400 bg-white text-gray-400 p-2 rounded-full hover:bg-gray-100"
             >
