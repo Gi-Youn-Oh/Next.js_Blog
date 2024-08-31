@@ -127,19 +127,19 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
     1. React Component Render → JSX return → React Element Tree
         - 사용자가 만든 커스텀 컴포넌트가 렌더링되면 JSX를 return하여 React Element를 반환합니다.
 
-       <img src="https://github.com/user-attachments/assets/2bbb8a68-d6ae-4ec9-930e-9ed77d2e0913" alt="exception"/>
-
+       <img src="https://github.com/user-attachments/assets/6959e68b-c3e7-46a0-8971-d2162123998d" alt="exception"/>
+  
     2. React Element tree → React Fiber Tree
         - React Fiber Architecture 도입 이후 React Component는 Fiber로 확장합니다.
         - 이 때 불필요한 Fragment tree는 별도로 만들지 않습니다. (key값이 부여되었을 경우에는 생성)
         - 그림을 보시면 아시겠지만 FiberNode는 하나의 자식만을 참조(children prop)하며, 나머지 자식Node들은 참조하는 첫번째 자식Node의 sibling(형제Node)로 연결되어 있습니다.
 
-       <img src="https://github.com/user-attachments/assets/31a4839d-6bb4-4c9b-a106-cbabf3ce5686" alt="exception"/>
-
+       <img src="https://github.com/user-attachments/assets/2bbb8a68-d6ae-4ec9-930e-9ed77d2e0913" alt="exception"/>
+  
     3. React Fiber Tree completed Reconcile & commit DOM → DOM tree
         - 재조정 과정을 마친 후 DOM tree는 custom component가 아닌 실제 HTML element에 해당하는 Node들로만 구성된다.
 
-       <img src="https://github.com/user-attachments/assets/6959e68b-c3e7-46a0-8971-d2162123998d" alt="exception"/>
+       <img src="https://github.com/user-attachments/assets/31a4839d-6bb4-4c9b-a106-cbabf3ce5686" alt="exception"/>
 
     
 ---
