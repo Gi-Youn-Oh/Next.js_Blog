@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
-import { Comment, formatDate } from "@/app/service/comment";
+import {Comment, formatDate, PurifyComment} from "@/app/service/comment";
 import { useSession } from "next-auth/react";
 import { useOptimistic } from 'react';
 import ReactLinkify from 'react-linkify';
 
 interface CommentCardProps {
-  comments: Comment[];
+  comments: PurifyComment[];
   updateComment: (
     created_at: string,
     updatedComment: string,
@@ -26,12 +26,12 @@ export default function CommentCard({
   const clientSession = useSession();
   const userName = clientSession?.data?.user?.name || null;
   const userId = clientSession?.data?.user?.id || null;
-  const adminAccount = userName === 'Gi Youn Oh';
+  const adminAccount = userName === process.env.ADMIN_NAME;
 
   const [editingComment, setEditingComment] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
 
-  const [optimisticComments, applyOptimisticUpdate] = useOptimistic<Comment[], { created_at: string, updatedComment?: string }>(
+  const [optimisticComments, applyOptimisticUpdate] = useOptimistic<PurifyComment[], { created_at: string, updatedComment?: string }>(
     comments,
     (state, { created_at, updatedComment }) => {
       if (updatedComment !== undefined) {
@@ -44,18 +44,18 @@ export default function CommentCard({
     }
   );
 
-  const handleEditClick = (comment: Comment) => {
+  const handleEditClick = (comment: PurifyComment) => {
     setEditingComment(comment.created_at);
     setEditedText(comment.comment);
   };
 
-  const handleSaveClick = (comment: Comment) => {
+  const handleSaveClick = (comment: PurifyComment) => {
     applyOptimisticUpdate({ created_at: comment.created_at, updatedComment: editedText });
     updateComment(comment.created_at, editedText, comment.post_path);
     setEditingComment(null);
   };
 
-  const handleDeleteClick = (comment: Comment) => {
+  const handleDeleteClick = (comment: PurifyComment) => {
     applyOptimisticUpdate({ created_at: comment.created_at });
     deleteComment(comment.created_at, comment.post_path);
   };
@@ -75,7 +75,7 @@ export default function CommentCard({
   return (
     <div className="w-full max-h-[500px] overflow-auto p-5 bg-gray-50 rounded-lg shadow-md mb-10">
       <ul className="space-y-4">
-        {optimisticComments.map((comment: Comment) => (
+        {optimisticComments.map((comment: PurifyComment) => (
           <div
             key={comment.created_at}
             className="p-4 bg-white rounded-lg border border-gray-200 shadow-sm"
@@ -89,7 +89,7 @@ export default function CommentCard({
                   {formatDate(comment.created_at)}
                 </span>
               </div>
-              {(userName === comment.name || userId === comment.token_id || adminAccount) && (
+              {comment.isEditable && (
                 <div className="flex gap-3">
                   <button
                     onClick={() => handleEditClick(comment)}
