@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/superbase";
 import CommentCard from "./CommentCard";
-import {Comment, PurifyComment} from "@/app/service/comment";
+import {Comment, formatDate, PurifyComment} from "@/app/service/comment";
 import { deleteComment, updateComment } from "@/app/actions";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/utils/auth";
@@ -18,6 +18,7 @@ export default async function CommentList({ slug }: Prop) {
   const { data: comments, error } = commentsResponse;
   const purifyComments = comments?.map(({ token_id, ...comment }: Comment) => ({
     ...comment,
+    created_at: formatDate(comment.created_at),
     isEditable: session?.user?.id === token_id || session?.user?.id === process.env.ADMIN_ACCOUNT,
   }));
 
