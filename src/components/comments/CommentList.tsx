@@ -18,7 +18,7 @@ export default async function CommentList({ slug }: Prop) {
   const { data: comments, error } = commentsResponse;
   const purifyComments = comments?.map(({ token_id, ...comment }: Comment) => ({
     ...comment,
-    isEditable: session?.user?.id === token_id || session?.user?.name === process.env.ADMIN_NAME,
+    isEditable: session?.user?.id === token_id || session?.user?.id === process.env.ADMIN_ACCOUNT,
   }));
 
   if (error) {
