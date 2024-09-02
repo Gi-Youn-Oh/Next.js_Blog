@@ -22,10 +22,6 @@ export default function CommentCard({
   updateComment,
   deleteComment
 }: CommentCardProps) {
-  const clientSession = useSession();
-  const userName = clientSession?.data?.user?.name || null;
-  const userId = clientSession?.data?.user?.id || null;
-  const adminAccount = userName === process.env.ADMIN_NAME;
 
   const [editingComment, setEditingComment] = useState<string | null>(null);
   const [editedText, setEditedText] = useState<string>("");
