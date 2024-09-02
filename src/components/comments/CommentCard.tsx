@@ -3,7 +3,7 @@
 import { useState, startTransition, useOptimistic } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
-import { PurifyComment} from "@/app/service/comment";
+import { formatDate, PurifyComment} from "@/app/service/comment";
 import ReactLinkify from 'react-linkify';
 
 interface CommentCardProps {
@@ -85,6 +85,7 @@ export default function CommentCard({
                   {comment.name}
                 </span>
                 <span className="mt-0.5 text-xs text-gray-500">
+                  {formatDate(comment.created_at)}
                 </span>
               </div>
               {comment.isEditable && (
