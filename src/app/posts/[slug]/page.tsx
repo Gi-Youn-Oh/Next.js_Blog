@@ -25,7 +25,7 @@ export default async function PostPage({ params: { slug } }: Props) {
     const post = await getPostData(slug);
     const { title, path, next, prev } = post;
     return <article className="rounded-2xl overflow-hidden bg-gray-100 shadow-lg m-4">
-        <Image className="w-full h-1/5 max-h-[500px]" src={`/images/posts/${path}.png`} alt={title} width={760} height={420} />
+        <Image className="w-full h-1/5 max-h-[500px]" src={`/images/posts/${path}.png`} alt={title} width={760} height={420} priority/>
         <PostContent post={post} />
         <Comments slug={slug} />
         <section className="flex shadow-md">

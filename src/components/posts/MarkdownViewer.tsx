@@ -33,13 +33,12 @@ export default function MarkdownViewer({ content }: { content: string }) {
             },
             img: (image) =>
                 <Image
-                    className={`${image.alt === "exception" ? "max-w-[1500px]" : "max-w-[900px]"}`}
+                    className={`${image.alt === "exception" ? "w-full h-auto max-w-[1500px]" : "w-full h-auto max-w-[900px]"}`}
                     src={image.src || ""}
                     alt={image.alt || ""}
                     width={1000}
                     height={700}
                     quality={100}
-                    layout="responsive"
                 />
         }}
     >
