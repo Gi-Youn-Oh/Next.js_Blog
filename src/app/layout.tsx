@@ -37,7 +37,7 @@ export default function RootLayout({
           content="fS14S54kv28n_dVv2w0VAN16zIS5T62cSDDvYm7Pius"
         />
       </head>
-      <body className="flex flex-col w-full max-w-screen-3xl mx-auto">
+      <body className="flex flex-col w-full max-w-screen-3xl mx-auto" >
         <AuthContext>
           <Header />
           <main className="grow m-5">{children}</main>

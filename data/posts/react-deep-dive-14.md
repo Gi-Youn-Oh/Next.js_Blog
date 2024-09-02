@@ -206,7 +206,7 @@ function unstable_shouldYield() {
 
 [Scheduler_host_config-code](https://github.com/facebook/react/blob/v16.12.0/packages/scheduler/src/forks/SchedulerHostConfig.default.js)
 
-![image](https://github.com/user-attachments/assets/e851953b-29f4-4f1b-8cc8-7bff535904a5)
+<img src="https://github.com/user-attachments/assets/e851953b-29f4-4f1b-8cc8-7bff535904a5" alt="exception" />
 
 - scheduler_host_config 에서는 host (browser or app) 환경에 따라 (이 글에서는 browser기준) 작업 소비 시점을 스케줄링하며, 메인 스레드에서 작업을 효율적으로 운영하기 위하여 필요 시 콜스택을 양보하여 브라우저가 사용자 입력이나 페인팅 같은 우선순위 작업을 처리할 수 있도록 합니다.
 - 전반적인 흐름은 다음과 같습니다.
@@ -234,7 +234,7 @@ function unstable_shouldYield() {
 
         - render phase에서의 일시정지, 재가동
 
-    ![image](https://github.com/user-attachments/assets/8f6de09b-6750-4eb9-abac-3925d70976d4)
+  <img src="https://github.com/user-attachments/assets/8f6de09b-6750-4eb9-abac-3925d70976d4" alt="exception" />
 
 ---
 

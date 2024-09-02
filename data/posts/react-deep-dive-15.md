@@ -66,7 +66,7 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
   
 - ![image](https://github.com/user-attachments/assets/8148967d-3173-45d9-bb95-5e96ca64c477)
 
-- containerInfo는 index.html에서 <div id=”root”><div> 해당 태그를 참조합니다.
+- containerInfo는 index.html에서 `<div id=”root”><div>` 해당 태그를 참조합니다.
 
   ![image](https://github.com/user-attachments/assets/5147fbbf-61a5-4f00-bee6-6e52e5299580)
 
@@ -127,19 +127,19 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
     1. React Component Render → JSX return → React Element Tree
         - 사용자가 만든 커스텀 컴포넌트가 렌더링되면 JSX를 return하여 React Element를 반환합니다.
 
-       ![image](https://github.com/user-attachments/assets/2bbb8a68-d6ae-4ec9-930e-9ed77d2e0913)
-
+       <img src="https://github.com/user-attachments/assets/6959e68b-c3e7-46a0-8971-d2162123998d" alt="exception"/>
+  
     2. React Element tree → React Fiber Tree
         - React Fiber Architecture 도입 이후 React Component는 Fiber로 확장합니다.
         - 이 때 불필요한 Fragment tree는 별도로 만들지 않습니다. (key값이 부여되었을 경우에는 생성)
         - 그림을 보시면 아시겠지만 FiberNode는 하나의 자식만을 참조(children prop)하며, 나머지 자식Node들은 참조하는 첫번째 자식Node의 sibling(형제Node)로 연결되어 있습니다.
 
-       ![image](https://github.com/user-attachments/assets/31a4839d-6bb4-4c9b-a106-cbabf3ce5686)
-
+       <img src="https://github.com/user-attachments/assets/2bbb8a68-d6ae-4ec9-930e-9ed77d2e0913" alt="exception"/>
+  
     3. React Fiber Tree completed Reconcile & commit DOM → DOM tree
         - 재조정 과정을 마친 후 DOM tree는 custom component가 아닌 실제 HTML element에 해당하는 Node들로만 구성된다.
 
-       ![image](https://github.com/user-attachments/assets/6959e68b-c3e7-46a0-8971-d2162123998d)
+       <img src="https://github.com/user-attachments/assets/31a4839d-6bb4-4c9b-a106-cbabf3ce5686" alt="exception"/>
 
     
 ---
@@ -207,10 +207,10 @@ function ensureRootIsScheduled(root: FiberRoot) {
 - 전반적인 흐름은 다음과 같습니다.
     1. workLoop에서 performConcurrentWorkOnRoot() 실행 후 반환 값 check
     2. performConcurrentWorkOnRoot()가 완료(null)일 경우는
-        1. 만료시간이 지나 다음 프레임에 즉시 실행으로 스케줄 되거나
-        2. work가 commit phase까지 완료된 경우 두 가지이다.
+       - (1) 만료시간이 지나 다음 프레임에 즉시 실행으로 스케줄 되거나
+       - (2) work가 commit phase까지 완료된 경우 두 가지이다.
     3. performConcurrentWorkOnRoot()가 중단되었다면 해당 callback을 root binding 하여 반환하고 performWorkUntilDeadline()을 통해 time slicing하며 계속 진행 한다. (메인 스레드 장시간 점유 방지)
-        1. 실행 중단된 경우는 commit phase까지 완료하지 못하고 중지된 상황 “performConcurrentWorkOnRoot() → prepareFreshStack() → workLoopConcurrent()”
+       - 실행 중단된 경우는 commit phase까지 완료하지 못하고 중지된 상황 “performConcurrentWorkOnRoot() → prepareFreshStack() → workLoopConcurrent()”
 
             ```jsx
             function workLoopConcurrent() { #2
@@ -221,10 +221,10 @@ function ensureRootIsScheduled(root: FiberRoot) {
             }
             ```
 
-        2. phase진행 과정 중 추가적 업데이트를 확인하기 위해 한번 더 ensureRootIsScheduled()했음에도 불구하고 root.callbackNode === originCallbackNode라면 동일한 work이므로 반환한다. (return  performConcurrentWorkOnRoot.bind(null, root);)
+       - phase진행 과정 중 추가적 업데이트를 확인하기 위해 한번 더 ensureRootIsScheduled()했음에도 불구하고 root.callbackNode === originCallbackNode라면 동일한 work이므로 반환한다. (return  performConcurrentWorkOnRoot.bind(null, root);)
     4. workLoop과정 중 중지되었으므로 해당 currentTask.callback에 할당되고 해당 callback이 남아 있으므로 다음 프레임에 실행된다. → performWorkUntilDeadline()
 
-         ![image](https://github.com/user-attachments/assets/9eb4cb49-681c-45c6-9a11-7886d3426a0d)
+    <img src="https://github.com/user-attachments/assets/46221a39-be92-475c-ac4f-cdce806e1108" alt="exception"/>
 
 - **workLoop() in scheduler**
     - 작업이 아직 남아있고, 그 작업을 처리하기 위한 작업 노드가 변경되지 않은 상황에서, 남은 작업을 계속 처리하기 위해 함수 자체를 콜백으로 반환하는 경우
@@ -400,8 +400,8 @@ function ensureRootIsScheduled(root: FiberRoot) {
 - lastExpiredTime는 이전 Work가 만료되었을 때 할당되는 시간으로 perfromConcurrentWorkOnRoot()에서 만료되었을 때 새겨집니다. #1
 - lastExpirationTime이 유휴상태가 아니면서 finishedExpirationTime이라면 이미 커밋이 진행되었어야 하기 때문에 밀린 commit을 즉시 실행합니다.
 - Sync work는 두 가지 Case가 존재합니다.
-    - 처음부터 Sync로 scheduling을 거치지 않고 reconciler 별도의 내부 큐에서 실행 되는 함수
-    - performConcurrentWorkOnRoot()에서 만료시간이 되어 즉시 실행 함수로 예약되어 실행되는 함수
+    - (1) 처음부터 Sync로 scheduling을 거치지 않고 reconciler 별도의 내부 큐에서 실행 되는 함수
+    - (2) performConcurrentWorkOnRoot()에서 만료시간이 되어 즉시 실행 함수로 예약되어 실행되는 함수
 - JS는 싱글 스레드 이므로 하나의 V-DOM에 대한 Work만 진행 가능하기 때문에 reconciler가 작업 중인 root를 workInProgressRoot로 잡아 두고 확인합니다.
     - ReactDOM이 여러 root를 생성했을 때 현재 작업 해야 하는 root와 작업 중인 wokInProgressRoot가 다르다면 (ReactDOM 모듈은 하나 이기 때문에) 새로운 workInProgress 를 생성해야 한다.
 - prepareFreshStack에서 renderExpirationTime = expirationTime로맞춰두기 때문에 만약 다르다면 다른 우선 순위의 작업이 있다는 뜻이므로 새롭게 생성해야 합니다.
@@ -661,8 +661,8 @@ function markUpdateTimeFromFiberToRoot(fiber, expirationTime) {
   ![image](https://github.com/user-attachments/assets/3d43b1ff-7c16-42a1-9b13-7f083e8107dd)
   
   ![image](https://github.com/user-attachments/assets/6e4b8a48-2896-49ee-b228-81339db17d43)
-  
-  ![image](https://github.com/user-attachments/assets/58af4222-7941-4969-aea4-6013f347b394)
+
+  ![root-render](https://github.com/user-attachments/assets/b0350847-769f-4adc-833b-ac2f8fb893bb)
 
 - 실제로 각각의 FiberRootNode를 갖고 해당 FiberRootNode는 각각의 current ← alternate → workInProgress를 가질 것입니다.
 - 이 상황에서 동기적으로 하나씩 업데이트가 이루어진다면 문제되지 않을 것입니다.

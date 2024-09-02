@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, startTransition, useOptimistic } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
 import {Comment, formatDate, PurifyComment} from "@/app/service/comment";
 import { useSession } from "next-auth/react";
-import { useOptimistic } from 'react';
 import ReactLinkify from 'react-linkify';
 
 interface CommentCardProps {
@@ -50,13 +49,17 @@ export default function CommentCard({
   };
 
   const handleSaveClick = (comment: PurifyComment) => {
-    applyOptimisticUpdate({ created_at: comment.created_at, updatedComment: editedText });
+    startTransition(() => {
+      applyOptimisticUpdate({created_at: comment.created_at, updatedComment: editedText});
+    });
     updateComment(comment.created_at, editedText, comment.post_path);
     setEditingComment(null);
   };
 
   const handleDeleteClick = (comment: PurifyComment) => {
-    applyOptimisticUpdate({ created_at: comment.created_at });
+    startTransition(() => {
+      applyOptimisticUpdate({created_at: comment.created_at});
+    });
     deleteComment(comment.created_at, comment.post_path);
   };
 
@@ -73,6 +76,7 @@ export default function CommentCard({
   );
 
   return (
+      optimisticComments.length > 0 ? (
     <div className="w-full max-h-[500px] overflow-auto p-5 bg-gray-50 rounded-lg shadow-md mb-10">
       <ul className="space-y-4">
         {optimisticComments.map((comment: PurifyComment) => (
@@ -139,5 +143,7 @@ export default function CommentCard({
         ))}
       </ul>
     </div>
-  );
-}
+  ): (
+          <div className="m-5"></div>
+      )
+  );}
