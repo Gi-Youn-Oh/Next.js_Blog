@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (16)",
+    "description": "Enter the render phase.",
+    "date": "2024-09-20",
+    "category": "React",
+    "path": "react-deep-dive-16",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (15)",
     "description": "Prepare for reconciliation",
     "date": "2024-08-30",

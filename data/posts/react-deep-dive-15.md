@@ -568,7 +568,7 @@ export function createWorkInProgress(
 }
 ```
 
-![image](https://github.com/user-attachments/assets/3fe7d3fe-9a8f-4c9c-8c4a-d8389e3ee8ab)
+![image](https://github.com/user-attachments/assets/506b3128-5af1-40fb-98dc-29434b22efe0)
 
 - prepareFreshStack()이 실행되고 나면 위 그림과 같은 상황입니다.
 - 재조정 작업을 진행하기 전 시작 위치이며 최상단 current을 복제한 workInProgress Host root를 만들었습니다.
