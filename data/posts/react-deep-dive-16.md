@@ -234,7 +234,7 @@ function beginWork(
         renderExpirationTime
       )
 
-    // 2-3. props도 변경되지 않았고, 현재 update해야할 대상이 아니라면 false
+    // 2-3. props도 변경되지 않았지만, updateExpirationTime >= renderExpirationTime인 경우 업데이트는 예정되어 있으나, 실제로는 변경된 것이 없기 때문에 업데이트를 생략
     } else {
       didReceiveUpdate = false
     }
