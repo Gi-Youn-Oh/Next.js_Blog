@@ -201,7 +201,10 @@ function performUnitOfWork(unitOfWork: Fiber): Fiber | null {
 - update여부는 **markUpdateTimeFromFiberToRoot() 에서 expirationTime, childExpirationTime을 통해 설정해주었습니다.**
 - expirationTime이 renderExpirationTime 같은 컴포넌트를 찾는다면 해당 컴포넌트는 호출(render)가 필요합니다.
     - renderExpirationTime은 현재 work를 발생시킨 컴포넌트의 expirationTime
-
+- `didReceiveUpdate`는 **실제 props나 상태 변경**에 따른 업데이트가 발생했는지를 추적하는 플래그입니다.
+- 이 플래그는 나중에 업데이트 경로에서 **불필요한 작업을 생략**하기 위해 사용됩니다.
+- 예를 들어, `didReceiveUpdate`가 `false`라면, 아래의 `update` 함수 내부에서 해당 Fiber의 자식 컴포넌트들이 변경되지 않았다고 가정하고 **업데이트를 생략**하는 경로로 빠져나갈 수 있습니다.
+- 추후 switch문의 update함수들에서 state의 변경여부에 따라 `didReceiveUpdat` 값이 true로 전환될 수 있습니다.
 ```jsx
 // 컴포넌트의 props, state 변경 여부
 let didReceiveUpdate: boolean = false;
@@ -234,7 +237,7 @@ function beginWork(
         renderExpirationTime
       )
 
-    // 2-3. props도 변경되지 않았고, 현재 update해야할 대상이 아니라면 false
+    // 2-3. props도 변경되지 않았지만, updateExpirationTime >= renderExpirationTime인 경우 업데이트는 예정되어 있으나, 실제로는 변경된 것이 없기 때문에 업데이트를 생략
     } else {
       didReceiveUpdate = false
     }
@@ -288,7 +291,7 @@ function bailoutOnAlreadyFinishedWork(
   if (childExpirationTime < renderExpirationTime) {
     return null
   } else {
-	  // 자손에서 update발생했다면 서브트리로 work 진행되도록 작업용 fiber 생성
+    // 자손에서 update발생했다면 서브트리로 work 진행되도록 current를 복제하여 작업용 Fiber 반환
     cloneChildFibers(current, workInProgress)
     return workInProgress.child
   }
