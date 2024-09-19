@@ -291,7 +291,7 @@ function bailoutOnAlreadyFinishedWork(
   if (childExpirationTime < renderExpirationTime) {
     return null
   } else {
-	  // 자손에서 update발생했다면 서브트리로 work 진행되도록 작업용 fiber 생성
+    // 자손에서 update발생했다면 서브트리로 work 진행되도록 current를 복제하여 작업용 Fiber 반환
     cloneChildFibers(current, workInProgress)
     return workInProgress.child
   }
