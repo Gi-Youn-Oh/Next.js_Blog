@@ -237,7 +237,7 @@ function beginWork(
         renderExpirationTime
       )
 
-    // 2-3. props도 변경되지 않았지만, updateExpirationTime >= renderExpirationTime인 경우 업데이트는 예정되어 있으나, 실제로는 변경된 것이 없기 때문에 업데이트를 생략
+    // 2-3.  해당 컴포넌트에서 Work가 예약되었지만, props는 변경된 것이 없음을 나타냅니다.
     } else {
       didReceiveUpdate = false
     }
