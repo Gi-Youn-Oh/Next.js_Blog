@@ -53,7 +53,7 @@
     "date": "2024-07-18",
     "category": "React",
     "path": "react-deep-dive-11",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (10)",
@@ -61,7 +61,7 @@
     "date": "2024-07-09",
     "category": "React",
     "path": "react-deep-dive-10",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Zustand",
@@ -69,7 +69,7 @@
     "date": "2024-07-08",
     "category": "React",
     "path": "zustand",
-    "recent": true
+    "recent": false
   },
   {
     "title": "Next.js Cache Mechanism",
