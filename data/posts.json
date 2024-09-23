@@ -1,7 +1,15 @@
 [
   {
+    "title": "React / Deep-dive (17)",
+    "description": "Perform rendering with hooks",
+    "date": "2024-09-23",
+    "category": "React",
+    "path": "react-deep-dive-17",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (16)",
-    "description": "Enter the render phase.",
+    "description": "Enter the render phase",
     "date": "2024-09-20",
     "category": "React",
     "path": "react-deep-dive-16",
