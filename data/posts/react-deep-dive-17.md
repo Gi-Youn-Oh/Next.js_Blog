@@ -1,4 +1,5 @@
 이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/React-deep-dive-10-f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
+
 지난 글에서는 render phase에 진입하여 update가 이루어지기 직 전까지 workInProgress tree를 구축해가는 과정을 살펴보았습니다.
 
 이번 글에서는 workInProgress.tag 따라 update하는 과정부터 hook에 대해 자세히 살펴보도록 하겠습니다.
@@ -1410,8 +1411,8 @@ function updateReducer<S, I, A>(
       markWorkInProgressReceivedUpdate();  //didReceiveUpdate = true
     }
 
-		// 3. 최종 action 소비 상태값을 저장합니다.
-		// 이렇게 첫 업데이트가 소비완료되고 난 뒤에는 baseUpdate가 설정되기 때문에 다음 호출 시에는 last.next로 끊어줄 것 입니다.
+    // 3. 최종 action 소비 상태값을 저장합니다.
+    // 이렇게 첫 업데이트가 소비완료되고 난 뒤에는 baseUpdate가 설정되기 때문에 다음 호출 시에는 last.next로 끊어줄 것 입니다.
     hook.memoizedState = newState;
     hook.baseUpdate = newBaseUpdate;
     hook.baseState = newBaseState;
