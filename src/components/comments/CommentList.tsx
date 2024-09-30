@@ -19,6 +19,7 @@ export default async function CommentList({ slug }: Prop) {
   const purifyComments = comments?.map(({ token_id, ...comment }: Comment) => ({
     ...comment,
     created_at: formatDate(comment.created_at),
+    original_created_at: comment.created_at,
     isEditable: session?.user?.id === token_id || session?.user?.id === process.env.ADMIN_ACCOUNT,
   }));
 
