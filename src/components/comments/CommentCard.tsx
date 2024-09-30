@@ -47,7 +47,7 @@ export default function CommentCard({
     startTransition(() => {
       applyOptimisticUpdate({created_at: comment.created_at, updatedComment: editedText});
     });
-    updateComment(comment.created_at, editedText, comment.post_path);
+    updateComment(comment.original_created_at, editedText, comment.post_path);
     setEditingComment(null);
   };
 
@@ -55,7 +55,7 @@ export default function CommentCard({
     startTransition(() => {
       applyOptimisticUpdate({created_at: comment.created_at});
     });
-    deleteComment(comment.created_at, comment.post_path);
+    deleteComment(comment.original_created_at, comment.post_path);
   };
 
   const customDecorator = (decoratedHref: string, decoratedText: string, key:number) => (
