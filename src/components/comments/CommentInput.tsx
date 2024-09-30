@@ -4,6 +4,8 @@ import PostComment from "./PostComment";
 import {addComment} from "@/app/actions";
 import {useRef} from "react";
 import {useSession} from "next-auth/react";
+import useAuth from "@/hooks/useAuth";
+import LoginForComment from "@/components/comments/LoginForComment";
 
 type Prop = {
     slug: string;
@@ -25,6 +27,7 @@ export default function CommentInput({slug}: Prop) {
                           name="content"/>
                 <PostComment/>
             </form>
+            <LoginForComment />
         </div>
     )
 }
