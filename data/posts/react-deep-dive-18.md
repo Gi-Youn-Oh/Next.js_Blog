@@ -1,7 +1,7 @@
 이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
 지난 글에서는 reconcile을 위해 V-DOM을 필요에 따라 생성, 초기화 하여 컴포넌트를 호출하고 update를 적용했었습니다.
 
-이번 글에서는 update가 이루어진 컴포넌트를 바탕으로 reconcile해가는 과정을 살펴보겠습니다.
+이번 글에서는 update로 인하여 호출하고 반환된 React Element를 바탕으로 reconcileChildren()함수부터 살펴보겠습니다.
 
 아래 링크는  React의 렌더링 흐름에 따라 저 나름대로의 그림을 그려보았으며, 이 흐름에 따라 글이 이어 질 것입니다. (무단 복사 및 배포는 하지 말아주세요)
 
@@ -37,7 +37,9 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 3) Perform rendering with hooks.
 
-4) <span style='background-color: #FFB6C1'>Reconcile the `workInProgress` tree.</span>
+4) <span style='background-color: #FFB6C1'>ReconcileChildren</span>
+
+5) Finishing Work
 
 **5. Reconciler Commit Phase**
 
@@ -51,7 +53,7 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 - 이전 글까지는 컴포넌트를 호출하여 Update하는 과정까지 살펴보았습니다.
 
-![image](https://github.com/user-attachments/assets/423b1522-ed6c-4a86-83f7-5fa3921ea941)
+![image](https://github.com/user-attachments/assets/17428754-670b-432e-9dd9-f5accefe6894)
 
 1. **`workLoopSync()`**
 2. **`performUnitOfWork()`**

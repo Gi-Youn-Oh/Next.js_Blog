@@ -18,31 +18,33 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 **1. Reconciler**
 
-- Dispatch a trigger to update.
+1) Dispatch a trigger to update.
 
-- The reconciler requests the scheduler to schedule a task.
+2) The reconciler requests the scheduler to schedule a task.
 
 **2. Scheduler**
 
-- Schedule the work.
+1) Schedule the work.
 
 **3. Scheduler Host Config**
 
-- Yield control to the host.
+1) Yield control to the host.
 
 **4. Reconciler Render Phase**
 
-- <span style='background-color: #FFB6C1'>Prepare for reconciliation.</span>
+1) <span style='background-color: #FFB6C1'>Prepare for reconciliation.</span>
 
-- Enter the render phase.
+2) Enter the render phase.
 
-- Perform rendering with hooks.
+3) Perform rendering with hooks.
 
-- Reconcile the `workInProgress` tree.
+4) ReconcileChildren
+
+5) Finishing Work
 
 **5. Reconciler Commit Phase**
 
-- Execute `useEffect` and `useLayoutEffect`.
+1) Execute `useEffect` and `useLayoutEffect`.
 
 **6. Browser Paint**
 

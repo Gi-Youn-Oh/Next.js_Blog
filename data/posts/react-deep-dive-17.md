@@ -38,7 +38,9 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 3) <span style='background-color: #FFB6C1'>Perform rendering with hooks.</span>
 
-4) Reconcile the `workInProgress` tree.
+4) ReconcileChildren
+
+5) Finishing Work
 
 **5. Reconciler Commit Phase**
 
@@ -52,7 +54,7 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 - 이전 글까지는 Bailout까지만 되었었습니다. 이번 글에서는 Update과정을 이어갑니다.
 
-![image](https://github.com/user-attachments/assets/423b1522-ed6c-4a86-83f7-5fa3921ea941)
+![image](https://github.com/user-attachments/assets/17428754-670b-432e-9dd9-f5accefe6894)
 
 - 지난 글에서 1~3을 거쳐 4.**`bailoutOnAlreadyFinishedWork()`** 통해 빠르게 update에 해당하는 컴포넌트까지 workInProgress tree를 만들어 주었습니다.
 1. **`workLoopSync()`**
@@ -1509,7 +1511,7 @@ queue.last = update
 
 ### mount
 
-- **`ReactDOM.render()` 호출** ➡️ **컴포넌트 트리 생성** ➡️ **Render Phase (Virtual DOM 생성)** ➡️ **Reconciliation (처음이므로 비교 생략)** ➡️ **Commit Phase (DOM 생성 및 반영)** ➡️ **화면에 출력**
+- **`ReactDOM.render()` 호출** ➡️ **Virtual DOM 생성** ➡️ **Render Phase** ➡️ **Reconciliation (처음이므로 비교 생략)** ➡️ **Commit Phase (DOM 생성 및 반영)** ➡️ **화면에 출력**
 
 ### update
 
