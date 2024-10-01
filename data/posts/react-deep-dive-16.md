@@ -41,7 +41,9 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 
 3) Perform rendering with hooks.
 
-4) Reconcile the `workInProgress` tree.
+4) ReconcileChildren
+
+5) Finishing Work
 
 **5. Reconciler Commit Phase**
 
@@ -61,12 +63,13 @@ Reconciler → Scheduler → Scheduler Host-config → **Reconciler Render Phase
 1. **`workLoopSync()`**
 - 동기적으로 작업을 처리하는 루프입니다. 모든 작업이 완료될 때까지 반복적으로 실행됩니다.
 2. **`performUnitOfWork()`**
-- HostRoot부터 시작해 `beginWork()`와 `completeUnitOfWork()`를 통해 자식 및 형제 노드로 이동하며 업데이트를 진행합니다. 업데이트가 발생한 컴포넌트에 대해 실제 작업이 이루어집니다.
+- HostRoot부터 시작해 `beginWork()`와 `completeUnitOfWork()`를 통해 자식 및 형제 노드로 이동하며 업데이트를 진행합니다.
 3. **`beginWork()`**
 - 현재 작업 중인 Fiber 노드의 자식 노드를 처리합니다. 만약 해당 서브트리에서 업데이트가 발생하지 않았다면 `null`을 반환해 더 이상 작업하지 않고 멈춥니다.
 4. **`bailoutOnAlreadyFinishedWork()`**
 - `childExpirationTime`을 통해 서브트리에 업데이트가 발생했는지 확인합니다. 만약 업데이트가 있다면 새로운 Fiber 노드를 복제하고, 없다면 `null`을 반환해 더 이상의 불필요한 작업을 방지합니다.
 5. `update…`
+- 업데이트가 발생한 컴포넌트에 대해 실제 작업이 이루어집니다.
 - 업데이트가 발생한 컴포넌트의 `workInProgress` 상태에 따라 해당 태그에 맞는 작업을 수행합니다.
 
    5-1. **FunctionComponent → `renderWithHooks()`**
@@ -339,7 +342,8 @@ function cloneChildFibers(current: Fiber | null, workInProgress: Fiber): void {
 - 위 과정을 거친 tree는 다음과 같은 형태일 것입니다.
 - reconcile은 아직 진행되지 않았으며 bailout까지만 진행되었습니다.
 
-![image](https://github.com/user-attachments/assets/47b571a5-be96-48bc-af3f-fefbc8b5d496)
+![image](https://github.com/user-attachments/assets/398625c9-6a0d-40df-86e4-9dd492baed10)
+
 ---
 
 # Optimize render

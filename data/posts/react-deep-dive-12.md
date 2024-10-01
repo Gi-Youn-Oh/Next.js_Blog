@@ -9,37 +9,35 @@
 ---
 ## Flow
 
-**Reconciler** → Scheduler → Scheduler Host-config → Reconciler Render Phase → Reconciler Commit Phase
-
-![image](https://github.com/user-attachments/assets/e6ffd320-1be8-40b6-a453-cda5f8f6f6d0)
-
 **1. Reconciler**
 
-- Dispatch a trigger to update.
+1) Dispatch a trigger to update.
 
-- <span style='background-color: #FFB6C1'>The reconciler requests the scheduler to schedule a task.</span>
+2) <span style='background-color: #FFB6C1'>The reconciler requests the scheduler to schedule a task.</span>
 
 **2. Scheduler**
 
-- Schedule the work.
+1) Schedule the work.
 
 **3. Scheduler Host Config**
 
-- Yield control to the host.
+1) Yield control to the host.
 
 **4. Reconciler Render Phase**
 
-- Prepare for reconciliation.
+1) Prepare for reconciliation.
 
-- Enter the render phase.
+2) Enter the render phase.
 
-- Perform rendering with hooks.
+3) Perform rendering with hooks.
 
-- Reconcile the `workInProgress` tree.
+4) ReconcileChildren
+
+5) Finishing Work
 
 **5. Reconciler Commit Phase**
 
-- Execute `useEffect` and `useLayoutEffect`.
+1) Execute `useEffect` and `useLayoutEffect`.
 
 **6. Browser Paint**
 
