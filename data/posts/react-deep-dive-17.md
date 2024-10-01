@@ -1509,7 +1509,7 @@ queue.last = update
 
 ### mount
 
-- **`ReactDOM.render()` 호출** ➡️ **컴포넌트 트리 생성** ➡️ **Render Phase (Virtual DOM 생성)** ➡️ **Reconciliation (처음이므로 비교 생략)** ➡️ **Commit Phase (DOM 생성 및 반영)** ➡️ **화면에 출력**
+- **`ReactDOM.render()` 호출** ➡️ **Virtual DOM 생성** ➡️ **Render Phase** ➡️ **Reconciliation (처음이므로 비교 생략)** ➡️ **Commit Phase (DOM 생성 및 반영)** ➡️ **화면에 출력**
 
 ### update
 
