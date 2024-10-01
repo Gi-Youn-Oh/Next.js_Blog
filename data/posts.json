@@ -1,5 +1,13 @@
 [
   {
+    "title": "React / Deep-dive (19)",
+    "description": "Finishing Work",
+    "date": "2024-10-02",
+    "category": "React",
+    "path": "react-deep-dive-19",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (18)",
     "description": "Reconcile children",
     "date": "2024-10-01",
