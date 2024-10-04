@@ -1,4 +1,4 @@
-이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/React-deep-dive-10-f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
+이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://goidle.github.io/)에 감사 인사를 전합니다.
 
 이전 글에서 scheduler에서 Work(callback, priorityLevel, options)를 기반으로 Task를 생성하고 두 개의 Queue로 소비 순서를 정리하는 것까지 살펴보았습니다.
 

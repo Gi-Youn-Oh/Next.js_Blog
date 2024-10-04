@@ -1,4 +1,4 @@
-이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
+이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://goidle.github.io/)에 감사 인사를 전합니다.
 
 지난 글에서는 update가 이루어진 컴포넌트를 바탕으로 **reconcileChildren()** 과정을 살펴보았습니다.
 
