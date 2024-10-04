@@ -1083,7 +1083,7 @@ export function diffProperties(
 - 정리해보면 
   - `workLoopSync()`에서 개별 Fiber에 대해 반복적으로 Work와 관련된 Node를 순회하며 작업을 수행합니다.
   - `completeUnitOfWork()`에서는 작업중인 UnitOfWork를 completeWork()를 통해 마무리 하고 형제노드가 존재한다면 반환하여 다시 workLoopSync()로 돌아갑니다.
-  - leat, sibling까지 완료되었다면 부모 또한 마무리해주며 while문을 통해 HostRoot까지 도달하면 종료합니다.
+  - leaf, sibling까지 완료되었다면 부모 또한 마무리해주며 while문을 통해 HostRoot까지 도달하면 종료합니다.
   - 또한 effect-list를 후위순회 순서로 연결해줍니다.
   - `completeWork()`에서는 Host Component의 생성, 수정, 삭제, event binding, attribute set, Update Tag, focus..etc를 처리하여 Commit Phase에서 적용할 수 있도록 실제 DOM Element를 완성해줍니다.
   - 마지막으로 workLoopSync()가 종료되면 workInProgress는 null이 되어야합니다.
