@@ -1,4 +1,4 @@
-이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/React-deep-dive-10-f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
+이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://goidle.github.io/)에 감사 인사를 전합니다.
 
 지금까지 update가 발생하고 scheduler를 거쳐 드디어 callback(performSyncWorkOnRoot())을 소비하는 Reconciler로 도착했습니다.
 

@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={sans.className}>
+    <html lang="ko" className={sans.className}>
       <head>
         <meta
           name="google-site-verification"

@@ -1,4 +1,4 @@
-이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://www.notion.so/f903bf2b3e4248a29dd5402c89ccd591?pvs=21)에 감사 인사를 전합니다.
+이번 글에서도 분석의 바탕이 되는 코드는 [React 16.12.0 version](https://github.com/facebook/react/tree/v16.12.0)을 기준으로 하며, [해당 블로그](https://goidle.github.io/)에 감사 인사를 전합니다.
 지난 글에서는 재조정을 위해 준비하는 과정을 살펴봤습니다.
 
 이번 시간에는 render phase에 진입해 React가 reconcile하는 과정을 살펴보겠습니다.
