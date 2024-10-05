@@ -1,5 +1,29 @@
 [
   {
+    "title": "React / Deep-dive (22)",
+    "description": "The end",
+    "date": "2024-10-06",
+    "category": "React",
+    "path": "react-deep-dive-22",
+    "recent": true
+  },
+  {
+    "title": "React / Deep-dive (21)",
+    "description": "Commit Phase (2)",
+    "date": "2024-10-06",
+    "category": "React",
+    "path": "react-deep-dive-21",
+    "recent": true
+  },
+  {
+    "title": "React / Deep-dive (20)",
+    "description": "Commit Phase (1)",
+    "date": "2024-10-06",
+    "category": "React",
+    "path": "react-deep-dive-20",
+    "recent": true
+  },
+  {
     "title": "React / Deep-dive (19)",
     "description": "Finishing Work",
     "date": "2024-10-02",
@@ -37,7 +61,7 @@
     "date": "2024-08-30",
     "category": "React",
     "path": "react-deep-dive-15",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (14)",
@@ -45,7 +69,7 @@
     "date": "2024-08-25",
     "category": "React",
     "path": "react-deep-dive-14",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (13)",
@@ -53,7 +77,7 @@
     "date": "2024-08-21",
     "category": "React",
     "path": "react-deep-dive-13",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (12)",
@@ -61,7 +85,7 @@
     "date": "2024-08-19",
     "category": "React",
     "path": "react-deep-dive-12",
-    "recent": true
+    "recent": false
   },
   {
     "title": "React / Deep-dive (11)",
