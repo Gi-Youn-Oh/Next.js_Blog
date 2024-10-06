@@ -1,7 +1,7 @@
 # Commit phase
 
 - 이제 Commit phase를 파헤쳐보기 위한 준비는 끝났습니다. 본격적으로 Commit phase 코드를 살펴보겠습니다.
-- 흐름은 다음과 같습니다. (<span style='background-color: #D8BFD8'>Host Component</span>, <span style='background-color: #FFDAB9'>Class Component</span>, <span style='background-color: #90EE90'>Function Component</span>
+- 흐름은 다음과 같습니다. (<span style='background-color: #D8BFD8'>Host Component</span>, <span style='background-color: #FFDAB9'>Class Component</span>, <span style='background-color: #90EE90'>Function Component</span>)
 1. `finishSyncRender()`
 2. `commitRoot()`
 3. `commitRootImpl()`
