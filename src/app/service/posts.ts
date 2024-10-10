@@ -11,6 +11,18 @@ export type Post = {
     recent: boolean;
 }
 
+// export async function getRecentPosts(): Promise<Post[]> {
+//     const today = new Date();
+//     const oneMonthAgo = new Date(today);
+//     oneMonthAgo.setMonth(today.getMonth() -1); // 한 달 전의 날짜 계산
+//
+//     return getAllPosts()
+//         .then(posts => posts.filter(post => {
+//             const postDate = new Date(post.date);
+//             return postDate >= oneMonthAgo && postDate <= today;
+//         }));
+// }
+
 export async function getRecentPosts(): Promise<Post[]> {
     return getAllPosts()
         .then(posts => posts.filter(post => post.recent))
