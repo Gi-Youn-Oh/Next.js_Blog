@@ -1,4 +1,4 @@
-import { getRecentPosts } from "@/app/service/posts";
+import { getRecentPosts } from "@/service/posts";
 import PostsGrid from "./posts/PostsGrid";
 
 export default async function RecentPosts() {

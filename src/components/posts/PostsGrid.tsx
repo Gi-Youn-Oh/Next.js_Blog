@@ -1,4 +1,4 @@
-import { Post } from "@/app/service/posts";
+import { Post } from "@/service/posts";
 import PostCard from "./PostCard";
 
 type Props = {posts: Post[]};

@@ -7,7 +7,7 @@ import Skill from "@/components/Skill";
 
 export const metadata: Metadata = {
     title: 'About Me',
-    description: 'Giyoun 커리어 소개',
+    description: '저를 소개합니다.',
 };
 
 const TITLE_CLASS = "text-2xl font-bold text-gray-800 my-4"

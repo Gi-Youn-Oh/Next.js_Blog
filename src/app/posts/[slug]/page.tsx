@@ -1,4 +1,4 @@
-import { getPostData, getRecentPosts } from "@/app/service/posts";
+import { getPostData, getRecentPosts } from "@/service/posts";
 import AdjacentPostCard from "@/components/posts/AdjacentPostCard";
 import Comments from "@/components/comments/Comments";
 import PostContent from "@/components/posts/PostContent";
@@ -12,11 +12,30 @@ type Props = {
 }
 
 export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata>{
-    const {title, description} = await getPostData(slug);
+    const {title, description, path} = await getPostData(slug);
     return {
         title: title,
-        description: description
+        description: description,
+        openGraph: {
+            title: title,
+            description: description,
+            images: [
+                {
+                    url: `/images/posts/${path}.png`,
+                    width: 760,
+                    height: 420,
+                    alt: title,
+                }
+            ]
+        }
     }
+}
+
+export async function generateStaticParams() {
+    const posts = await getRecentPosts();
+    return posts.map(post => ({
+        slug:post.path,
+    }))
 }
 
 export default async function PostPage({ params: { slug } }: Props) {
@@ -35,9 +54,3 @@ export default async function PostPage({ params: { slug } }: Props) {
     </article>
 }
 
-export async function generateStaticParams() {
-    const posts = await getRecentPosts();
-    return posts.map(post => ({
-        slug:post.path,
-    }))
-}

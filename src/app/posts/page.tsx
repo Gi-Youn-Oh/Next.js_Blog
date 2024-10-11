@@ -1,5 +1,5 @@
 import FilterablePosts from "@/components/FilterablePosts";
-import { getAllPosts } from "../service/posts";
+import { getAllPosts } from "@/service/posts";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
