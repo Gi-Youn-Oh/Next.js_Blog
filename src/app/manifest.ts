@@ -7,11 +7,14 @@ export default function manifest(): MetadataRoute.Manifest {
     "description": "Giyoun's blog",
     "start_url": "/",
     "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "icons": [
       {
-        "src": "/favicon.ico",
-        "sizes": "any",
-        "type": "image/x-icon"
+        "src": "/images/splash-img.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
       }
     ]
   }
