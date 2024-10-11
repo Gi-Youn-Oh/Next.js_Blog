@@ -4,8 +4,13 @@ import { Open_Sans } from "next/font/google";
 import Footer from "@/components/common/Footer";
 import { Metadata } from "next";
 import AuthContext from "@/context/AuthContext";
+import { Viewport } from "next";
 
 const sans = Open_Sans({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://giyoun-blog.vercel.app"),
