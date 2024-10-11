@@ -6,10 +6,6 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: 'Contact Me',
     description: 'GitHub, Mail',
-    icons: {
-        icon: "/favicon.ico",
-        apple: "/favicon.ico",
-    },
 };
 
 const LINKS = [

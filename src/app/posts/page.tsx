@@ -5,10 +5,6 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: 'All Posts',
     description: '모든 블로그 글',
-    icons: {
-        icon: "/favicon.ico",
-        apple: "/favicon.ico",
-    },
 };
 
 export default async function PostsPage() {
