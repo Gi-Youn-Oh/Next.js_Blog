@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/superbase";
 import CommentCard from "./CommentCard";
-import {Comment, formatDate, PurifyComment} from "@/app/service/comment";
+import {Comment, formatDate, PurifyComment} from "@/service/comment";
 import { deleteComment, updateComment } from "@/app/actions";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/utils/auth";

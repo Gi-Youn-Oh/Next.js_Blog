@@ -3,7 +3,7 @@
 import { useState, startTransition, useOptimistic } from "react";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { FiTrash2 } from "react-icons/fi";
-import { PurifyComment} from "@/app/service/comment";
+import { PurifyComment} from "@/service/comment";
 import ReactLinkify from 'react-linkify';
 
 interface CommentCardProps {
