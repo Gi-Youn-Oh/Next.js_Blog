@@ -3,7 +3,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { BannerData } from './Banner';
 import Banner from './Banner';
-import { sendContactEmail } from '@/app/service/contact';
+import { sendContactEmail } from '@/service/contact';
 
 type Form = {
     from: string;

@@ -1,4 +1,4 @@
-import { getNotRecentPosts } from "@/app/service/posts"
+import { getNotRecentPosts } from "@/service/posts"
 import PostCard from "./posts/PostCard";
 import MultiCarousel from "./MultiCarousel";
 

@@ -11,7 +11,7 @@ export default function Skill(skills: Props) {
     return (
         <ul className="flex justify-center my-2">
             {SKILLS.map((skill, index) => (
-                <img key={index} className="mx-0.5" src={skill.icon} />
+                <img key={index} className="mx-0.5" src={skill.icon} alt="skill" />
             ))}
         </ul>
     )
