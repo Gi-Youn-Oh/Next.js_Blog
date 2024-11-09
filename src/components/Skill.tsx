@@ -9,9 +9,9 @@ type Props = {
 export default function Skill(skills: Props) {
     const SKILLS = skills.skills
     return (
-        <ul className="flex justify-center my-2">
+        <ul className="flex flex-wrap justify-center my-2">
             {SKILLS.map((skill, index) => (
-                <img key={index} className="mx-0.5" src={skill.icon} alt="skill" />
+                <img key={index} className="m-0.5" src={skill.icon} alt="skill" />
             ))}
         </ul>
     )
