@@ -7,18 +7,30 @@
 
 개인 블로그 디자인부터 배포까지 직접 구현해보고 싶어 기획하게 되었습니다.
 
-React(v18) & Next.js(v13) 업데이트 되면서 SSR지원에 대한 장점과 각 렌더링 방식 별 장,단점을  이해하고자 Next.js(v13)을 선택하여 진행하였습니다.
+Next.js version update를 follow하며 새로운 기술 적용 및 최적화를 진행하고 있습니다.
+
+또한 주기적으로 학습하며 포스팅하고 있습니다.
 
 ### [기술 스택]
 
-`TypeScript` `React` `Next.js` `Tailwind` `Vercel`
+<div align="left">
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+    <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
+    <img src="https://img.shields.io/badge/Next-000000?style=flat&logo=Next.js&logoColor=white" />
+    <img src="https://img.shields.io/badge/NextAuth-F58320?style=flat&logo=Next.js&logoColor=white" />
+    <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=TailWind CSS&logoColor=black" />
+    <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat&logo=Supabase&logoColor=black" />
+    <img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=Vercel&logoColor=white" />
+</div>
 
 ### [주요 기능]
 
 - 정적, 동적 라우팅
 - 마크다운 형식 포스팅
 - 메일 전송
-
+- 로그인
+- 댓글 CRUD
+  
 ### [개발과정 및 문제해결]
 
 ### **Procedure**
@@ -36,5 +48,3 @@ React(v18) & Next.js(v13) 업데이트 되면서 SSR지원에 대한 장점과 �
 
 1. **Version** 
     - 최신 버전에서 Client Component 오류 및 타입 안정성 문제가 발생하여 공식문서 및 Github Issue를 참조하여 지원 버전 설정 및 예외 처리를 통해 해결하였으며, 최신 버전의 업데이트를 확인하면서 문제점과 개선 사항을 빠르게 파악하게 되었습니다.
-2. **Typograph**
-    - 포스트 페이지에서 마크다운 형식이 초기화 되는 문제가 발생하여 Tailwind typograph 설정을 통해 해결하였으며, CSS 프레임워크 사용 시 주의할 점에 대해 알게 되었습니다.
