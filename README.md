@@ -18,7 +18,7 @@ Next.js version update를 follow하며 새로운 기술 적용 및 최적화를 
     <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
     <img src="https://img.shields.io/badge/Next-000000?style=flat&logo=Next.js&logoColor=white" />
     <img src="https://img.shields.io/badge/NextAuth-F58320?style=flat&logo=Next.js&logoColor=white" />
-    <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=TailWind CSS&logoColor=black" />
+    <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=TailwindCSS&logoColor=white" />
     <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat&logo=Supabase&logoColor=black" />
     <img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=Vercel&logoColor=white" />
 </div>
