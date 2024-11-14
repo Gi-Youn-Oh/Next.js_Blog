@@ -10,7 +10,7 @@ import rehypeRaw from 'rehype-raw'
 // import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 
 export default function MarkdownViewer({ content }: { content: string }) {
-    return <ReactMarkdown className="prose max-w-none lg:prose-lg" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}
+    return <ReactMarkdown className="prose max-w-none break-words lg:prose-lg" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}
         components={{
             code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '')
