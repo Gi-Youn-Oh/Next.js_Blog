@@ -151,7 +151,7 @@ const ageTest = {
         },ageTest);
         console.log(result);
     },
-    // 불가능 2
+    // 가능 2
     getAgeList : function () {
         const result = this.ageList.map((age)=>{
             return age+this.unit;
