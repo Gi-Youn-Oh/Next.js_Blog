@@ -50,7 +50,7 @@ export default function About() {
             <section className="bg-gray-100 shadow-lg p-8 m-8 text-center">
                 <h2 className={TITLE_CLASS}>Who Am I?</h2>
                 <p>개발을 즐기는 프론트엔드 개발자 <br />
-                    함께 나누는 서비스를 추구하며, 사용자 경험에 가치를 두고 있습니다.
+                    사용자 중심의 가치 있는 경험을 창출하고, 효율적인 서비스 제공을 목표로 합니다.
                 </p>
 
                 <h2 className={TITLE_CLASS}>Click To Link</h2>
