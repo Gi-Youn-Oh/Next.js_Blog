@@ -27,6 +27,19 @@ self.addEventListener('activate', (event) => {
   console.log('🚀 Service Worker activated');
 });
 
+self.addEventListener("push", function (event) {
+  const data = event.data?.json() || {};
+  const title = data.title || "알림!";
+  const options = {
+    body: data.body || "알림 내용입니다.",
+    icon: "/images/splash-img.png",
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
 

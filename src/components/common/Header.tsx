@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AuthCheck from "./AuthCheck";
+import PushNotification from "@/components/PushNotification";
 
 export default function Header() {
   return (
@@ -7,6 +8,8 @@ export default function Header() {
       <Link href="/">
         <h1 className="text-3xl font-bold">{"Giyoun's Blog"}</h1>
       </Link>
+      <PushNotification />
+
       <nav className="flex flex-wrap gap-4 justify-center md:justify-start mt-4 md:mt-0">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
