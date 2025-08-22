@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import { Metadata } from "next";
 import AuthContext from "@/context/AuthContext";
 import { Viewport } from "next";
+import Pwa from "@/app/Pwa";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -51,6 +52,7 @@ export default function RootLayout({
           <main className="grow m-5">{children}</main>
           <Footer />
         </AuthContext>
+        <Pwa />
       </body>
     </html>
   );
