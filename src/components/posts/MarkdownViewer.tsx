@@ -31,7 +31,7 @@ export default function MarkdownViewer({ content }: { content: string }) {
                     </code>
                 )
             },
-            img: (image) =>
+            img: (image: any) =>
                 <Image
                     className={image.alt === "exception" ? "w-full h-auto max-w-[1500px]" : "w-full h-auto max-w-[900px]"}
                     src={image.src || ""}
