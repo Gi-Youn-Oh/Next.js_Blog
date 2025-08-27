@@ -115,37 +115,68 @@ interface PushSubscriptionJSON {
 
 let subscription: PushSubscriptionJSON | null = null;
 
-export async function subscribeUser(sub: PushSubscriptionJSON) {
-  subscription = sub;
-  // In a production environment, you would want to store the subscription in a database
-  // For example: await db.subscriptions.create({ data: sub })
-  return { success: true };
+export async function subscribeUser(subscriptionData: {
+  user_id: string;
+  endpoint: string;
+  keys: { p256dh: string; auth: string };
+}) {
+  console.log("subscribeUser", subscriptionData)
+  const { data, status, error } = await supabase.from("push_subscriptions").insert({
+    user_id: subscriptionData.user_id,
+    endpoint: subscriptionData.endpoint,
+    p256dh: subscriptionData.keys.p256dh,
+    auth: subscriptionData.keys.auth,
+  });
+
+  if (error){
+    return {status: 500, message: "Push notification subscription failed", error};
+  }
+  return {status: 200, message: "Push notification subscription successful", data};
 }
 
-export async function unsubscribeUser() {
+export async function unsubscribeUser({ user_id }: { user_id: string }) {
   subscription = null;
   // In a production environment, you would want to remove the subscription from the database
   // For example: await db.subscriptions.delete({ where: { ... } })
-  return { success: true };
+  const { status, error } = await supabase
+    .from("push_subscriptions")
+    .delete()
+    .eq("user_id", user_id);
+
+  if (error){
+    return {status: 500, message: "Push notification subscription failed", error};
+  }
+  return {status: 200, message: "Push notification subscription successful"};
 }
 
-export async function sendNotification(message: string) {
-  if (!subscription) {
-    throw new Error("No subscription available");
-  }
+export async function sendNotification(prevState: any, formData: FormData) {
+  const title = formData.get("title") as string;
+  const body = formData.get("body") as string;
 
   try {
-    await webpush.sendNotification(
-      subscription as any, // Type assertion needed due to web-push type definitions
-      JSON.stringify({
-        title: "Test Notification",
-        body: message,
-        icon: "/images/splash-img.png",
-      })
+    const { data: subscriptions, error } = await supabase
+      .from("push_subscriptions")
+      .select("*");
+
+    if (error) throw error;
+
+    await Promise.all(
+      subscriptions.map((sub) =>
+        webpush.sendNotification(
+          {
+            endpoint: sub.endpoint,
+            keys: { p256dh: sub.p256dh, auth: sub.auth },
+          },
+          JSON.stringify({ title, body, icon: "/images/splash-img.png" })
+        ).catch((err) => {
+          console.error("Push failed:", err);
+        })
+      )
     );
-    return { success: true };
-  } catch (error) {
-    console.error("Error sending push notification:", error);
-    return { success: false, error: "Failed to send notification" };
+
+    return { status: "success", message: "Notification sent!" };
+  } catch (err) {
+    console.error("Notification error:", err);
+    return { status: "error", message: "Failed to send notification" };
   }
 }

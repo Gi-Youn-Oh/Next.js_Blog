@@ -13,18 +13,15 @@ self.addEventListener('install', (event) => {
   console.log('✅ Service Worker installed');
 });
 
-self.addEventListener('activate', (event) => {
-  // 이전 캐시 삭제
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
-  );
-  console.log('🚀 Service Worker activated');
+self.addEventListener('fetch', (event) => {
+  // navigation 요청에만 offline 대응
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(OFFLINE_URL);
+      }),
+    );
+  }
 });
 
 // self.addEventListener("push", function (event) {
@@ -60,53 +57,7 @@ self.addEventListener('push', function (event) {
 self.addEventListener('notificationclick', function (event) {
   console.log('Notification click received.')
   event.notification.close()
-  event.waitUntil(clients.openWindow('<https://your-website.com>'))
+  event.waitUntil(clients.openWindow('https://giyoun-blog.vercel.app/'))
 })
 
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
 
-  // chrome-extension:// 같은 요청은 무시
-  if (!request.url.startsWith('http')) {
-    return;
-  }
-
-  // HTML 페이지 (navigate)
-  if (request.mode === 'navigate') {
-
-    caches.open(CACHE_NAME).then((cache) => {
-      cache.keys().then((requests) => {
-        requests.forEach((request) => {
-          console.log('🗂 캐시에 들어있는 파일:', request.url);
-        });
-      });
-    });
-    
-    event.respondWith(
-      fetch(request).catch(() => caches.match(OFFLINE_URL))
-    );
-    return;
-  }
-
-  // 정적 파일 (script, style, image, font)
-  if (
-    request.destination === 'script' ||
-    request.destination === 'style' ||
-    request.destination === 'image' ||
-    request.destination === 'font'
-  ) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(request).then((response) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, response.clone()); // http/https만 처리됨
-            return response;
-          });
-        });
-      })
-    );
-  }
-});

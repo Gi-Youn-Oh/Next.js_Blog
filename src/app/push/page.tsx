@@ -1,13 +1,19 @@
-"use client";
+import PushMessageForm from "@/components/PushMessageForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/auth";
+import { redirect } from "next/navigation";
 
-import InstallPrompt from "@/components/InstallPrompt";
-import PushNotificationManager from "@/components/PushNotificationManager";
+export default async function PushMessagePage() {
+  const session = await getServerSession(authOptions);
+  const isAdmin = session?.user?.id === process.env.ADMIN_ACCOUNT;
 
-export default function Page() {
+  if(!isAdmin) {
+    redirect("/")
+  }
   return (
     <div>
-      <PushNotificationManager />
-      <InstallPrompt />
+      <PushMessageForm />
+      {/* <InstallPrompt /> */}
     </div>
   );
 }
