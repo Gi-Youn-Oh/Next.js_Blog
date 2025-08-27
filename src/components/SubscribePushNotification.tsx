@@ -144,7 +144,7 @@ export default function SubscribePushNotification() {
             className="bg-red-500 text-white px-4 py-2 rounded-xl"
             type="button"
             onClick={unsubscribeFromPush}
-            disabled={isLoading}
+            disabled={isLoading || !isLoggedIn}
           >
             {isLoading ? "잠시만 기다려주세요..." : "🔓 구독 해제하기"}
           </button>
@@ -155,7 +155,7 @@ export default function SubscribePushNotification() {
             className="bg-blue-500 text-white px-4 py-2 rounded-xl"
             type="button"
             onClick={subscribeToPush}
-            disabled={isLoading}
+            disabled={isLoading || !isLoggedIn}
           >
             {isLoading ? "잠시만 기다려주세요..." : "🔔 구독하기"}
           </button>
