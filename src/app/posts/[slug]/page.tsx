@@ -6,12 +6,18 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 type Props = {
-    params: {
+    params: Promise<{
         slug: string;
-    }
+    }>
 }
 
-export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata>{
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const params = await props.params;
+
+    const {
+        slug
+    } = params;
+
     const {title, description, path} = await getPostData(slug);
     return {
         title: title,
@@ -38,7 +44,13 @@ export async function generateStaticParams() {
     }))
 }
 
-export default async function PostPage({ params: { slug } }: Props) {
+export default async function PostPage(props: Props) {
+    const params = await props.params;
+
+    const {
+        slug
+    } = params;
+
     // 1. 전달된 slug에 해당하는 포스트 데이터 읽어오기
     // 2. 데이터를 마크다운 뷰어에 표기
     const post = await getPostData(slug);
