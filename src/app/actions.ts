@@ -120,7 +120,6 @@ export async function subscribeUser(subscriptionData: {
   endpoint: string;
   keys: { p256dh: string; auth: string };
 }) {
-  console.log("subscribeUser", subscriptionData)
   const { data, status, error } = await supabase.from("push_subscriptions").insert({
     user_id: subscriptionData.user_id,
     endpoint: subscriptionData.endpoint,
