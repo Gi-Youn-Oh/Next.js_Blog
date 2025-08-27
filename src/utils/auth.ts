@@ -58,6 +58,9 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/signin',
   },
+  /**
+   * if you dev commented it out for check middleware token check
+   */
   // Add session strategy
   session: {
     strategy: 'jwt',

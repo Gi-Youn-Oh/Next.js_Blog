@@ -10,17 +10,9 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // access to manifest.ts
-  if (req.nextUrl.pathname === "/manifest.ts") {
-    return new NextResponse(JSON.stringify(require("./app/manifest.ts")), {
-      headers: {
-        "Content-Type": "application/manifest+json",
-      },
-    });
-  }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: "/signin",
+  matcher: ["/signin", "/manifest.ts"],
 };
