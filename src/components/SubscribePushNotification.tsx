@@ -121,7 +121,7 @@ export default function SubscribePushNotification() {
   }
 
   if (!isSupported) {
-    return <p>😭 지원하지 않는 브라우저입니다.</p>;
+    return null;
   }
 
 
