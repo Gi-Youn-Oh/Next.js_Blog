@@ -179,3 +179,32 @@ export async function sendNotification(prevState: any, formData: FormData) {
     return { status: "error", message: "Failed to send notification" };
   }
 }
+
+
+export async function sendSingleNotification(userId: string, formData: FormData) {
+  const title = formData.get("title") as string;
+  const body = formData.get("body") as string;
+
+  try {
+    const { data: subscriptions, error } = await supabase
+      .from("push_subscriptions")
+      .select("*")
+      .eq("user_id", userId) 
+      .single();
+
+    if (error) throw error;
+
+    await webpush.sendNotification(
+      {
+        endpoint: subscriptions.endpoint,
+        keys: { p256dh: subscriptions.p256dh, auth: subscriptions.auth },
+      },
+      JSON.stringify({ title, body, icon: "/images/splash-img.png" })
+    );
+
+    return { status: "success", message: "Notification sent!" };
+  } catch (err) {
+    console.error("Notification error:", err);
+    return { status: "error", message: "Failed to send notification" };
+  }
+}

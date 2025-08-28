@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { sendNotification, subscribeUser, unsubscribeUser } from "@/app/actions";
+import { sendSingleNotification, subscribeUser, unsubscribeUser } from "@/app/actions";
 import { useSession } from "next-auth/react";
 import useAuth from "@/hooks/useAuth";
 
@@ -109,11 +109,12 @@ export default function SubscribePushNotification() {
 
     setSubscription(sub);
     await subscribeUser(subscriptionData);
+
     const formData = new FormData();
     formData.append("title", "Giyoun's Blog 구독완료 👋");
     formData.append("body", "새로운 글이 포스팅 되면 알림을 받을 수 있습니다!");
-    await sendNotification
-    (undefined, formData)
+    await sendSingleNotification(userId, formData);
+    
     setIsLoading(false);
   }
 
