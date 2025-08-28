@@ -181,7 +181,7 @@ export async function sendNotification(prevState: any, formData: FormData) {
 }
 
 
-export async function sendSingleNotification(userId: string, formData: FormData) {
+export async function sendSingleNotification(userId: string, endpoint: string, formData: FormData) {
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
 
@@ -190,6 +190,7 @@ export async function sendSingleNotification(userId: string, formData: FormData)
       .from("push_subscriptions")
       .select("*")
       .eq("user_id", userId) 
+      .eq("endpoint", endpoint)
       .single();
 
     if (error) throw error;
@@ -207,4 +208,18 @@ export async function sendSingleNotification(userId: string, formData: FormData)
     console.error("Notification error:", err);
     return { status: "error", message: "Failed to send notification" };
   }
+}
+
+export async function checkSubscription(userId: string, endpoint: string) {
+  const { data: subscriptions, error } = await supabase
+    .from("push_subscriptions")
+    .select("*")
+    .eq("user_id", userId)
+    .eq("endpoint", endpoint)
+
+  if (error) {
+    return {status: 500, message: "Subscription checked failed", error};
+  }
+
+  return {status:"success", message: "Subscription checked successfully", data: subscriptions};
 }
