@@ -1,7 +1,5 @@
 import Hero from "@/components/Hero";
 import { MdEmojiPeople } from "react-icons/md";
-import { SiAboutdotme } from "react-icons/si";
-import { FcDocument } from "react-icons/fc";
 import { Metadata } from "next";
 import Skill from "@/components/Skill";
 

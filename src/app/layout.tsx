@@ -10,7 +10,7 @@ const sans = Open_Sans({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
-}
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://giyoun-blog.vercel.app"),
@@ -39,13 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={sans.className}>
-      <head>
-        <meta
-          name="google-site-verification"
-          content="fS14S54kv28n_dVv2w0VAN16zIS5T62cSDDvYm7Pius"
-        />
-      </head>
-      <body className="flex flex-col w-full max-w-screen-3xl mx-auto" >
+      <body className="flex flex-col w-full max-w-screen-3xl mx-auto">
         <AuthContext>
           <Header />
           <main className="grow m-5">{children}</main>
