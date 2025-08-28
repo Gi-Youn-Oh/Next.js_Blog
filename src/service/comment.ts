@@ -6,15 +6,10 @@ export type Comment = {
   token_id: string;
 };
 
-export type PurifyComment = {
-  created_at: string;
-    original_created_at: string;
-  name: string;
-  comment: string;
-  post_path: string;
+export type PurifyComment = Omit<Comment, "token_id"> & {
+  original_created_at: string;
   isEditable: boolean;
 };
-
 
 // 날짜 변환 함수
 export function formatDate(dateString: string) {

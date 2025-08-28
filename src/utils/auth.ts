@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
     }),
   ],
-  //   debug: true,
+  // debug: true,
   callbacks: {
     async session({ session, token }) {
       // Send properties to the client, like an access_token and user id from a provider.
@@ -57,6 +57,25 @@ export const authOptions: NextAuthOptions = {
   // for custom pages
   pages: {
     signIn: '/signin',
-  }
+  },
+  /**
+   * if you dev commented it out for check middleware token check
+   */
+  // Add session strategy
+  session: {
+    strategy: 'jwt',
+  },
+  // Add cookies configuration
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true,
+      },
+    },
+  },
 };
 
