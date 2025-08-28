@@ -1,7 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { sendSingleNotification, subscribeUser, unsubscribeUser } from "@/app/actions";
+import {
+  checkSubscription,
+  sendSingleNotification,
+  subscribeUser,
+  unsubscribeUser,
+} from "@/app/actions";
 import { useSession } from "next-auth/react";
 import useAuth from "@/hooks/useAuth";
 
@@ -54,7 +59,15 @@ export default function SubscribePushNotification() {
       const sub = await registration.pushManager.getSubscription();
       console.log("기존 구독 상태:", sub);
 
-      setSubscription(sub);
+      const checkSubscriptionResponse = await checkSubscription(userId, sub?.endpoint || '');
+      console.log("DB 구독 상태:", checkSubscriptionResponse);
+
+      if (sub && checkSubscriptionResponse.data) {
+        setSubscription(sub);
+      } else {
+        // 브라우저 구독 없음 → 버튼으로 구독 생성
+        setSubscription(null);
+      }
     } catch (err) {
       console.error("서비스 워커 등록 실패", err);
     }
@@ -113,8 +126,8 @@ export default function SubscribePushNotification() {
     const formData = new FormData();
     formData.append("title", "Giyoun's Blog 구독완료 👋");
     formData.append("body", "새로운 글이 포스팅 되면 알림을 받을 수 있습니다!");
-    await sendSingleNotification(userId, formData);
-    
+    await sendSingleNotification(userId, sub.endpoint, formData);
+
     setIsLoading(false);
   }
 
@@ -129,7 +142,6 @@ export default function SubscribePushNotification() {
   if (!isSupported) {
     return null;
   }
-
 
   if (!isLoggedIn) {
     return (
