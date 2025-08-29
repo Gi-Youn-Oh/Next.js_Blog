@@ -43,10 +43,12 @@ export default function SubscribePushNotification() {
       setIsSupported(true);
       registerServiceWorker();
     }
-  }, []);
+  }, [userId]);
 
   async function registerServiceWorker() {
     try {
+      if(!userId) return;
+
       const registration = await navigator.serviceWorker.register(
         "/service-worker.js",
         {
@@ -62,7 +64,7 @@ export default function SubscribePushNotification() {
       const checkSubscriptionResponse = await checkSubscription(userId, sub?.endpoint || '');
       console.log("DB 구독 상태:", checkSubscriptionResponse);
 
-      if (sub && checkSubscriptionResponse.data) {
+      if (sub && checkSubscriptionResponse.data && checkSubscriptionResponse.data.length > 0) {
         setSubscription(sub);
       } else {
         // 브라우저 구독 없음 → 버튼으로 구독 생성
