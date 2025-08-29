@@ -120,17 +120,27 @@ export async function subscribeUser(subscriptionData: {
   endpoint: string;
   keys: { p256dh: string; auth: string };
 }) {
-  const { data, status, error } = await supabase.from("push_subscriptions").insert({
-    user_id: subscriptionData.user_id,
-    endpoint: subscriptionData.endpoint,
-    p256dh: subscriptionData.keys.p256dh,
-    auth: subscriptionData.keys.auth,
-  });
+  const { data, status, error } = await supabase
+    .from("push_subscriptions")
+    .insert({
+      user_id: subscriptionData.user_id,
+      endpoint: subscriptionData.endpoint,
+      p256dh: subscriptionData.keys.p256dh,
+      auth: subscriptionData.keys.auth,
+    });
 
-  if (error){
-    return {status: 500, message: "Push notification subscription failed", error};
+  if (error) {
+    return {
+      status: 500,
+      message: "Push notification subscription failed",
+      error,
+    };
   }
-  return {status: 200, message: "Push notification subscription successful", data};
+  return {
+    status: 200,
+    message: "Push notification subscription successful",
+    data,
+  };
 }
 
 export async function unsubscribeUser({ user_id }: { user_id: string }) {
@@ -142,10 +152,14 @@ export async function unsubscribeUser({ user_id }: { user_id: string }) {
     .delete()
     .eq("user_id", user_id);
 
-  if (error){
-    return {status: 500, message: "Push notification subscription failed", error};
+  if (error) {
+    return {
+      status: 500,
+      message: "Push notification subscription failed",
+      error,
+    };
   }
-  return {status: 200, message: "Push notification subscription successful"};
+  return { status: 200, message: "Push notification subscription successful" };
 }
 
 export async function sendNotification(prevState: any, formData: FormData) {
@@ -161,27 +175,32 @@ export async function sendNotification(prevState: any, formData: FormData) {
 
     await Promise.all(
       subscriptions.map((sub) =>
-        webpush.sendNotification(
-          {
-            endpoint: sub.endpoint,
-            keys: { p256dh: sub.p256dh, auth: sub.auth },
-          },
-          JSON.stringify({ title, body, icon: "/images/splash-img.png" })
-        ).catch((err) => {
-          console.error("Push failed:", err);
-        })
+        webpush
+          .sendNotification(
+            {
+              endpoint: sub.endpoint,
+              keys: { p256dh: sub.p256dh, auth: sub.auth },
+            },
+            JSON.stringify({ title, body, icon: "/images/splash-img.png" })
+          )
+          .catch((err) => {
+            console.error("Push failed:", err);
+          })
       )
     );
 
-    return { status: "success", message: "Notification sent!" };
+    return { status: 200, message: "Notification sent!" };
   } catch (err) {
     console.error("Notification error:", err);
-    return { status: "error", message: "Failed to send notification" };
+    return { status: 500, message: "Failed to send notification" };
   }
 }
 
-
-export async function sendSingleNotification(userId: string, endpoint: string, formData: FormData) {
+export async function sendSingleNotification(
+  userId: string,
+  endpoint: string,
+  formData: FormData
+) {
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
 
@@ -189,7 +208,7 @@ export async function sendSingleNotification(userId: string, endpoint: string, f
     const { data: subscriptions, error } = await supabase
       .from("push_subscriptions")
       .select("*")
-      .eq("user_id", userId) 
+      .eq("user_id", userId)
       .eq("endpoint", endpoint)
       .single();
 
@@ -203,10 +222,10 @@ export async function sendSingleNotification(userId: string, endpoint: string, f
       JSON.stringify({ title, body, icon: "/images/splash-img.png" })
     );
 
-    return { status: "success", message: "Notification sent!" };
+    return { status: 200, message: "Notification sent!" };
   } catch (err) {
     console.error("Notification error:", err);
-    return { status: "error", message: "Failed to send notification" };
+    return { status: 500, message: "Failed to send notification" };
   }
 }
 
@@ -215,11 +234,16 @@ export async function checkSubscription(userId: string, endpoint: string) {
     .from("push_subscriptions")
     .select("*")
     .eq("user_id", userId)
-    .eq("endpoint", endpoint)
+    .eq("endpoint", endpoint);
 
+  const onlyUserIds = subscriptions?.map((sub) => ({ user_id: sub.user_id }));
   if (error) {
-    return {status: 500, message: "Subscription checked failed", error};
+    return { status: 500, message: "Subscription checked failed", error };
   }
 
-  return {status:"success", message: "Subscription checked successfully", data: subscriptions};
+  if (!subscriptions || subscriptions.length === 0) {
+    return { status: 404, message: "Subscription not found", data: [] };
+  }
+
+  return { status: 200, message: "Subscription exists", data: onlyUserIds };
 }
