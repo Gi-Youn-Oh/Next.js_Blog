@@ -5,7 +5,7 @@ import { sendNotification } from "@/app/actions";
 
 export default function PushMessageForm() {
   const [state, formAction, isPending] = useActionState(sendNotification, {
-    status: "",
+    status: 200,
     message: "",
   });
 
@@ -44,12 +44,12 @@ export default function PushMessageForm() {
         </button>
       </form>
 
-      {state?.status === "success" && (
+      {state?.status === 200 && (
         <p className="mt-3 text-green-600 text-sm">
           ✅ 알림이 성공적으로 전송되었습니다!
         </p>
       )}
-      {state?.status === "error" && (
+      {state?.status === 500 && (
         <p className="mt-3 text-red-600 text-sm">
           ❌ 알림 전송에 실패했습니다.
         </p>
