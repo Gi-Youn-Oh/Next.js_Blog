@@ -12,7 +12,7 @@ const TITLE_CLASS = "text-2xl font-bold text-gray-800 my-4"
 const CONTENT_CLASS = "text-xl font-bold text-gray-700 m-1";
 
 const LINKS = [
-    { icon: <MdEmojiPeople />, url: "https://shell-dentist-f9a.notion.site/134d693cf9b1807a9bd4c9dabdef568b?pvs=4", description: "Resume" },
+    { icon: <MdEmojiPeople />, url: "/resume.pdf", description: "Resume" },
     // { icon: <SiAboutdotme />, url: "https://www.notion.so/b87f403ff5ec4e47a7ebfc7dcfbae2d2", description: "About Me" },
     // { icon: <FcDocument />, url: "https://www.notion.so/bd0bd61f95074e20b24800ed7ea7f1bb", description: "Portfolio" },
 ]
