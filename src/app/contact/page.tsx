@@ -1,5 +1,5 @@
 import ContactForm from '@/components/ContactForm'
-import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
+import { AiFillGithub } from 'react-icons/ai'
 import { ImInstagram } from 'react-icons/im'
 import { Metadata } from "next";
 
