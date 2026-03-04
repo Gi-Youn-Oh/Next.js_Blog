@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={sans.className}>
-      <body className="flex flex-col w-full max-w-screen-3xl mx-auto">
+      <head>
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17943323588"></script>
         <script
@@ -53,6 +53,8 @@ export default function RootLayout({
           `,
           }}
         />
+      </head>
+      <body className="flex flex-col w-full max-w-screen-3xl mx-auto">
         <AuthContext>
           <Header />
           <main className="grow m-5">{children}</main>
