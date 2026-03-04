@@ -5,7 +5,7 @@ import Footer from "@/components/common/Footer";
 import { Metadata } from "next";
 import AuthContext from "@/context/AuthContext";
 import { Viewport } from "next";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -40,24 +40,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={sans.className}>
+      <GoogleAnalytics gaId="AW-17943323588" />
       <body className="flex flex-col w-full max-w-screen-3xl mx-auto">
-        {/* Google tag (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17943323588"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17943323588');
-            `,
-          }}
-        />
         <AuthContext>
           <Header />
           <main className="grow m-5">{children}</main>
